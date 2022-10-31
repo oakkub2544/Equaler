@@ -9,8 +9,7 @@ void main() {
   runApp(MyApp());
 }
 
-// ===============================API CALLING=================================
-getNews() async {
+getNews() async{
   final url = Uri.parse(
       "https://newsdata.io/api/1/news?apikey=pub_124249313445c3671fd4d175e97415511a437&language=en,th");
   http.Response response = await http.get(url);
@@ -20,7 +19,7 @@ getNews() async {
     return resultsResponse;
   }
 }
-// ===================================================================
+// ===========================================================================
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

@@ -13,49 +13,50 @@ class NewsCard extends StatelessWidget {
       onTap: () => {},
       child: Container(
         width: MediaQuery.of(context).size.width * 0.9,
-        height: MediaQuery.of(context).size.height * 0.15,
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.blueAccent,
-            width: 1,
+        height: MediaQuery.of(context).size.height * 0.2,
+        margin: EdgeInsets.symmetric(vertical: 5),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
           ),
-          borderRadius: BorderRadius.all(
-              Radius.circular(5.0) //                 <--- border radius here
-              ),
-        ),
-        child: LayoutBuilder(builder: (ctx, constraints) {
-          return Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  imgUrl,
-                  width: constraints.maxWidth * 0.4,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(left: 20, right: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(newsDate),
-                      Text(
-                        newsTitle,
-                        style: TextStyle(fontSize: 18),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 3,
-                      ),
-                      Text("Read More")
-                    ],
+          color: Color.fromRGBO(246, 240, 235, 1),
+          child: LayoutBuilder(builder: (ctx, constraints) {
+            return Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.network(
+                      imgUrl,
+                      width: constraints.maxWidth * 0.35,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-              )
-            ],
-          );
-        }),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 20, right: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(newsDate),
+                          Text(
+                            newsTitle,
+                            style: TextStyle(fontSize: 18),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 3,
+                          ),
+                          Text("Read More")
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            );
+          }),
+        ),
       ),
     );
   }

@@ -9,7 +9,7 @@ void main() {
   runApp(MyApp());
 }
 
-getNews() async{
+getNews() async {
   final url = Uri.parse(
       "https://newsdata.io/api/1/news?apikey=pub_124249313445c3671fd4d175e97415511a437&language=en,th");
   http.Response response = await http.get(url);
@@ -48,24 +48,25 @@ class _MyhomepageState extends State<Myhomepage> {
         appBar: Headerbar(),
         drawer: Sidemenu(),
         body: Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-              Padding(
-                padding: EdgeInsets.only(
-                    left: MediaQuery.of(context).size.width * 0.05),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Text('Suggestion',
-                      style: TextStyle(
-                        color: Color.fromRGBO(50, 48, 45, 1),
-                        fontSize: 42,
-                      )),
-                ),
+            child: Column(children: [
+          Padding(
+            padding:
+                EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.06),
+            child: Container(
+              margin: EdgeInsets.only(top: 10, bottom: 5),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Text('Suggestion',
+                    style: TextStyle(
+                      color: Color.fromRGBO(50, 48, 45, 1),
+                      fontSize: 42,
+                    )),
               ),
-              NewsCard(),
-              NewsCard(),
-              NewsCard(),
-            ])));
+            ),
+          ),
+          NewsCard(),
+          NewsCard(),
+          NewsCard(),
+        ])));
   }
 }

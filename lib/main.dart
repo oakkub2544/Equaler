@@ -52,9 +52,9 @@ class _MyhomepageState extends State<Myhomepage> {
         drawer: Sidemenu(),
         body: Center(
             child: Column(children: [
-          SectionTitle("Suggestion"),
+          SectionTitle(title: "Suggestion"),
           BigNewsCard(),
-          SectionTitle("Popular Today"),
+          SectionTitle(title: "Popular Today"),
           NewsCard(),
           NewsCard(),
         ])));

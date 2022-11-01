@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
 class BigNewsCard extends StatelessWidget {
-  String imgUrl = "https://picsum.photos/seed/137/600";
+  final String imgUrl;
 
-  String newsTitle = "This is news title";
+  final String newsTitle;
 
-  String newsDate = "This is news date";
+  final String newsDate;
+
+  BigNewsCard(
+      {this.imgUrl = "https://picsum.photos/seed/137/600",
+      this.newsTitle = "This is news title",
+      this.newsDate = "This is news date"});
 
   @override
   Widget build(BuildContext context) {

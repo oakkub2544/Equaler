@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class SectionTitle extends StatelessWidget {
   final String title;
 
-  SectionTitle(this.title);
+  SectionTitle({this.title = "This is title"});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.06),
+      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.08),
       child: Container(
         margin: EdgeInsets.only(top: 15, bottom: 10),
         child: Align(

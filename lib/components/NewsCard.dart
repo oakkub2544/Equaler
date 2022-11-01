@@ -22,7 +22,7 @@ class NewsCard extends StatelessWidget {
           color: Color.fromRGBO(246, 240, 235, 1),
           child: LayoutBuilder(builder: (ctx, constraints) {
             return Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(10.0),
               child: Row(
                 children: [
                   ClipRRect(
@@ -43,11 +43,24 @@ class NewsCard extends StatelessWidget {
                           Text(newsDate),
                           Text(
                             newsTitle,
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 3,
                           ),
-                          Text("Read More")
+                          Row(
+                            children: [
+                              Text(
+                                "Read More",
+                                style: TextStyle(
+                                    decoration: TextDecoration.underline),
+                              ),
+                              Icon(
+                                Icons.arrow_forward,
+                                size: 15,
+                              )
+                            ],
+                          )
                         ],
                       ),
                     ),

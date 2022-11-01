@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'components/header_bar.dart';
 import 'components/menubar.dart';
 import 'components/NewsCard.dart';
+import 'components/BigNewsCard.dart';
+import 'components/SectionTitle.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -29,7 +31,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "My App",
       home: Myhomepage(),
-      theme: ThemeData(scaffoldBackgroundColor: Color.fromRGBO(246, 240, 235, 1)),
+      theme:
+          ThemeData(scaffoldBackgroundColor: Color.fromRGBO(246, 240, 235, 1)),
     );
   }
 }
@@ -49,22 +52,9 @@ class _MyhomepageState extends State<Myhomepage> {
         drawer: Sidemenu(),
         body: Center(
             child: Column(children: [
-          Padding(
-            padding:
-                EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.06),
-            child: Container(
-              margin: EdgeInsets.only(top: 10, bottom: 5),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Text('Suggestion',
-                    style: TextStyle(
-                      color: Color.fromRGBO(50, 48, 45, 1),
-                      fontSize: 42,
-                    )),
-              ),
-            ),
-          ),
-          NewsCard(),
+          SectionTitle("Suggestion"),
+          BigNewsCard(),
+          SectionTitle("Popular Today"),
           NewsCard(),
           NewsCard(),
         ])));

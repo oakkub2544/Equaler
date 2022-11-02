@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/selectcategory.dart';
 
 class Sidemenu extends StatelessWidget {
   @override
@@ -6,7 +7,7 @@ class Sidemenu extends StatelessWidget {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: const <Widget>[
+        children: <Widget>[
           DrawerHeader(
             decoration: BoxDecoration(
               color: Color.fromRGBO(246, 240, 235, 1),
@@ -22,6 +23,14 @@ class Sidemenu extends StatelessWidget {
           ),
           ListTile(
             title: Text('SubMenu#1'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => selectcategory(),
+                ),
+              );
+            },
           ),
           ListTile(
             title: Text('SubMenu#1'),

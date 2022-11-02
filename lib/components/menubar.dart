@@ -22,7 +22,7 @@ class Sidemenu extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: Text('SubMenu#1'),
+            title: Text('Category'),
             onTap: () {
               Navigator.push(
                 context,

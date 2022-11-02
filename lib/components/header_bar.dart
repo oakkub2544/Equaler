@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Headerbar extends StatelessWidget with PreferredSizeWidget {
+  final String headerTitle;
+  Headerbar({this.headerTitle = 'Equaler'});
   @override
   Widget build(BuildContext context) {
     return AppBar(
         title: Center(
             child: Container(
-          child: Text('Equaler',
+          child: Text(headerTitle,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color.fromRGBO(50, 48, 45, 1),

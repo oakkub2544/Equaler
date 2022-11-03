@@ -15,6 +15,8 @@ class selectcategory extends StatelessWidget {
             CategoryItem(),
             CategoryItem(),
             CategoryItem(),
+            CategoryItem(),
+            CategoryItem(),
             CategoryItem()
           ],
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

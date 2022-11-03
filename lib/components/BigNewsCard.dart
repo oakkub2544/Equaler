@@ -18,7 +18,7 @@ class BigNewsCard extends StatelessWidget {
       onTap: () => {},
       child: Container(
         width: MediaQuery.of(context).size.width * 0.9,
-        height: MediaQuery.of(context).size.height * 0.2,
+        height: MediaQuery.of(context).size.height * 0.235,
         margin: EdgeInsets.symmetric(vertical: 5),
         child: Card(
           shape: RoundedRectangleBorder(

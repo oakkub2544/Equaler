@@ -21,7 +21,7 @@ class selectcategory extends StatelessWidget {
           ],
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 200,
-            childAspectRatio: 3 / 2,
+            childAspectRatio: 1,
             crossAxisSpacing: 20,
             mainAxisSpacing: 20,
           )),

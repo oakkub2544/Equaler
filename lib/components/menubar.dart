@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/components/PageThai.dart';
+import 'package:flutter_application_3/components/PageEng.dart';
 import 'package:flutter_application_3/selectcategory.dart';
 
 class Sidemenu extends StatelessWidget {
@@ -33,10 +35,26 @@ class Sidemenu extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('SubMenu#1'),
+            title: Text('Thai News'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PageThai(),
+                ),
+              );
+            },
           ),
           ListTile(
-            title: Text('SubMenu#1'),
+            title: Text('English News'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PageEng(),
+                ),
+              );
+            },
           ),
         ],
       ),

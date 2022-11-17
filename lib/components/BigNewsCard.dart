@@ -18,11 +18,11 @@ class BigNewsCard extends StatelessWidget {
       onTap: () => {},
       child: Container(
         width: MediaQuery.of(context).size.width * 0.9,
-        height: MediaQuery.of(context).size.height * 0.235,
+        height: MediaQuery.of(context).size.height * 0.2,
         margin: EdgeInsets.symmetric(vertical: 5),
         child: Card(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
+            borderRadius: BorderRadius.circular(20.0),
           ),
           color: Color.fromRGBO(246, 240, 235, 1),
           child: LayoutBuilder(builder: (ctx, constraints) {
@@ -31,7 +31,7 @@ class BigNewsCard extends StatelessWidget {
               child: Column(
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(15),
                     child: Image.network(
                       imgUrl,
                       width: constraints.maxWidth,

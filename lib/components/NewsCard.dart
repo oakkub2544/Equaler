@@ -1,4 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/components/PageThai.dart';
+import 'package:flutter_application_3/selectcategory.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:core';
+
+Future<dynamic> getNews() async {
+  final url = Uri.parse(
+      "https://newsdata.io/api/1/news?apikey=pub_124249313445c3671fd4d175e97415511a437&language=en,th");
+  final response = await http.get(url);
+  if (response.statusCode == 200) {
+    Map jsonResponse = jsonDecode(response.body);
+    List resultsResponse = jsonResponse['results'];
+    print(resultsResponse);
+    return resultsResponse;
+  }
+}
 
 class NewsCard extends StatelessWidget {
   final String imgUrl;
@@ -53,10 +70,20 @@ class NewsCard extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Text(
-                              "Read More",
-                              style: TextStyle(
-                                  decoration: TextDecoration.underline),
+                            GestureDetector(
+                              child: Text(
+                                "Read More",
+                                style: TextStyle(
+                                    decoration: TextDecoration.underline),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => selectcategory(),
+                                  ),
+                                );
+                              },
                             ),
                             Icon(
                               Icons.arrow_forward,

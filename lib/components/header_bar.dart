@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/main.dart';
 
 class Headerbar extends StatelessWidget with PreferredSizeWidget {
   final String headerTitle;
@@ -21,7 +22,10 @@ class Headerbar extends StatelessWidget with PreferredSizeWidget {
               child: IconButton(
                 icon: Image.asset('asset/logo/logoapp.png'),
                 iconSize: 30,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MyApp()));
+                },
               ))
         ],
         iconTheme: IconThemeData(color: Color.fromRGBO(50, 48, 45, 1)),

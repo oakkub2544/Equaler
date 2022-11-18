@@ -79,6 +79,7 @@ class _MyhomepageState extends State<Myhomepage> {
                             children: [
                               NewsCard(
                                 newsTitle: snapshot.data[index]['title'],
+                                newsDate: snapshot.data[index]['pubDate'],
                               )
                             ],
                           );

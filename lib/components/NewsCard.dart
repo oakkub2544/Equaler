@@ -25,7 +25,8 @@ class NewsCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => readnew(),
+            builder: (context) =>
+                readnew(newsTitle1: newsTitle, newsDate1: newsDate),
           ),
         );
       },

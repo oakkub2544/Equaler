@@ -7,14 +7,14 @@ import './components/CategoryItem.dart';
 class readnew extends StatelessWidget {
   final String imgUrl;
 
-  final String newsTitle;
+  final String newsTitle1;
 
-  final String newsDate;
+  final String newsDate1;
 
   readnew(
       {this.imgUrl = "https://picsum.photos/seed/137/600",
-      this.newsTitle = "This is news title",
-      this.newsDate = "This is news date"});
+      this.newsTitle1 = "This is news title",
+      this.newsDate1 = "This is news date"});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class readnew extends StatelessWidget {
         ),
         body: Container(child: LayoutBuilder(builder: (ctx, constraints) {
           return Column(children: [
-            SectionTitle(title: newsTitle),
+            SectionTitle(title: newsTitle1),
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.network(
@@ -40,7 +40,7 @@ class readnew extends StatelessWidget {
               child: Align(
                 alignment: Alignment.topLeft,
                 child: Column(
-                  children: [Text(newsDate)],
+                  children: [Text(newsDate1)],
                 ),
               ),
             ),

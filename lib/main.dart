@@ -80,6 +80,7 @@ class _MyhomepageState extends State<Myhomepage> {
                               NewsCard(
                                 newsTitle: snapshot.data[index]['title'],
                                 newsDate: snapshot.data[index]['pubDate'],
+                                newsDesc: snapshot.data[index]['description'],
                               )
                             ],
                           );

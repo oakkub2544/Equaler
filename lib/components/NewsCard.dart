@@ -13,10 +13,13 @@ class NewsCard extends StatelessWidget {
 
   final String newsDate;
 
+  final String newsDesc;
+
   NewsCard(
       {this.imgUrl = "https://picsum.photos/seed/137/600",
       this.newsTitle = "This is news title",
-      this.newsDate = "This is news date"});
+      this.newsDate = "This is news date",
+      this.newsDesc = "This is news description"});
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +28,10 @@ class NewsCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) =>
-                readnew(newsTitle1: newsTitle, newsDate1: newsDate),
+            builder: (context) => readnew(
+                newsTitle1: newsTitle,
+                newsDate1: newsDate,
+                newsDesc1: newsDesc),
           ),
         );
       },

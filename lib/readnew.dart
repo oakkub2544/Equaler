@@ -11,10 +11,13 @@ class readnew extends StatelessWidget {
 
   final String newsDate1;
 
+  final String newsDesc1;
+
   readnew(
       {this.imgUrl = "https://picsum.photos/seed/137/600",
       this.newsTitle1 = "This is news title",
-      this.newsDate1 = "This is news date"});
+      this.newsDate1 = "This is news date",
+      this.newsDesc1 = "This is news description"});
 
   @override
   Widget build(BuildContext context) {
@@ -23,28 +26,33 @@ class readnew extends StatelessWidget {
           headerTitle: 'Read News',
         ),
         body: Container(child: LayoutBuilder(builder: (ctx, constraints) {
-          return Column(children: [
-            SectionTitle(title: newsTitle1),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.network(
-                imgUrl,
-                width: constraints.maxWidth * 0.9,
-                height: constraints.maxHeight * 0.35,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Padding(
-              padding:
-                  EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Column(
-                  children: [Text(newsDate1)],
+          return SingleChildScrollView(
+            child: Column(children: [
+              SectionTitle(title: newsTitle1),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.network(
+                  imgUrl,
+                  width: constraints.maxWidth * 0.9,
+                  height: constraints.maxHeight * 0.35,
+                  fit: BoxFit.cover,
                 ),
               ),
-            ),
-          ]);
+              Padding(
+                padding:
+                    EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Column(
+                    children: [
+                      Text(newsDate1, style: TextStyle(fontSize: 25)),
+                      Text(newsDesc1, style: TextStyle(fontSize: 25))
+                    ],
+                  ),
+                ),
+              ),
+            ]),
+          );
         })));
   }
 

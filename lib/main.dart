@@ -31,9 +31,8 @@ Future<dynamic> getNews() async {
       "https://newsdata.io/api/1/news?apikey=pub_124249313445c3671fd4d175e97415511a437&country=th,gb,us&language=en,th&page=2");
   final response = await http.get(url);
   if (response.statusCode == 200) {
-    Map jsonResponse = jsonDecode(response.body);
-
-    List resultsResponse = checkNull(jsonResponse['results']);
+    Map jsonResponse = json.decode(utf8.decode(response.bodyBytes));
+    List resultsResponse = jsonResponse['results'];
     print(resultsResponse);
     return resultsResponse;
   }

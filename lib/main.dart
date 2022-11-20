@@ -27,8 +27,9 @@ List<dynamic> checkNull(List<dynamic> data) {
   return data;
 }
 Future<dynamic> getNews() async {
+  //spare API: pub_13699438c8b63ce784777146929c925c17dbd
   final url = Uri.parse(
-      "https://newsdata.io/api/1/news?apikey=pub_124249313445c3671fd4d175e97415511a437&country=th,gb,us&language=en,th");
+      "https://newsdata.io/api/1/news?apikey=pub_13699438c8b63ce784777146929c925c17dbd&country=th,gb,us&language=en,th");
   final response = await http.get(url);
   if (response.statusCode == 200) {
     Map jsonResponse = jsonDecode(response.body);

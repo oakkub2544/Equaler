@@ -22,7 +22,7 @@ class BigNewsCard extends StatelessWidget {
         margin: EdgeInsets.symmetric(vertical: 5),
         child: Card(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0),
+            borderRadius: BorderRadius.circular(20.0),
           ),
           color: Color.fromRGBO(246, 240, 235, 1),
           child: LayoutBuilder(builder: (ctx, constraints) {

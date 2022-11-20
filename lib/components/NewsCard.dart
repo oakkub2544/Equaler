@@ -16,7 +16,7 @@ class NewsCard extends StatelessWidget {
   final String newsDesc;
 
   NewsCard(
-      {this.imgUrl = "https://picsum.photos/seed/137/600",
+      {this.imgUrl = "https://comnplayscience.eu/app/images/notfound.png",
       this.newsTitle = "This is news title",
       this.newsDate = "This is news date",
       this.newsDesc = "This is news description"});
@@ -29,6 +29,7 @@ class NewsCard extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => readnew(
+                imgUrl1: imgUrl,
                 newsTitle1: newsTitle,
                 newsDate1: newsDate,
                 newsDesc1: newsDesc),

@@ -5,7 +5,7 @@ import './components/header_bar.dart';
 import './components/CategoryItem.dart';
 
 class readnew extends StatelessWidget {
-  final String imgUrl;
+  final String imgUrl1;
 
   final String newsTitle1;
 
@@ -14,7 +14,7 @@ class readnew extends StatelessWidget {
   final String newsDesc1;
 
   readnew(
-      {this.imgUrl = "https://picsum.photos/seed/137/600",
+      {this.imgUrl1 = "https://picsum.photos/seed/137/600",
       this.newsTitle1 = "This is news title",
       this.newsDate1 = "This is news date",
       this.newsDesc1 = "This is news description"});
@@ -32,7 +32,7 @@ class readnew extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.network(
-                  imgUrl,
+                  imgUrl1,
                   width: constraints.maxWidth * 0.9,
                   height: constraints.maxHeight * 0.35,
                   fit: BoxFit.cover,

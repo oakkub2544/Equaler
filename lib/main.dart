@@ -33,7 +33,7 @@ Future<dynamic> getNews() async {
   if (response.statusCode == 200) {
     Map jsonResponse = json.decode(utf8.decode(response.bodyBytes));
     List resultsResponse = jsonResponse['results'];
-    //print(resultsResponse);
+    print(resultsResponse);
     return resultsResponse;
   }
 }

@@ -15,10 +15,10 @@ List<dynamic> checkNull(List<dynamic> data) {
           'https://comnplayscience.eu/app/images/notfound.png';
     }
     if (element['description'] == null) {
-      element['description'] = element['content'];
+      element['description'] = 'No description';
     }
     if (element['content'] == null) {
-      element['content'] = element['description'];
+      element['content'] = 'No content';
     }
     element['pubDate'] =
         element['pubDate'].substring(0, element['pubDate'].indexOf(' '));
@@ -28,12 +28,13 @@ List<dynamic> checkNull(List<dynamic> data) {
 
 Future<dynamic> getNews() async {
   final url = Uri.parse(
-      "https://newsdata.io/api/1/news?apikey=pub_124249313445c3671fd4d175e97415511a437&language=en,th");
+      "https://newsdata.io/api/1/news?apikey=pub_124249313445c3671fd4d175e97415511a437&country=th,gb,us&language=en,th&page=2");
   final response = await http.get(url);
   if (response.statusCode == 200) {
     Map jsonResponse = jsonDecode(response.body);
 
     List resultsResponse = checkNull(jsonResponse['results']);
+    print(resultsResponse);
     return resultsResponse;
   }
 }

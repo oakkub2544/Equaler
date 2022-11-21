@@ -7,36 +7,7 @@ import 'components/SectionTitle.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:core';
-
-List<dynamic> checkNull(List<dynamic> data) {
-  data.forEach((element) {
-    if (element['image_url'] == null) {
-      element['image_url'] =
-          'https://comnplayscience.eu/app/images/notfound.png';
-    }
-    if (element['description'] == null) {
-      element['description'] = 'No description';
-    }
-    if (element['content'] == null) {
-      element['content'] = 'No content';
-    }
-    element['pubDate'] =
-        element['pubDate'].substring(0, element['pubDate'].indexOf(' '));
-  });
-  return data;
-}
-
-Future<dynamic> getNews() async {
-  final url = Uri.parse(
-      "https://newsdata.io/api/1/news?apikey=pub_124249313445c3671fd4d175e97415511a437&country=th,gb,us&language=en,th&page=2");
-  final response = await http.get(url);
-  if (response.statusCode == 200) {
-    Map jsonResponse = json.decode(utf8.decode(response.bodyBytes));
-    List resultsResponse = jsonResponse['results'];
-    print(resultsResponse);
-    return resultsResponse;
-  }
-}
+import './apiHandler.dart';
 
 void main() {
   runApp(MyApp());
@@ -68,7 +39,7 @@ class _MyhomepageState extends State<Myhomepage> {
   @override
   void initState() {
     super.initState();
-    newsData = getNews();
+    newsData = apiHandler.getNews(["country=th,gb,us", "language=en,th"]);
     // TODO: implement initState
   }
 

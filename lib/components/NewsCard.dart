@@ -29,6 +29,7 @@ class NewsCard extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => readnew(
+                imgUrl1: imgUrl,
                 newsTitle1: newsTitle,
                 newsDate1: newsDate,
                 newsDesc1: newsDesc),
@@ -37,11 +38,11 @@ class NewsCard extends StatelessWidget {
       },
       child: Container(
         width: MediaQuery.of(context).size.width * 0.9,
-        height: MediaQuery.of(context).size.height * 0.2,
+        height: MediaQuery.of(context).size.height * 0.18,
         margin: EdgeInsets.symmetric(vertical: 5),
         child: Card(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
+            borderRadius: BorderRadius.circular(20),
           ),
           color: Color.fromRGBO(246, 240, 235, 1),
           child: LayoutBuilder(builder: (ctx, constraints) {
@@ -50,16 +51,17 @@ class NewsCard extends StatelessWidget {
               child: Row(
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(10),
                     child: Image.network(
                       imgUrl,
                       width: constraints.maxWidth * 0.35,
+                      height: constraints.maxHeight * 0.9,
                       fit: BoxFit.cover,
                     ),
                   ),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.only(left: 20, right: 20),
+                      padding: EdgeInsets.only(left: 15, right: 20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

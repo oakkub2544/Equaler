@@ -1,0 +1,10 @@
+^C:\USERS\USER\DESKTOP\SUNDIONE\CODE\FLUTTER\MYFIRSTAPP\EQUALER\EQUALER\BUILD\WINDOWS\CMAKEFILES\0A2E5DF17ADE975A26719BFA6920AFF9\INSTALL_FORCE.RULE
+setlocal
+cd .
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

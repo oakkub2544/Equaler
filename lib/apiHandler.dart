@@ -28,6 +28,7 @@ class apiHandler {
     if (response.statusCode == 200) {
       Map jsonResponse = json.decode(utf8.decode(response.bodyBytes));
       List resultsResponse = checkNull(jsonResponse['results']);
+      print(resultsResponse);
       return resultsResponse;
     }
   }

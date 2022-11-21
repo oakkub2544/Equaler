@@ -26,7 +26,7 @@ class apiHandler {
     var url = Uri.parse(rawUrl);
     var response = await http.get(url);
     if (response.statusCode == 200) {
-      Map jsonResponse = jsonDecode(response.body);
+      Map jsonResponse = json.decode(utf8.decode(response.bodyBytes));
       List resultsResponse = checkNull(jsonResponse['results']);
       return resultsResponse;
     }

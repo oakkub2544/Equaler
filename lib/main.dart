@@ -49,38 +49,42 @@ class _MyhomepageState extends State<Myhomepage> {
         appBar: Headerbar(),
         drawer: Sidemenu(),
         body: Center(
-            child: Column(
-          children: [
-            SectionTitle(title: "Suggestion"),
-            BigNewsCard(),
-            SectionTitle(title: "Popular Today"),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.4,
-              width: MediaQuery.of(context).size.width * 0.9,
-              child: FutureBuilder<dynamic>(
-                future: newsData,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return ListView.builder(
-                        itemCount: snapshot.data.length,
-                        itemBuilder: (context, index) {
-                          return Column(
-                            children: [
-                              NewsCard(
-                                  imgUrl: snapshot.data[index]['image_url'],
-                                  newsTitle: snapshot.data[index]['title'],
-                                  newsDate: snapshot.data[index]['pubDate'],
-                                  newsDesc: snapshot.data[index]['description'])
-                            ],
-                          );
-                        });
-                  }
-                  // By default, show a loading spinner.
-                  return const CircularProgressIndicator();
-                },
+            child: Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Column(
+            children: [
+              SectionTitle(title: "Suggestion"),
+              BigNewsCard(),
+              SectionTitle(title: "Popular Today"),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.48,
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: FutureBuilder<dynamic>(
+                  future: newsData,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return ListView.builder(
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (context, index) {
+                            return Column(
+                              children: [
+                                NewsCard(
+                                    imgUrl: snapshot.data[index]['image_url'],
+                                    newsTitle: snapshot.data[index]['title'],
+                                    newsDate: snapshot.data[index]['pubDate'],
+                                    newsDesc: snapshot.data[index]
+                                        ['description'])
+                              ],
+                            );
+                          });
+                    }
+                    // By default, show a loading spinner.
+                    return const CircularProgressIndicator();
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         )));
   }
 }

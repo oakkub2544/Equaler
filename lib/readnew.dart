@@ -28,13 +28,18 @@ class readnew extends StatelessWidget {
         body: Container(child: LayoutBuilder(builder: (ctx, constraints) {
           return SingleChildScrollView(
             child: Column(children: [
-              SectionTitle(title: newsTitle1),
+              Padding(
+                padding: const EdgeInsets.all(25.0),
+                child: Text(newsTitle1,
+                    style:
+                        TextStyle(fontSize: 23, fontWeight: FontWeight.bold)),
+              ),
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.network(
                   imgUrl1,
                   width: constraints.maxWidth * 0.9,
-                  height: constraints.maxHeight * 0.35,
+                  height: constraints.maxHeight * 0.30,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -43,11 +48,20 @@ class readnew extends StatelessWidget {
                     EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
                 child: Align(
                   alignment: Alignment.topLeft,
-                  child: Column(
-                    children: [
-                      Text(newsDate1, style: TextStyle(fontSize: 25)),
-                      Text(newsDesc1, style: TextStyle(fontSize: 25))
-                    ],
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    color: Color.fromRGBO(246, 240, 235, 1),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
+                        children: [
+                          Text(newsDate1, style: TextStyle(fontSize: 15)),
+                          Text(newsDesc1, style: TextStyle(fontSize: 18))
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),

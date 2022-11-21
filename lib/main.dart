@@ -7,6 +7,7 @@ import 'components/SectionTitle.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:core';
+import './apiHandler.dart';
 
 void main() {
   runApp(MyApp());

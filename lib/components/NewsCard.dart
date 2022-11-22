@@ -15,10 +15,13 @@ class NewsCard extends StatelessWidget {
 
   final String newsDesc;
 
+  final String newsContent;
+
   NewsCard(
       {this.imgUrl = "https://comnplayscience.eu/app/images/notfound.png",
       this.newsTitle = "This is news title",
       this.newsDate = "This is news date",
+      this.newsContent = "This is news content",
       this.newsDesc = "This is news description"});
 
   @override
@@ -32,6 +35,7 @@ class NewsCard extends StatelessWidget {
                 imgUrl1: imgUrl,
                 newsTitle1: newsTitle,
                 newsDate1: newsDate,
+                newsContent1: newsContent,
                 newsDesc1: newsDesc),
           ),
         );

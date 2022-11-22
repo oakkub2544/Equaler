@@ -72,6 +72,8 @@ class _MyhomepageState extends State<Myhomepage> {
                                     imgUrl: snapshot.data[index]['image_url'],
                                     newsTitle: snapshot.data[index]['title'],
                                     newsDate: snapshot.data[index]['pubDate'],
+                                    newsContent: snapshot.data[index]
+                                        ['content'],
                                     newsDesc: snapshot.data[index]
                                         ['description'])
                               ],

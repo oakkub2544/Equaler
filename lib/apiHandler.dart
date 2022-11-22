@@ -7,11 +7,15 @@ class apiHandler {
       if (dat['image_url'] == null) {
         dat['image_url'] = 'https://comnplayscience.eu/app/images/notfound.png';
       }
+      if (dat['content'] == null) {
+        if (dat['description'] != null) {
+          dat['content'] = dat['description'];
+        } else {
+          dat['content'] = 'No content';
+        }
+      }
       if (dat['description'] == null) {
         dat['description'] = 'No description';
-      }
-      if (dat['content'] == null) {
-        dat['content'] = 'No content';
       }
     }
     return data;

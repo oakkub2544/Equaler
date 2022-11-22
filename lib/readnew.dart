@@ -13,10 +13,12 @@ class readnew extends StatelessWidget {
 
   final String newsDesc1;
 
+  final String newsContent1;
   readnew(
       {this.imgUrl1 = "https://picsum.photos/seed/137/600",
       this.newsTitle1 = "This is news title",
       this.newsDate1 = "This is news date",
+      this.newsContent1 = "This is news content",
       this.newsDesc1 = "This is news description"});
 
   @override
@@ -58,7 +60,7 @@ class readnew extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(newsDate1, style: TextStyle(fontSize: 15)),
-                          Text(newsDesc1, style: TextStyle(fontSize: 18))
+                          Text(newsContent1, style: TextStyle(fontSize: 18))
                         ],
                       ),
                     ),

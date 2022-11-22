@@ -39,10 +39,11 @@ class _PageEngState extends State<PageEng> {
                       return Column(
                         children: [
                           NewsCard(
-                              imgUrl: snapshot.data[index]['image_url'],
-                              newsTitle: snapshot.data[index]['title'],
-                              newsDate: snapshot.data[index]['pubDate'],
-                              newsDesc: snapshot.data[index]['description'])
+                            imgUrl: snapshot.data[index]['image_url'],
+                            newsTitle: snapshot.data[index]['title'],
+                            newsDate: snapshot.data[index]['pubDate'],
+                            newsContent: snapshot.data[index]['content'],
+                          )
                         ],
                       );
                     });

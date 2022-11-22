@@ -9,7 +9,7 @@ class selectnew extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: Headerbar(
-          headerTitle: 'Select Category',
+          headerTitle: 'Select News',
         ),
         body: Center(
             child: Column(children: [

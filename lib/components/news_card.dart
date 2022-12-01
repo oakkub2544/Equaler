@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/components/page_thai.dart';
 import 'package:flutter_application_3/read_news.dart';
-import 'package:flutter_application_3/select_category.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'dart:core';
 
 class NewsCard extends StatelessWidget {

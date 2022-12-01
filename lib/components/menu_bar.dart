@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/components/page_thai.dart';
-import 'package:flutter_application_3/components/page_eng.dart';
 import 'package:flutter_application_3/select_category.dart';
 import '../news_list_page.dart';
 

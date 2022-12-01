@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/components/news_card.dart';
-import 'package:flutter_application_3/components/section_title.dart';
 import './components/header_bar.dart';
-import './components/category_item.dart';
 import '../api_handler.dart';
 
 class NewsListPage extends StatefulWidget {

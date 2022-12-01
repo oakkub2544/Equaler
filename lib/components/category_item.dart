@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/selectnew.dart';
+import 'package:flutter_application_3/selectnews.dart';
 
 class CategoryItem extends StatelessWidget {
   final String categoryTitle;

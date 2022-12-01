@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/components/page_thai.dart';
-import 'package:flutter_application_3/readnew.dart';
+import 'package:flutter_application_3/readnews.dart';
 import 'package:flutter_application_3/selectcategory.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_3/components/page_thai.dart';
 import 'package:flutter_application_3/components/page_eng.dart';
 import 'package:flutter_application_3/select_category.dart';
+import '../news_list_page.dart';
 
 class Sidemenu extends StatelessWidget {
   @override
@@ -40,7 +41,10 @@ class Sidemenu extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PageThai(),
+                  builder: (context) => NewsListPage(
+                    Header_Title: "Thai News",
+                    Parameter: ["country=th", "language=th", "Page=0"],
+                  ),
                 ),
               );
             },
@@ -51,7 +55,9 @@ class Sidemenu extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PageEng(),
+                  builder: (context) => NewsListPage(
+                      Header_Title: "English News",
+                      Parameter: ["country=gb,us", "language=en", "Page=0"]),
                 ),
               );
             },

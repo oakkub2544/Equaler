@@ -1,4 +1,4 @@
-#Mon Nov 21 19:37:43 ICT 2022
-base.0=C\:\\Users\\user\\Desktop\\Sundione\\Code\\Flutter\\MyFirstApp\\Equaler\\Equaler\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Thu Dec 01 15:25:09 ICT 2022
+base.0=C\:\\Users\\ASUS\\Desktop\\Flutter\\Equaler\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

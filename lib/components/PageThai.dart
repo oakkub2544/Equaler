@@ -13,12 +13,25 @@ class PageThai extends StatefulWidget {
 }
 
 class _PageThaiState extends State<PageThai> {
+  ScrollController scrollController = ScrollController();
   late Future<dynamic> newsData;
+  int pageNum = 0;
 
   @override
   void initState() {
     super.initState();
-    newsData = apiHandler.getNews(["country=th", "language=th"]);
+    newsData = apiHandler
+        .getNews(["country=th,gb,us", "language=en,th", "Page=$pageNum"]);
+    scrollController.addListener(() {
+      if (scrollController.position.pixels ==
+          scrollController.position.maxScrollExtent) {
+        pageNum++;
+        setState(() {
+          newsData = apiHandler
+              .getNews(["country=th,gb,us", "language=en,th", "Page=$pageNum"]);
+        });
+      }
+    });
     // TODO: implement initState
   }
 
@@ -34,6 +47,7 @@ class _PageThaiState extends State<PageThai> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
+                    controller: scrollController,
                     itemCount: snapshot.data.length,
                     itemBuilder: (context, index) {
                       return Column(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/components/PageThai.dart';
-import 'package:flutter_application_3/components/PageEng.dart';
+import 'package:flutter_application_3/components/page_thai.dart';
+import 'package:flutter_application_3/components/page_eng.dart';
 import 'package:flutter_application_3/selectcategory.dart';
 
 class Sidemenu extends StatelessWidget {

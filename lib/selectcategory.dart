@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './components/header_bar.dart';
-import './components/CategoryItem.dart';
+import 'components/category_item.dart';
 
 class selectcategory extends StatelessWidget {
   @override

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/components/NewsCard.dart';
-import 'package:flutter_application_3/components/SectionTitle.dart';
+import 'package:flutter_application_3/components/news_card.dart';
+import 'package:flutter_application_3/components/section_title.dart';
 import './components/header_bar.dart';
-import './components/CategoryItem.dart';
+import 'components/category_item.dart';
 
 class selectnew extends StatelessWidget {
   @override

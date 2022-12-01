@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'components/header_bar.dart';
 import 'components/menubar.dart';
-import 'components/NewsCard.dart';
-import 'components/BigNewsCard.dart';
-import 'components/SectionTitle.dart';
+import 'components/news_card.dart';
+import 'components/big_news_card.dart';
+import 'components/section_title.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:core';
-import './apiHandler.dart';
+import 'api_handler.dart';
 
 void main() {
   runApp(MyApp());

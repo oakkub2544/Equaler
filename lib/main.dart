@@ -4,8 +4,6 @@ import 'components/menu_bar.dart';
 import 'components/news_card.dart';
 import 'components/big_news_card.dart';
 import 'components/section_title.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'dart:core';
 import 'api_handler.dart';
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_3/components/news_card.dart';
 import './components/header_bar.dart';
 import '../api_handler.dart';
+import 'package:number_paginator/number_paginator.dart';
 
 class NewsListPage extends StatefulWidget {
   final String Header_Title;

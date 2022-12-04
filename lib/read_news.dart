@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 import './components/header_bar.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class readnew extends StatelessWidget {
+  final FlutterTts flutterTts = FlutterTts();
+  final TextEditingController textEditingController = TextEditingController();
+
+  speak(String text) async {
+    await flutterTts.setLanguage("en-US");
+    await flutterTts.setPitch(1);
+    await flutterTts.speak(text);
+  }
+
   final String imgUrl1;
 
   final String newsTitle1;
@@ -57,10 +67,15 @@ class readnew extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(newsDate1, style: TextStyle(fontSize: 15)),
-                          GestureDetector(child: Text(newsContent1, style: TextStyle(fontSize: 18),),
-                          onDoubleTap: (){
-                            //put Text to Speech function
-                          },)
+                          GestureDetector(
+                            child: Text(
+                              newsContent1,
+                              style: TextStyle(fontSize: 18),
+                            ),
+                            onDoubleTap: () {
+                              speak(newsContent1);
+                            },
+                          )
                         ],
                       ),
                     ),

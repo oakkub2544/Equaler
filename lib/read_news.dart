@@ -57,7 +57,10 @@ class readnew extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(newsDate1, style: TextStyle(fontSize: 15)),
-                          Text(newsContent1, style: TextStyle(fontSize: 18))
+                          GestureDetector(child: Text(newsContent1, style: TextStyle(fontSize: 18),),
+                          onDoubleTap: (){
+                            //put Text to Speech function
+                          },)
                         ],
                       ),
                     ),

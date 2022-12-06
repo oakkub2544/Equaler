@@ -28,6 +28,7 @@ class readnew extends StatelessWidget {
       this.newsContent1 = "This is news content",
       this.newsDesc1 = "This is news description"});
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +87,11 @@ class readnew extends StatelessWidget {
           );
         })));
   }
-
+  @override
+  void dispose() {
+    super.dispose();
+    flutterTts.stop();
+  }
   @override
   Size get preferredSize => Size.fromHeight(60);
 }

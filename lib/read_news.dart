@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import './components/header_bar.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
-class readnew extends StatelessWidget {
+class readnew extends StatefulWidget {
   final String imgUrl1;
 
   final String newsTitle1;
@@ -11,12 +12,28 @@ class readnew extends StatelessWidget {
   final String newsDesc1;
 
   final String newsContent1;
+
   readnew(
       {this.imgUrl1 = "https://picsum.photos/seed/137/600",
       this.newsTitle1 = "This is news title",
       this.newsDate1 = "This is news date",
       this.newsContent1 = "This is news content",
       this.newsDesc1 = "This is news description"});
+
+  @override
+  State<readnew> createState() => _readnewState();
+}
+
+class _readnewState extends State<readnew> {
+  final FlutterTts flutterTts = FlutterTts();
+  final TextEditingController textEditingController = TextEditingController();
+
+  speak(String text) async {
+    await flutterTts.setLanguage("en-US");
+
+    await flutterTts.setPitch(1);
+    await flutterTts.speak(text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +46,14 @@ class readnew extends StatelessWidget {
             child: Column(children: [
               Padding(
                 padding: const EdgeInsets.all(25.0),
-                child: Text(newsTitle1,
+                child: Text(widget.newsTitle1,
                     style:
                         TextStyle(fontSize: 23, fontWeight: FontWeight.bold)),
               ),
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.network(
-                  imgUrl1,
+                  widget.imgUrl1,
                   width: constraints.maxWidth * 0.9,
                   height: constraints.maxHeight * 0.30,
                   fit: BoxFit.cover,
@@ -56,8 +73,17 @@ class readnew extends StatelessWidget {
                       padding: const EdgeInsets.all(15.0),
                       child: Column(
                         children: [
-                          Text(newsDate1, style: TextStyle(fontSize: 15)),
-                          Text(newsContent1, style: TextStyle(fontSize: 18))
+                          Text(widget.newsDate1,
+                              style: TextStyle(fontSize: 15)),
+                          GestureDetector(
+                            child: Text(
+                              widget.newsContent1,
+                              style: TextStyle(fontSize: 18),
+                            ),
+                            onDoubleTap: () {
+                              speak(widget.newsContent1);
+                            },
+                          )
                         ],
                       ),
                     ),
@@ -67,6 +93,12 @@ class readnew extends StatelessWidget {
             ]),
           );
         })));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    flutterTts.stop();
   }
 
   @override

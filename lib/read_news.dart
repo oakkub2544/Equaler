@@ -95,8 +95,8 @@ class _readnewState extends State<readnew> {
         })));
   }
 
-  @override
-  void dispose() {
+  @override 
+  void dispose() { //dispose will active when a last widget disappears from screen
     super.dispose();
     flutterTts.stop();
   }

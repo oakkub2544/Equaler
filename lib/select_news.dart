@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/components/news_card.dart';
 import 'package:flutter_application_3/components/section_title.dart';
-import 'package:flutter_application_3/read_news.dart';
 import './components/header_bar.dart';
 import 'api_handler.dart';
-import '../news_list_page.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:dio/dio.dart';
 
 class selectnew extends StatefulWidget {
   final String category;
@@ -33,34 +33,21 @@ class _selectnewState extends State<selectnew> {
         ),
         body: Center(
             child: Column(children: [
-          GestureDetector(
-            child: SectionTitle(
-              title: "Thai News",
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => NewsListPage(
-                    Header_Title: "Thai News",
-                    Parameter: [
-                      "country=th",
-                      "language=th",
-                      "category= ${widget.category}",
-                      "Page=0",
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
+          SectionTitle(title: "Thai News"),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.34,
+            height: MediaQuery.of(context).size.height * 0.3,
             width: MediaQuery.of(context).size.width * 0.9,
             child: FutureBuilder<dynamic>(
               future: thaiNews,
               builder: (context, snapshot) {
-                if (snapshot.hasData) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Expanded(
+                      child: LoadingAnimationWidget.inkDrop(
+                    color: Color.fromRGBO(100, 93, 83, 1),
+                    size: 50,
+                  ));
+                } else if (snapshot.hasData && snapshot.data.length != 0) {
+                  print(snapshot.data.length);
                   return ListView.builder(
                       itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {
@@ -75,40 +62,49 @@ class _selectnewState extends State<selectnew> {
                           ],
                         );
                       });
+                } else if (!snapshot.hasData) {
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 60),
+                        child: Icon(
+                          Icons.error,
+                          color: Color.fromRGBO(100, 93, 83, 1),
+                          size: 50.0,
+                        ),
+                      ),
+                      Text('Please wait and refresh this page',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(height: 2, fontSize: 14)),
+                      Text('API Error',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 20)),
+                    ],
+                  );
+                } else if (snapshot.data.length == 0) {
+                  return Text('API Error',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20));
                 }
                 // By default, show a loading spinner.
                 return const CircularProgressIndicator();
               },
             ),
           ),
-          GestureDetector(
-            child: SectionTitle(
-              title: "English News",
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => NewsListPage(
-                    Header_Title: "English News",
-                    Parameter: [
-                      "country=us",
-                      "language=en",
-                      "category= ${widget.category}",
-                      "Page=0",
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
+          SectionTitle(title: "English News"),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.34,
+            height: MediaQuery.of(context).size.height * 0.3,
             width: MediaQuery.of(context).size.width * 0.9,
             child: FutureBuilder<dynamic>(
               future: engNews,
               builder: (context, snapshot) {
-                if (snapshot.hasData) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Expanded(
+                      child: LoadingAnimationWidget.inkDrop(
+                    color: Color.fromRGBO(100, 93, 83, 1),
+                    size: 50,
+                  ));
+                } else if (snapshot.hasData) {
                   return ListView.builder(
                       itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {
@@ -123,12 +119,31 @@ class _selectnewState extends State<selectnew> {
                           ],
                         );
                       });
+                } else if (!snapshot.hasData) {
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 60),
+                        child: Icon(
+                          Icons.error,
+                          color: Color.fromRGBO(100, 93, 83, 1),
+                          size: 50.0,
+                        ),
+                      ),
+                      Text('Please wait and refresh this page',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(height: 2, fontSize: 14)),
+                      Text('API Error',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 20)),
+                    ],
+                  );
                 }
                 // By default, show a loading spinner.
                 return const CircularProgressIndicator();
               },
             ),
-          ),
+          )
         ])));
   }
 

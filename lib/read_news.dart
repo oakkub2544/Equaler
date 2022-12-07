@@ -77,6 +77,7 @@ class _readnewState extends State<readnew> {
                               style: TextStyle(fontSize: 15)),
                           GestureDetector(
                             child: Text(
+                              textAlign: TextAlign.justify,
                               widget.newsContent1,
                               style: TextStyle(fontSize: 18),
                             ),
@@ -95,8 +96,9 @@ class _readnewState extends State<readnew> {
         })));
   }
 
-  @override 
-  void dispose() { //dispose will active when the last widget disappears from screen
+  @override
+  void dispose() {
+    //dispose will active when the last widget disappears from screen
     super.dispose();
     flutterTts.stop();
   }

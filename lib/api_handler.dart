@@ -25,7 +25,7 @@ class apiHandler {
     // Real: pub_124249313445c3671fd4d175e97415511a437
     // Reserve: pub_13699438c8b63ce784777146929c925c17dbd
     String rawUrl =
-        "https://newsdata.io/api/1/news?apikey=pub_13699438c8b63ce784777146929c925c17dbd";
+        "https://newsdata.io/api/1/news?apikey=pub_124249313445c3671fd4d175e97415511a437";
     for (var par in parameter) {
       rawUrl = '$rawUrl&$par';
     }

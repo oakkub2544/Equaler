@@ -73,17 +73,33 @@ class _NewsListPageState extends State<NewsListPage> {
                     Padding(
                       padding: const EdgeInsets.only(top: 60),
                       child: Icon(
-                        Icons.error,
+                        Icons.local_shipping_rounded,
                         color: Color.fromRGBO(100, 93, 83, 1),
                         size: 50.0,
                       ),
                     ),
-                    Text('Please wait and refresh this page',
+                    Text('News cannot pass in this page',
                         textAlign: TextAlign.center,
                         style: TextStyle(height: 2, fontSize: 14)),
                     Text('API Error',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 20)),
+                  ],
+                );
+              } else if (snapshot.data.length == 0) {
+                return Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 60),
+                      child: Icon(
+                        Icons.local_play_outlined,
+                        color: Color.fromRGBO(100, 93, 83, 1),
+                        size: 50.0,
+                      ),
+                    ),
+                    Text('No thai news of this category right now',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(height: 2, fontSize: 16)),
                   ],
                 );
               }

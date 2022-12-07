@@ -24,7 +24,8 @@ class selectcategory extends StatelessWidget {
             CategoryItem(
                 categoryTitle: 'Food', iconTitle: Icons.fastfood_rounded),
             CategoryItem(
-                categoryTitle: 'Health', iconTitle: Icons.healing_rounded),
+                categoryTitle: 'Health',
+                iconTitle: Icons.local_hospital_rounded),
             CategoryItem(
                 categoryTitle: 'Politics',
                 iconTitle: Icons.local_police_rounded),
@@ -38,7 +39,7 @@ class selectcategory extends StatelessWidget {
             CategoryItem(
                 categoryTitle: 'Top', iconTitle: Icons.military_tech_rounded),
             CategoryItem(
-                categoryTitle: 'World', iconTitle: Icons.people_rounded)
+                categoryTitle: 'World', iconTitle: Icons.language_rounded)
           ],
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 200,

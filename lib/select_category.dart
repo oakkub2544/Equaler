@@ -12,17 +12,33 @@ class selectcategory extends StatelessWidget {
       body: GridView(
           padding: EdgeInsets.all(25),
           children: [
-            CategoryItem(categoryTitle: 'business'),
-            CategoryItem(categoryTitle: 'entertainment'),
-            CategoryItem(categoryTitle: 'environment'),
-            CategoryItem(categoryTitle: 'food'),
-            CategoryItem(categoryTitle: 'health'),
-            CategoryItem(categoryTitle: 'politics'),
-            CategoryItem(categoryTitle: 'science'),
-            CategoryItem(categoryTitle: 'sports'),
-            CategoryItem(categoryTitle: 'technology'),
-            CategoryItem(categoryTitle: 'top'),
-            CategoryItem(categoryTitle: 'world')
+            CategoryItem(
+                categoryTitle: 'Business',
+                iconTitle: Icons.business_center_rounded),
+            CategoryItem(
+                categoryTitle: 'Entertainment',
+                iconTitle: Icons.auto_awesome_rounded),
+            CategoryItem(
+                categoryTitle: 'Environment',
+                iconTitle: Icons.brightness_7_rounded),
+            CategoryItem(
+                categoryTitle: 'Food', iconTitle: Icons.fastfood_rounded),
+            CategoryItem(
+                categoryTitle: 'Health', iconTitle: Icons.healing_rounded),
+            CategoryItem(
+                categoryTitle: 'Politics',
+                iconTitle: Icons.local_police_rounded),
+            CategoryItem(
+                categoryTitle: 'Science', iconTitle: Icons.science_rounded),
+            CategoryItem(
+                categoryTitle: 'Sports',
+                iconTitle: Icons.sports_soccer_rounded),
+            CategoryItem(
+                categoryTitle: 'Technology', iconTitle: Icons.computer_rounded),
+            CategoryItem(
+                categoryTitle: 'Top', iconTitle: Icons.military_tech_rounded),
+            CategoryItem(
+                categoryTitle: 'World', iconTitle: Icons.people_rounded)
           ],
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 200,

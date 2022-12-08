@@ -33,9 +33,11 @@ class _NewsListPageState extends State<NewsListPage> {
     });
   }
 
-  Widget LeftButton() {
+  Widget LeftButton(double boxWidthSize) {
     return pageNum == 0
-        ? const SizedBox.shrink()
+        ? SizedBox(
+            width: boxWidthSize,
+          )
         : TextButton(
             onPressed: () {
               if (pageNum > 0) {
@@ -54,9 +56,11 @@ class _NewsListPageState extends State<NewsListPage> {
           );
   }
 
-  Widget RightButton(int? nextPage) {
+  Widget RightButton(int? nextPage, double boxWidthSize) {
     return nextPage == null
-        ? const SizedBox.shrink()
+        ? SizedBox(
+            width: boxWidthSize,
+          )
         : TextButton(
             onPressed: () {
               setState(() {
@@ -82,10 +86,14 @@ class _NewsListPageState extends State<NewsListPage> {
           child: FutureBuilder<dynamic>(
             future: newsData,
             builder: (context, snapshot) {
-              if (snapshot.connectionState != ConnectionState.done) {
-                return const CircularProgressIndicator();
-              }
-              if (snapshot.hasData) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Expanded(
+                    child: LoadingAnimationWidget.inkDrop(
+                  color: Color.fromRGBO(100, 93, 83, 1),
+                  size: 50,
+                ));
+              } else if (snapshot.hasData &&
+                  snapshot.data['results'].length != 0) {
                 return CustomScrollView(
                   slivers: [
                     SliverList(
@@ -107,40 +115,46 @@ class _NewsListPageState extends State<NewsListPage> {
                     SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              LeftButton(),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.5,
-                                child: TextField(
-                                  controller: pageInputController,
-                                  decoration: InputDecoration(
-                                      label: Center(
-                                    child: Text("${pageNum + 1}"),
-                                  )),
-                                  keyboardType: TextInputType.number,
-                                  inputFormatters: [
-                                    FilteringTextInputFormatter.allow(
-                                        RegExp(r'^[1-9][0-9]*'))
-                                  ],
-                                  onSubmitted: (_) => setState(() {
-                                    pageNum =
-                                        int.parse(pageInputController.text) - 1;
-                                    if (pageNum >
-                                        (snapshot.data['totalResults'] / 10)
-                                            .floor()) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                LeftButton(
+                                    MediaQuery.of(context).size.width * 0.165),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.5,
+                                  child: TextField(
+                                    textAlign: TextAlign.center,
+                                    controller: pageInputController,
+                                    decoration: InputDecoration(
+                                        border: const OutlineInputBorder(),
+                                        hintText: "${pageNum + 1}"),
+                                    keyboardType: TextInputType.number,
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp(r'^[1-9][0-9]*'))
+                                    ],
+                                    onSubmitted: (_) => setState(() {
                                       pageNum =
+                                          int.parse(pageInputController.text) -
+                                              1;
+                                      int totalPage =
                                           (snapshot.data['totalResults'] / 10)
                                               .floor();
-                                    }
-                                    pageInputController.clear();
-                                    changePage(pageNum);
-                                  }),
+                                      if (pageNum > totalPage) {
+                                        pageNum = totalPage;
+                                      }
+                                      pageInputController.clear();
+                                      changePage(pageNum);
+                                    }),
+                                  ),
                                 ),
-                              ),
-                              RightButton(snapshot.data['nextPage']),
-                            ],
+                                RightButton(snapshot.data['nextPage'],
+                                    MediaQuery.of(context).size.width * 0.165),
+                              ],
+                            ),
                           );
                         },
                         childCount: 1,
@@ -148,8 +162,47 @@ class _NewsListPageState extends State<NewsListPage> {
                     )
                   ],
                 );
+              } else if (!snapshot.hasData) {
+                return Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 60),
+                      child: Icon(
+                        Icons.local_shipping_rounded,
+                        color: Color.fromRGBO(100, 93, 83, 1),
+                        size: 50.0,
+                      ),
+                    ),
+                    Text('News cannot pass in this page',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(height: 2, fontSize: 14)),
+                    Text('API Error',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20)),
+                  ],
+                );
+              } else if (snapshot.data['results'].length == 0) {
+                return Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 60),
+                      child: Icon(
+                        Icons.local_play_outlined,
+                        color: Color.fromRGBO(100, 93, 83, 1),
+                        size: 50.0,
+                      ),
+                    ),
+                    Text('No thai news of this category right now',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(height: 2, fontSize: 16)),
+                  ],
+                );
               }
-              return const CircularProgressIndicator();
+              return Expanded(
+                  child: LoadingAnimationWidget.inkDrop(
+                color: Color.fromRGBO(100, 93, 83, 1),
+                size: 50,
+              ));
               // By default, show a loading spinner.
             },
           ),

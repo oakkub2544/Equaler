@@ -68,17 +68,20 @@ class _MyhomepageState extends State<Myhomepage> {
                     } else if (snapshot.hasData) {
                       return ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: snapshot.data.length,
+                          itemCount: snapshot.data['results'].length,
                           itemBuilder: (context, index) {
                             return Column(
                               children: [
                                 BigNewsCard(
-                                    imgUrl: snapshot.data[index]['image_url'],
-                                    newsTitle: snapshot.data[index]['title'],
-                                    newsDate: snapshot.data[index]['pubDate'],
-                                    newsContent: snapshot.data[index]
+                                    imgUrl: snapshot.data['results'][index]
+                                        ['image_url'],
+                                    newsTitle: snapshot.data['results'][index]
+                                        ['title'],
+                                    newsDate: snapshot.data['results'][index]
+                                        ['pubDate'],
+                                    newsContent: snapshot.data['results'][index]
                                         ['content'],
-                                    newsDesc: snapshot.data[index]
+                                    newsDesc: snapshot.data['results'][index]
                                         ['description'])
                               ],
                             );

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_application_3/components/news_card.dart';
 import './components/header_bar.dart';
 import '../api_handler.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class NewsListPage extends StatefulWidget {
   final String Header_Title;

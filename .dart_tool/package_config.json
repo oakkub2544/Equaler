@@ -20,12 +20,6 @@
       "languageVersion": "2.14"
     },
     {
-      "name": "auto_size_text",
-      "rootUri": "file:///C:/Users/ASUS/Desktop/Flutter/sdks/flutter/.pub-cache/hosted/pub.dartlang.org/auto_size_text-3.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "boolean_selector",
       "rootUri": "file:///C:/Users/ASUS/Desktop/Flutter/sdks/flutter/.pub-cache/hosted/pub.dartlang.org/boolean_selector-2.1.0",
       "packageUri": "lib/",
@@ -80,6 +74,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "dio",
+      "rootUri": "file:///C:/Users/ASUS/Desktop/Flutter/sdks/flutter/.pub-cache/hosted/pub.dartlang.org/dio-4.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///C:/Users/ASUS/Desktop/Flutter/sdks/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.3.1",
       "packageUri": "lib/",
@@ -110,6 +110,18 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_tts",
+      "rootUri": "file:///C:/Users/ASUS/Desktop/Flutter/sdks/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_tts-3.6.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///C:/Users/ASUS/Desktop/Flutter/sdks/flutter/packages/flutter_web_plugins",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "http",
       "rootUri": "file:///C:/Users/ASUS/Desktop/Flutter/sdks/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.5",
       "packageUri": "lib/",
@@ -129,7 +141,7 @@
     },
     {
       "name": "js",
-      "rootUri": "file:///C:/Users/ASUS/Desktop/Flutter/sdks/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.5",
+      "rootUri": "file:///C:/Users/ASUS/Desktop/Flutter/sdks/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.4",
       "packageUri": "lib/",
       "languageVersion": "2.16"
     },
@@ -146,6 +158,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "loading_animation_widget",
+      "rootUri": "file:///C:/Users/ASUS/Desktop/Flutter/sdks/flutter/.pub-cache/hosted/pub.dartlang.org/loading_animation_widget-1.2.0+3",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
       "name": "matcher",
       "rootUri": "file:///C:/Users/ASUS/Desktop/Flutter/sdks/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.12",
       "packageUri": "lib/",
@@ -160,12 +178,6 @@
     {
       "name": "meta",
       "rootUri": "file:///C:/Users/ASUS/Desktop/Flutter/sdks/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.8.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "number_paginator",
-      "rootUri": "file:///C:/Users/ASUS/Desktop/Flutter/sdks/flutter/.pub-cache/hosted/pub.dartlang.org/number_paginator-0.2.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -260,7 +272,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-12-08T06:48:09.124405Z",
+  "generated": "2022-12-08T06:50:58.588381Z",
   "generator": "pub",
   "generatorVersion": "2.18.4"
 }

@@ -13,7 +13,7 @@ class CategoryItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => selectnew(),
+            builder: (context) => selectnew(category: categoryTitle),
           ),
         )
       },

@@ -12,14 +12,17 @@ class selectcategory extends StatelessWidget {
       body: GridView(
           padding: EdgeInsets.all(25),
           children: [
-            CategoryItem(),
-            CategoryItem(),
-            CategoryItem(),
-            CategoryItem(),
-            CategoryItem(),
-            CategoryItem(),
-            CategoryItem(),
-            CategoryItem()
+            CategoryItem(categoryTitle: 'business'),
+            CategoryItem(categoryTitle: 'entertainment'),
+            CategoryItem(categoryTitle: 'environment'),
+            CategoryItem(categoryTitle: 'food'),
+            CategoryItem(categoryTitle: 'health'),
+            CategoryItem(categoryTitle: 'politics'),
+            CategoryItem(categoryTitle: 'science'),
+            CategoryItem(categoryTitle: 'sports'),
+            CategoryItem(categoryTitle: 'technology'),
+            CategoryItem(categoryTitle: 'top'),
+            CategoryItem(categoryTitle: 'world')
           ],
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 200,

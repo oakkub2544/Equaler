@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_application_3/components/news_card.dart';
 import './components/header_bar.dart';
 import '../api_handler.dart';
@@ -14,25 +15,61 @@ class NewsListPage extends StatefulWidget {
 }
 
 class _NewsListPageState extends State<NewsListPage> {
-  ScrollController scrollController = ScrollController();
-  late Future<dynamic> newsData;
+  late Future<Map> newsData;
   int pageNum = 0;
+  final pageInputController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     newsData = apiHandler.getNews(widget.Parameter);
-    scrollController.addListener(() {
-      if (scrollController.position.pixels ==
-          scrollController.position.maxScrollExtent) {
-        setState(() {
-          pageNum++;
-          widget.Parameter.last = "Page=$pageNum";
-          newsData = apiHandler.getNews(widget.Parameter);
-        });
-      }
-    });
     // TODO: implement initState
+  }
+
+  void changePage(int inputPage) {
+    setState(() {
+      widget.Parameter.last = "Page=$inputPage";
+      newsData = apiHandler.getNews(widget.Parameter);
+    });
+  }
+
+  Widget LeftButton() {
+    return pageNum == 0
+        ? const SizedBox.shrink()
+        : TextButton(
+            onPressed: () {
+              if (pageNum > 0) {
+                setState(() {
+                  pageNum--;
+                  print(pageNum);
+                  changePage(pageNum);
+                });
+              }
+            },
+            child: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: Color.fromRGBO(50, 48, 45, 1),
+              size: 20,
+            ),
+          );
+  }
+
+  Widget RightButton(int? nextPage) {
+    return nextPage == null
+        ? const SizedBox.shrink()
+        : TextButton(
+            onPressed: () {
+              setState(() {
+                pageNum++;
+                changePage(pageNum);
+              });
+            },
+            child: Icon(
+              Icons.arrow_forward_ios_rounded,
+              color: Color.fromRGBO(50, 48, 45, 1),
+              size: 20,
+            ),
+          );
   }
 
   @override
@@ -45,66 +82,75 @@ class _NewsListPageState extends State<NewsListPage> {
           child: FutureBuilder<dynamic>(
             future: newsData,
             builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Expanded(
-                    child: LoadingAnimationWidget.inkDrop(
-                  color: Color.fromRGBO(100, 93, 83, 1),
-                  size: 50,
-                ));
-              } else if (snapshot.hasData) {
-                return ListView.builder(
-                    controller: scrollController,
-                    itemCount: snapshot.data.length,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          NewsCard(
-                            imgUrl: snapshot.data[index]['image_url'],
-                            newsTitle: snapshot.data[index]['title'],
-                            newsDate: snapshot.data[index]['pubDate'],
-                            newsContent: snapshot.data[index]['content'],
-                          )
-                        ],
-                      );
-                    });
-              } else if (!snapshot.hasData) {
-                return Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 60),
-                      child: Icon(
-                        Icons.local_shipping_rounded,
-                        color: Color.fromRGBO(100, 93, 83, 1),
-                        size: 50.0,
+              if (snapshot.connectionState != ConnectionState.done) {
+                return const CircularProgressIndicator();
+              }
+              if (snapshot.hasData) {
+                return CustomScrollView(
+                  slivers: [
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int index) {
+                          return NewsCard(
+                            imgUrl: snapshot.data['results'][index]
+                                ['image_url'],
+                            newsTitle: snapshot.data['results'][index]['title'],
+                            newsDate: snapshot.data['results'][index]
+                                ['pubDate'],
+                            newsContent: snapshot.data['results'][index]
+                                ['content'],
+                          );
+                        },
+                        childCount: snapshot.data['results'].length,
                       ),
                     ),
-                    Text('News cannot pass in this page',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(height: 2, fontSize: 14)),
-                    Text('API Error',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20)),
-                  ],
-                );
-              } else if (snapshot.data.length == 0) {
-                return Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 60),
-                      child: Icon(
-                        Icons.local_play_outlined,
-                        color: Color.fromRGBO(100, 93, 83, 1),
-                        size: 50.0,
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int index) {
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              LeftButton(),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.5,
+                                child: TextField(
+                                  controller: pageInputController,
+                                  decoration: InputDecoration(
+                                      label: Center(
+                                    child: Text("${pageNum + 1}"),
+                                  )),
+                                  keyboardType: TextInputType.number,
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter.allow(
+                                        RegExp(r'^[1-9][0-9]*'))
+                                  ],
+                                  onSubmitted: (_) => setState(() {
+                                    pageNum =
+                                        int.parse(pageInputController.text) - 1;
+                                    if (pageNum >
+                                        (snapshot.data['totalResults'] / 10)
+                                            .floor()) {
+                                      pageNum =
+                                          (snapshot.data['totalResults'] / 10)
+                                              .floor();
+                                    }
+                                    pageInputController.clear();
+                                    changePage(pageNum);
+                                  }),
+                                ),
+                              ),
+                              RightButton(snapshot.data['nextPage']),
+                            ],
+                          );
+                        },
+                        childCount: 1,
                       ),
-                    ),
-                    Text('No thai news of this category right now',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(height: 2, fontSize: 16)),
+                    )
                   ],
                 );
               }
-              // By default, show a loading spinner.
               return const CircularProgressIndicator();
+              // By default, show a loading spinner.
             },
           ),
         ));

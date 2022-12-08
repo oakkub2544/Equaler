@@ -33,12 +33,14 @@ class Myhomepage extends StatefulWidget {
 }
 
 class _MyhomepageState extends State<Myhomepage> {
-  late Future<Map> newsData;
+  late Future<Map> newsData, popData;
 
   @override
   void initState() {
     super.initState();
     newsData = apiHandler.getNews(["country=th,gb,us", "language=en,th"]);
+    popData = apiHandler
+        .getNews(["country=th,gb,us", "language=en,th", "category=top"]);
     // TODO: implement initState
   }
 
@@ -65,7 +67,7 @@ class _MyhomepageState extends State<Myhomepage> {
                         color: Color.fromRGBO(100, 93, 83, 1),
                         size: 50,
                       ));
-                    } else if (snapshot.hasData) {
+                    } else if (snapshot.hasData && snapshot.data.length != 0) {
                       return ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: snapshot.data['results'].length,
@@ -132,7 +134,7 @@ class _MyhomepageState extends State<Myhomepage> {
                 height: MediaQuery.of(context).size.height * 0.4,
                 width: MediaQuery.of(context).size.width * 0.9,
                 child: FutureBuilder<dynamic>(
-                  future: newsData,
+                  future: popData,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Expanded(

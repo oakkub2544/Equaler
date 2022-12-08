@@ -82,10 +82,14 @@ class _NewsListPageState extends State<NewsListPage> {
           child: FutureBuilder<dynamic>(
             future: newsData,
             builder: (context, snapshot) {
-              if (snapshot.connectionState != ConnectionState.done) {
-                return const CircularProgressIndicator();
-              }
-              if (snapshot.hasData) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Expanded(
+                    child: LoadingAnimationWidget.inkDrop(
+                  color: Color.fromRGBO(100, 93, 83, 1),
+                  size: 50,
+                ));
+              } else if (snapshot.hasData &&
+                  snapshot.data['results'].length != 0) {
                 return CustomScrollView(
                   slivers: [
                     SliverList(
@@ -146,6 +150,41 @@ class _NewsListPageState extends State<NewsListPage> {
                         childCount: 1,
                       ),
                     )
+                  ],
+                );
+              } else if (!snapshot.hasData) {
+                return Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 60),
+                      child: Icon(
+                        Icons.local_shipping_rounded,
+                        color: Color.fromRGBO(100, 93, 83, 1),
+                        size: 50.0,
+                      ),
+                    ),
+                    Text('News cannot pass in this page',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(height: 2, fontSize: 14)),
+                    Text('API Error',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20)),
+                  ],
+                );
+              } else if (snapshot.data['results'].length == 0) {
+                return Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 60),
+                      child: Icon(
+                        Icons.local_play_outlined,
+                        color: Color.fromRGBO(100, 93, 83, 1),
+                        size: 50.0,
+                      ),
+                    ),
+                    Text('No thai news of this category right now',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(height: 2, fontSize: 16)),
                   ],
                 );
               }

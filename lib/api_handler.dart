@@ -21,11 +21,12 @@ class apiHandler {
     return data;
   }
 
-  static Future<dynamic> getNews(List<String> parameter) async {
+  static Future<Map> getNews(List<String> parameter) async {
     // Real: pub_124249313445c3671fd4d175e97415511a437
     // Reserve: pub_13699438c8b63ce784777146929c925c17dbd
+    // Reserve2: pub_14276b8a4fbf8db4357d71da5be8e97b4a76b
     String rawUrl =
-        "https://newsdata.io/api/1/news?apikey=pub_124249313445c3671fd4d175e97415511a437";
+        "https://newsdata.io/api/1/news?apikey=pub_14276b8a4fbf8db4357d71da5be8e97b4a76b";
     for (var par in parameter) {
       rawUrl = '$rawUrl&$par';
     }
@@ -33,8 +34,9 @@ class apiHandler {
     var response = await http.get(url);
     if (response.statusCode == 200) {
       Map jsonResponse = json.decode(utf8.decode(response.bodyBytes));
-      List resultsResponse = checkNull(jsonResponse['results']);
-      return resultsResponse;
+      checkNull(jsonResponse['results']);
+      return jsonResponse;
     }
+    throw Exception(response.reasonPhrase);
   }
 }

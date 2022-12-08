@@ -67,7 +67,8 @@ class _MyhomepageState extends State<Myhomepage> {
                         color: Color.fromRGBO(100, 93, 83, 1),
                         size: 50,
                       ));
-                    } else if (snapshot.hasData && snapshot.data.length != 0) {
+                    } else if (snapshot.hasData &&
+                        snapshot.data['results'].length != 0) {
                       return ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: snapshot.data['results'].length,
@@ -107,7 +108,7 @@ class _MyhomepageState extends State<Myhomepage> {
                               style: TextStyle(fontSize: 20)),
                         ],
                       );
-                    } else if (snapshot.data.length == 0) {
+                    } else if (snapshot.data['results'].length == 0) {
                       return Column(
                         children: [
                           Padding(
@@ -177,7 +178,7 @@ class _MyhomepageState extends State<Myhomepage> {
                               style: TextStyle(fontSize: 20)),
                         ],
                       );
-                    } else if (snapshot.data.length == 0) {
+                    } else if (snapshot.data['results'].length == 0) {
                       return Column(
                         children: [
                           Padding(

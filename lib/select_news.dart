@@ -64,7 +64,8 @@ class _selectnewState extends State<selectnew> {
                     color: Color.fromRGBO(100, 93, 83, 1),
                     size: 50,
                   ));
-                } else if (snapshot.hasData && snapshot.data.length != 0) {
+                } else if (snapshot.hasData &&
+                    snapshot.data['results'].length != 0) {
                   print(snapshot.data.length);
                   return ListView.builder(
                       itemCount: snapshot.data['results'].length,
@@ -104,7 +105,7 @@ class _selectnewState extends State<selectnew> {
                           style: TextStyle(fontSize: 20)),
                     ],
                   );
-                } else if (snapshot.data.length == 0) {
+                } else if (snapshot.data['results'].length == 0) {
                   return Column(
                     children: [
                       Padding(
@@ -156,7 +157,8 @@ class _selectnewState extends State<selectnew> {
                     color: Color.fromRGBO(100, 93, 83, 1),
                     size: 50,
                   ));
-                } else if (snapshot.hasData) {
+                } else if (snapshot.hasData &&
+                    snapshot.data['results'].length != 0) {
                   return ListView.builder(
                       itemCount: snapshot.data['results'].length,
                       itemBuilder: (context, index) {
@@ -195,7 +197,7 @@ class _selectnewState extends State<selectnew> {
                           style: TextStyle(fontSize: 20)),
                     ],
                   );
-                } else if (snapshot.data.length == 0) {
+                } else if (snapshot.data['results'].length == 0) {
                   return Column(
                     children: [
                       Padding(

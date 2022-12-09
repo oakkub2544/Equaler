@@ -27,7 +27,7 @@ class Headerbar extends StatelessWidget with PreferredSizeWidget {
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => MyApp()));
-                },
+                },//Pressed icon to go main page
               )),
         ],
         iconTheme: IconThemeData(color: Color.fromRGBO(50, 48, 45, 1)),

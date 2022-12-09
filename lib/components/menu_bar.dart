@@ -6,7 +6,6 @@ class Sidemenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      //Create a CustomSidebar on top left that will trigger a navigation operation when tapped
       child: Container(
         color: Color.fromRGBO(246, 240, 235, 1),
         child: ListView(
@@ -41,7 +40,7 @@ class Sidemenu extends StatelessWidget {
                     builder: (context) => selectcategory(),
                   ),
                 );
-              }, //Go to select category page
+              },
             ),
             ListTile(
               title: Text('Thai News'.toUpperCase(),
@@ -59,7 +58,7 @@ class Sidemenu extends StatelessWidget {
                     ),
                   ),
                 );
-              }, //Go to News list page and send constructor with Thai news
+              },
             ),
             ListTile(
               title: Text('English News'.toUpperCase(),
@@ -76,7 +75,7 @@ class Sidemenu extends StatelessWidget {
                         Parameter: ["country=gb,us", "language=en", "Page=0"]),
                   ),
                 );
-              }, //Go to News list page and send constructor with English news
+              },
             ),
           ],
         ),

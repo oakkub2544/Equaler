@@ -6,7 +6,6 @@ import './api_error_message.dart';
 import './empty_news_list_message.dart';
 
 class NewsCardList extends StatelessWidget {
-//========================= Initial Constructor ================================
   final Future<Map> newsData;
   final double listHeight;
   final bool isBigCard;
@@ -14,7 +13,6 @@ class NewsCardList extends StatelessWidget {
       {required this.newsData,
       required this.listHeight,
       required this.isBigCard});
-//==============================================================================
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +20,11 @@ class NewsCardList extends StatelessWidget {
       height: listHeight,
       width: MediaQuery.of(context).size.width * 0.9,
       child: FutureBuilder<dynamic>(
-        future: newsData, //Set newsData to future type
+        future: newsData,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return LoadingIndicator(); //waiting api, display loading animation
-          } else if (snapshot.hasData && snapshot.data.length != 0) {
-            //api has data
+            return LoadingIndicator();
+          } else if (snapshot.hasData && snapshot.data['results'].length != 0) {
             return isBigCard
                 ? ListView.builder(
                     scrollDirection: Axis.horizontal,
@@ -41,7 +38,7 @@ class NewsCardList extends StatelessWidget {
                               ['content'],
                           newsDesc: snapshot.data['results'][index]
                               ['description']);
-                    }) //Display Big news card
+                    })
                 : ListView.builder(
                     itemCount: snapshot.data['results'].length,
                     itemBuilder: (context, index) {
@@ -53,16 +50,14 @@ class NewsCardList extends StatelessWidget {
                               ['content'],
                           newsDesc: snapshot.data['results'][index]
                               ['description']);
-                    }); //Display News card
+                    });
           } else if (!snapshot.hasData) {
-            //api has no data
             return ApiErrorMessage();
           } else if (snapshot.data['results'].length == 0) {
-            //data from the api has a length 0
-            return EmptyNewsListMessage("No Popular News Right Now");
+            return EmptyNewsListMessage("No News Right Now");
           }
           // By default, show a loading spinner.
-          return LoadingIndicator(); //Display loading animation
+          return LoadingIndicator();
         },
       ),
     );

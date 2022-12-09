@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SectionTitle extends StatelessWidget {
-//================== Initial Constructor =======================
   final String title;
 
   SectionTitle({this.title = "This is title"});
-//==============================================================
 
   @override
   Widget build(BuildContext context) {

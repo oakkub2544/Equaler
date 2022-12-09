@@ -37,7 +37,7 @@ class Sidemenu extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => selectcategory(),
+                    builder: (context) => SelectCategory(),
                   ),
                 );
               },

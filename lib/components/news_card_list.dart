@@ -24,7 +24,7 @@ class NewsCardList extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return LoadingIndicator();
-          } else if (snapshot.hasData) {
+          } else if (snapshot.hasData && snapshot.data['results'].length != 0) {
             return isBigCard
                 ? ListView.builder(
                     scrollDirection: Axis.horizontal,

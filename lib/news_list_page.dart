@@ -8,11 +8,9 @@ import './components/api_error_message.dart';
 import './components/empty_news_list_message.dart';
 
 class NewsListPage extends StatefulWidget {
-//========================= Initial Constructor ===========================
   final String Header_Title;
   final List<String> Parameter;
   NewsListPage({this.Header_Title = "Equaler", required this.Parameter});
-//=========================================================================
 
   @override
   State<NewsListPage> createState() => _NewsListPageState();
@@ -25,23 +23,18 @@ class _NewsListPageState extends State<NewsListPage> {
 
   @override
   void initState() {
-    //Method that is called when an object for stateful widget
     super.initState();
     newsData = apiHandler.getNews(widget.Parameter);
   }
 
   void changePage(int inputPage) {
-    //Function for change page in list news
     setState(() {
       widget.Parameter.last = "Page=$inputPage";
-      //Variable to receive inputPage from user
       newsData = apiHandler.getNews(widget.Parameter);
-      //Get data from $inputPage sent to api
     });
   }
 
   Widget LeftButton(double boxWidthSize) {
-    //If user return to previous page
     return pageNum == 0
         ? SizedBox(
             width: boxWidthSize,
@@ -54,7 +47,7 @@ class _NewsListPageState extends State<NewsListPage> {
                   changePage(pageNum);
                 });
               }
-            }, //minus page number
+            },
             child: Icon(
               Icons.arrow_back_ios_new_rounded,
               color: Color.fromRGBO(50, 48, 45, 1),
@@ -64,7 +57,6 @@ class _NewsListPageState extends State<NewsListPage> {
   }
 
   Widget RightButton(int? nextPage, double boxWidthSize) {
-    //If user going to next page
     return nextPage == null
         ? SizedBox(
             width: boxWidthSize,
@@ -75,7 +67,7 @@ class _NewsListPageState extends State<NewsListPage> {
                 pageNum++;
                 changePage(pageNum);
               });
-            }, //plus page number
+            },
             child: Icon(
               Icons.arrow_forward_ios_rounded,
               color: Color.fromRGBO(50, 48, 45, 1),
@@ -92,14 +84,12 @@ class _NewsListPageState extends State<NewsListPage> {
         ),
         body: Center(
           child: FutureBuilder<dynamic>(
-            future: newsData, //Set newsData to future type
+            future: newsData,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                //waiting api, display loading animation
                 return LoadingIndicator();
               } else if (snapshot.hasData &&
                   snapshot.data['results'].length != 0) {
-                //api has data
                 return CustomScrollView(
                   slivers: [
                     SliverList(
@@ -113,7 +103,7 @@ class _NewsListPageState extends State<NewsListPage> {
                                 ['pubDate'],
                             newsContent: snapshot.data['results'][index]
                                 ['content'],
-                          ); //Send constructor to Newscard
+                          );
                         },
                         childCount: snapshot.data['results'].length,
                       ),
@@ -155,7 +145,7 @@ class _NewsListPageState extends State<NewsListPage> {
                                       pageInputController.clear();
                                       changePage(pageNum);
                                     }),
-                                  ), //Filters for accepting input from the user is a positive integer
+                                  ),
                                 ),
                                 RightButton(snapshot.data['nextPage'],
                                     MediaQuery.of(context).size.width * 0.165),
@@ -181,5 +171,4 @@ class _NewsListPageState extends State<NewsListPage> {
 
   @override
   Size get preferredSize => Size.fromHeight(60);
-  //Custom appbar with the same height, width
 }

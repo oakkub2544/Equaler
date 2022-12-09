@@ -3,7 +3,6 @@ import 'package:flutter_tts/flutter_tts.dart';
 import './components/header_bar.dart';
 
 class readnew extends StatefulWidget {
-//================== Initial Constructor =======================
   final String imgUrl1;
   final String newsTitle1;
   final String newsDate1;
@@ -16,18 +15,18 @@ class readnew extends StatefulWidget {
       this.newsDate1 = "This is news date",
       this.newsContent1 = "This is news content",
       this.newsDesc1 = "This is news description"});
-//==============================================================
+
   @override
   State<readnew> createState() => _readnewState();
 }
 
 class _readnewState extends State<readnew> {
-  final FlutterTts flutterTts = FlutterTts(); //Instantiate FlutterTts
+  final FlutterTts flutterTts = FlutterTts();
   final TextEditingController textEditingController = TextEditingController();
 
   speak(String text) async {
-    //Setting Text to Speech
     await flutterTts.setLanguage("en-US");
+
     await flutterTts.setPitch(1);
     await flutterTts.speak(text);
   }
@@ -80,7 +79,6 @@ class _readnewState extends State<readnew> {
                             ),
                             onDoubleTap: () {
                               speak(widget.newsContent1);
-                              //When user double tap on Text, speak text news
                             },
                           )
                         ],
@@ -96,13 +94,11 @@ class _readnewState extends State<readnew> {
 
   @override
   void dispose() {
-    //Dispose will active when the last widget disappears from screen
+    //dispose will active when the last widget disappears from screen
     super.dispose();
     flutterTts.stop();
-    //Stop text to speech when user leave from read news page
   }
 
   @override
   Size get preferredSize => Size.fromHeight(60);
-  //Custom appbar with the same height, width
 }

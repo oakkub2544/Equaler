@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/read_news.dart';
+import '../read_news.dart';
 
 class BigNewsCard extends StatelessWidget {
 //================== Initial Constructor =======================
   final String imgUrl;
-
   final String newsTitle;
-
   final String newsDate;
-
   final String newsDesc;
-
   final String newsContent;
 
   BigNewsCard(
@@ -57,42 +53,37 @@ class BigNewsCard extends StatelessWidget {
                       imgUrl,
                       width: constraints.maxWidth,
                       height: constraints.maxHeight * 0.436,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fitWidth,
                     ),
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.zero,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 7, top: 7),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 7, top: 7),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(newsDate),
+                        Text(
+                          newsTitle,
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                        Row(
                           children: [
-                            Text(newsDate),
                             Text(
-                              newsTitle,
+                              "Read More",
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
+                                  decoration: TextDecoration.underline),
                             ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Read More",
-                                  style: TextStyle(
-                                      decoration: TextDecoration.underline),
-                                ),
-                                Icon(
-                                  Icons.arrow_forward,
-                                  size: 15,
-                                )
-                              ],
+                            Icon(
+                              Icons.arrow_forward,
+                              size: 15,
                             )
                           ],
-                        ),
-                      ),
+                        )
+                      ],
                     ),
                   )
                 ],

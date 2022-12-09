@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_application_3/read_news.dart';
 import 'dart:core';
+import 'package:flutter/material.dart';
+import '../read_news.dart';
 
 class NewsCard extends StatelessWidget {
 //================== Initial Constructor =======================================

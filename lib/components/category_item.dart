@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/select_news.dart';
+import '../select_news.dart';
 
 class CategoryItem extends StatelessWidget {
 //================== Initial Constructor =======================================
@@ -7,7 +7,7 @@ class CategoryItem extends StatelessWidget {
   final IconData iconTitle;
 
   CategoryItem(
-      {this.categoryTitle = 'Natural', this.iconTitle = Icons.chevron_left});
+      {this.categoryTitle = 'Top', this.iconTitle = Icons.chevron_left});
 //==============================================================================
 
   @override
@@ -24,21 +24,19 @@ class CategoryItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(15),
       splashColor: Color.fromRGBO(246, 240, 235, 1),
       child: Container(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: Icon(iconTitle,
-                    size: 30, color: Color.fromRGBO(246, 240, 235, 1)),
-              ),
-              Text(
-                categoryTitle,
-                style: TextStyle(color: Color.fromRGBO(246, 240, 235, 1)),
-              ),
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Icon(iconTitle,
+                  size: 30, color: Color.fromRGBO(246, 240, 235, 1)),
+            ),
+            Text(
+              categoryTitle,
+              style: TextStyle(color: Color.fromRGBO(246, 240, 235, 1)),
+            ),
+          ],
         ),
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(

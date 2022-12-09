@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/select_category.dart';
+import '../select_category.dart';
 import '../news_list_page.dart';
 
 class Sidemenu extends StatelessWidget {

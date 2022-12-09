@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_3/components/news_card.dart';
+import './api_handler.dart';
+import './components/news_card.dart';
 import './components/header_bar.dart';
-import '../api_handler.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
+import './components/loading_indicator.dart';
+import './components/api_error_message.dart';
+import './components/empty_news_list_message.dart';
 
 class NewsListPage extends StatefulWidget {
   final String Header_Title;
@@ -24,7 +26,6 @@ class _NewsListPageState extends State<NewsListPage> {
     //Method that is called when an object for stateful widget
     super.initState();
     newsData = apiHandler.getNews(widget.Parameter);
-    // TODO: implement initState
   }
 
   void changePage(int inputPage) {
@@ -37,16 +38,17 @@ class _NewsListPageState extends State<NewsListPage> {
     });
   }
 
-  Widget LeftButton() {
+  Widget LeftButton(double boxWidthSize) {
     //If user return to previous page
     return pageNum == 0
-        ? const SizedBox.shrink()
+        ? SizedBox(
+            width: boxWidthSize,
+          )
         : TextButton(
             onPressed: () {
               if (pageNum > 0) {
                 setState(() {
                   pageNum--;
-                  print(pageNum);
                   changePage(pageNum);
                 });
               }
@@ -59,10 +61,12 @@ class _NewsListPageState extends State<NewsListPage> {
           );
   }
 
-  Widget RightButton(int? nextPage) {
+  Widget RightButton(int? nextPage, double boxWidthSize) {
     //If user going to next page
     return nextPage == null
-        ? const SizedBox.shrink()
+        ? SizedBox(
+            width: boxWidthSize,
+          )
         : TextButton(
             onPressed: () {
               setState(() {
@@ -89,11 +93,7 @@ class _NewsListPageState extends State<NewsListPage> {
             future: newsData,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Expanded(
-                    child: LoadingAnimationWidget.inkDrop(
-                  color: Color.fromRGBO(100, 93, 83, 1),
-                  size: 50,
-                ));
+                return LoadingIndicator();
               } else if (snapshot.hasData &&
                   snapshot.data['results'].length != 0) {
                 return CustomScrollView(
@@ -117,40 +117,46 @@ class _NewsListPageState extends State<NewsListPage> {
                     SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              LeftButton(),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.5,
-                                child: TextField(
-                                  controller: pageInputController,
-                                  decoration: InputDecoration(
-                                      label: Center(
-                                    child: Text("${pageNum + 1}"),
-                                  )),
-                                  keyboardType: TextInputType.number,
-                                  inputFormatters: [
-                                    FilteringTextInputFormatter.allow(
-                                        RegExp(r'^[1-9][0-9]*'))
-                                  ],
-                                  onSubmitted: (_) => setState(() {
-                                    pageNum =
-                                        int.parse(pageInputController.text) - 1;
-                                    if (pageNum >
-                                        (snapshot.data['totalResults'] / 10)
-                                            .floor()) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                LeftButton(
+                                    MediaQuery.of(context).size.width * 0.165),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.5,
+                                  child: TextField(
+                                    textAlign: TextAlign.center,
+                                    controller: pageInputController,
+                                    decoration: InputDecoration(
+                                        border: const OutlineInputBorder(),
+                                        hintText: "${pageNum + 1}"),
+                                    keyboardType: TextInputType.number,
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp(r'^[1-9][0-9]*'))
+                                    ],
+                                    onSubmitted: (_) => setState(() {
                                       pageNum =
+                                          int.parse(pageInputController.text) -
+                                              1;
+                                      int totalPage =
                                           (snapshot.data['totalResults'] / 10)
                                               .floor();
-                                    }
-                                    pageInputController.clear();
-                                    changePage(pageNum);
-                                  }),
+                                      if (pageNum > totalPage) {
+                                        pageNum = totalPage;
+                                      }
+                                      pageInputController.clear();
+                                      changePage(pageNum);
+                                    }),
+                                  ),
                                 ),
-                              ),
-                              RightButton(snapshot.data['nextPage']),
-                            ],
+                                RightButton(snapshot.data['nextPage'],
+                                    MediaQuery.of(context).size.width * 0.165),
+                              ],
+                            ),
                           );
                         },
                         childCount: 1,
@@ -159,43 +165,11 @@ class _NewsListPageState extends State<NewsListPage> {
                   ],
                 );
               } else if (!snapshot.hasData) {
-                return Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 60),
-                      child: Icon(
-                        Icons.local_shipping_rounded,
-                        color: Color.fromRGBO(100, 93, 83, 1),
-                        size: 50.0,
-                      ),
-                    ),
-                    Text('News cannot pass in this page',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(height: 2, fontSize: 14)),
-                    Text('API Error',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20)),
-                  ],
-                );
+                return ApiErrorMessage();
               } else if (snapshot.data['results'].length == 0) {
-                return Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 60),
-                      child: Icon(
-                        Icons.local_play_outlined,
-                        color: Color.fromRGBO(100, 93, 83, 1),
-                        size: 50.0,
-                      ),
-                    ),
-                    Text('No thai news of this category right now',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(height: 2, fontSize: 16)),
-                  ],
-                );
+                return EmptyNewsListMessage('No news right now');
               }
-              return const CircularProgressIndicator();
-              // By default, show a loading spinner.
+              return LoadingIndicator();
             },
           ),
         ));

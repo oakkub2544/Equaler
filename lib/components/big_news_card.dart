@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../read_news.dart';
 
 class BigNewsCard extends StatelessWidget {
-//================== Initial Constructor =======================
+//========================= Initial Constructor ============================
   final String imgUrl;
   final String newsTitle;
   final String newsDate;
@@ -15,7 +15,7 @@ class BigNewsCard extends StatelessWidget {
       this.newsDate = "This is news date",
       this.newsContent = "This is news content",
       this.newsDesc = "This is news description"});
-//==============================================================
+//==========================================================================
 
   @override
   Widget build(BuildContext context) {

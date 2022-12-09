@@ -22,7 +22,7 @@ class readnew extends StatefulWidget {
 }
 
 class _readnewState extends State<readnew> {
-  final FlutterTts flutterTts = FlutterTts(); //instantiate FlutterTts
+  final FlutterTts flutterTts = FlutterTts(); //Instantiate FlutterTts
   final TextEditingController textEditingController = TextEditingController();
 
   speak(String text) async {
@@ -80,7 +80,7 @@ class _readnewState extends State<readnew> {
                             ),
                             onDoubleTap: () {
                               speak(widget.newsContent1);
-                              //When user double tap on Text, speak text
+                              //When user double tap on Text, speak text news
                             },
                           )
                         ],
@@ -104,5 +104,5 @@ class _readnewState extends State<readnew> {
 
   @override
   Size get preferredSize => Size.fromHeight(60);
-  //Custom appbar with the same height, width,
+  //Custom appbar with the same height, width
 }

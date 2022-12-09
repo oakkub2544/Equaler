@@ -41,7 +41,7 @@ class Sidemenu extends StatelessWidget {
                     builder: (context) => selectcategory(),
                   ),
                 );
-              },
+              }, //Go to select category page
             ),
             ListTile(
               title: Text('Thai News'.toUpperCase(),
@@ -59,7 +59,7 @@ class Sidemenu extends StatelessWidget {
                     ),
                   ),
                 );
-              },
+              }, //Go to News list page and send constructor with Thai news
             ),
             ListTile(
               title: Text('English News'.toUpperCase(),
@@ -76,7 +76,7 @@ class Sidemenu extends StatelessWidget {
                         Parameter: ["country=gb,us", "language=en", "Page=0"]),
                   ),
                 );
-              },
+              }, //Go to News list page and send constructor with English news
             ),
           ],
         ),

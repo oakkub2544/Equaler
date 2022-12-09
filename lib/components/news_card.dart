@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../read_news.dart';
 
 class NewsCard extends StatelessWidget {
-//================== Initial Constructor =======================================
+//============================= Initial Constructor ==============================
 
   final String imgUrl;
 

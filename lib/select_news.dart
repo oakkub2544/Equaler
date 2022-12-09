@@ -6,9 +6,11 @@ import './components/section_title.dart';
 import './components/header_bar.dart';
 
 class selectnew extends StatefulWidget {
+//================== Initial Constructor =======================
   final String category;
   @override
   selectnew({this.category = "top"});
+//==============================================================
 
   @override
   State<selectnew> createState() => _selectnewState();
@@ -18,17 +20,23 @@ class _selectnewState extends State<selectnew> {
   late Future<Map> thaiNews, engNews;
   void initState() {
     super.initState();
-    thaiNews = apiHandler
-        .getNews(["country=th", "language=th", "category=${widget.category}"]);
-    engNews = apiHandler.getNews(
-        ["country=us,gb", "language=en", "category=${widget.category}"]);
+    thaiNews = apiHandler.getNews([
+      "country=th",
+      "language=th",
+      "category=${widget.category}"
+    ]); //Get data from apiHandler
+    engNews = apiHandler.getNews([
+      "country=us,gb",
+      "language=en",
+      "category=${widget.category}"
+    ]); //Get data from apiHandler
     // TODO: implement initState
   }
 
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: Headerbar(
-          headerTitle: 'Select News',
+          headerTitle: 'category=${widget.category}',
         ),
         body: Center(
             child: Column(children: [
@@ -48,13 +56,13 @@ class _selectnewState extends State<selectnew> {
                     ),
                   ),
                 );
-              },
+              }, //Send constructor and go to NewsListPage in Thai language
               child: Container(child: SectionTitle(title: "Thai News"))),
           NewsCardList(
             newsData: thaiNews,
             listHeight: MediaQuery.of(context).size.height * 0.3,
             isBigCard: false,
-          ),
+          ), //Display Thai news
           InkWell(
               onTap: () {
                 Navigator.push(
@@ -71,16 +79,17 @@ class _selectnewState extends State<selectnew> {
                     ),
                   ),
                 );
-              },
+              }, //Send constructor and go to NewsListPage in English language
               child: Container(child: SectionTitle(title: "English News"))),
           NewsCardList(
             newsData: engNews,
             listHeight: MediaQuery.of(context).size.height * 0.3,
             isBigCard: false,
-          )
+          ) //Display English news
         ])));
   }
 
   @override
   Size get preferredSize => Size.fromHeight(60);
+  //Custom appbar with the same height, width
 }

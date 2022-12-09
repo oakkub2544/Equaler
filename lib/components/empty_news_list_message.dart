@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 class EmptyNewsListMessage extends StatelessWidget {
+//=================== Initial Constructor ======================
+
   final String errorText;
 
   EmptyNewsListMessage(this.errorText);
+//==============================================================
 
   @override
   Widget build(BuildContext context) {

@@ -52,4 +52,5 @@ class selectcategory extends StatelessWidget {
 
   @override
   Size get preferredSize => Size.fromHeight(60);
+  //Custom appbar with the same height, width
 }

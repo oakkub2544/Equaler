@@ -8,9 +8,11 @@ import './components/api_error_message.dart';
 import './components/empty_news_list_message.dart';
 
 class NewsListPage extends StatefulWidget {
+//========================= Initial Constructor ===========================
   final String Header_Title;
   final List<String> Parameter;
   NewsListPage({this.Header_Title = "Equaler", required this.Parameter});
+//=========================================================================
 
   @override
   State<NewsListPage> createState() => _NewsListPageState();
@@ -52,7 +54,7 @@ class _NewsListPageState extends State<NewsListPage> {
                   changePage(pageNum);
                 });
               }
-            },
+            }, //minus page number
             child: Icon(
               Icons.arrow_back_ios_new_rounded,
               color: Color.fromRGBO(50, 48, 45, 1),
@@ -73,7 +75,7 @@ class _NewsListPageState extends State<NewsListPage> {
                 pageNum++;
                 changePage(pageNum);
               });
-            },
+            }, //plus page number
             child: Icon(
               Icons.arrow_forward_ios_rounded,
               color: Color.fromRGBO(50, 48, 45, 1),
@@ -90,9 +92,10 @@ class _NewsListPageState extends State<NewsListPage> {
         ),
         body: Center(
           child: FutureBuilder<dynamic>(
-            future: newsData,
+            future: newsData, //Set newsData to future type
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
+                //waiting api
                 return LoadingIndicator();
               } else if (snapshot.hasData &&
                   snapshot.data['results'].length != 0) {
@@ -109,7 +112,7 @@ class _NewsListPageState extends State<NewsListPage> {
                                 ['pubDate'],
                             newsContent: snapshot.data['results'][index]
                                 ['content'],
-                          );
+                          ); //Send constructor to Newscard
                         },
                         childCount: snapshot.data['results'].length,
                       ),
@@ -151,7 +154,7 @@ class _NewsListPageState extends State<NewsListPage> {
                                       pageInputController.clear();
                                       changePage(pageNum);
                                     }),
-                                  ),
+                                  ), //Filters for accepting input from the user is a positive integer
                                 ),
                                 RightButton(snapshot.data['nextPage'],
                                     MediaQuery.of(context).size.width * 0.165),
@@ -177,4 +180,5 @@ class _NewsListPageState extends State<NewsListPage> {
 
   @override
   Size get preferredSize => Size.fromHeight(60);
+  //Custom appbar with the same height, width
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../select_news.dart';
 
 class CategoryItem extends StatelessWidget {
-//================== Initial Constructor =======================================
+//========================= Initial Constructor ================================
   final String categoryTitle;
   final IconData iconTitle;
 

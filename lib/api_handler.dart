@@ -5,7 +5,7 @@ class apiHandler {
   static List<dynamic> checkNull(List<dynamic> data) {
     for (var dat in data) {
       if (dat['image_url'] == null) {
-        dat['image_url'] = 'https://comnplayscience.eu/app/images/notfound.png';
+        dat['image_url'] = 'https://comnplayscience.eu/app/images/notfound.png';//Set default image
       }
       if (dat['content'] == null) {
         if (dat['description'] != null) {
@@ -28,12 +28,16 @@ class apiHandler {
     String rawUrl =
         "https://newsdata.io/api/1/news?apikey=pub_124249313445c3671fd4d175e97415511a437";
     for (var par in parameter) {
-      rawUrl = '$rawUrl&$par';
+      //par = numpage from _NewsListPageState
+      rawUrl = '$rawUrl&$par'; // rawUrl = Url+page
     }
     var url = Uri.parse(rawUrl);
-    var response = await http.get(url);
+    var response =
+        await http.get(url); //Creates a new Uri object by parsing a URI string
     if (response.statusCode == 200) {
-      Map jsonResponse = json.decode(utf8.decode(response.bodyBytes));
+      //response.statusCode has data
+      Map jsonResponse = json.decode(
+          utf8.decode(response.bodyBytes)); //response.bodyBytes json to utf8
       checkNull(jsonResponse['results']);
       return jsonResponse;
     }

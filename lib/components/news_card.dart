@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../read_news.dart';
 
 class NewsCard extends StatelessWidget {
+//============================= Initial Constructor ==============================
+
   final String imgUrl;
 
   final String newsTitle;
@@ -19,6 +21,7 @@ class NewsCard extends StatelessWidget {
       this.newsDate = "This is news date",
       this.newsContent = "This is news content",
       this.newsDesc = "This is news description"});
+//==============================================================================
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +38,7 @@ class NewsCard extends StatelessWidget {
                 newsDesc1: newsDesc),
           ),
         );
-      },
+      }, //Go to readnews and send constructor to readnews page
       child: Container(
         width: MediaQuery.of(context).size.width * 0.9,
         height: MediaQuery.of(context).size.height * 0.18,

@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 
 class Headerbar extends StatelessWidget with PreferredSizeWidget {
+//=================== Initial Constructor ======================
   final String headerTitle;
   Headerbar({this.headerTitle = 'Equaler'});
+//==============================================================
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -25,7 +28,7 @@ class Headerbar extends StatelessWidget with PreferredSizeWidget {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => MyApp()));
                 },
-              ))
+              )),
         ],
         iconTheme: IconThemeData(color: Color.fromRGBO(50, 48, 45, 1)),
         backgroundColor: Color.fromRGBO(246, 240, 235, 1));
@@ -33,4 +36,6 @@ class Headerbar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Size get preferredSize => Size.fromHeight(60);
+  //Custom appbar with the same height, width
+
 }

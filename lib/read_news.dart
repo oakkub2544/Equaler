@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import './components/header_bar.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import './components/header_bar.dart';
 
 class readnew extends StatefulWidget {
   final String imgUrl1;
-
   final String newsTitle1;
-
   final String newsDate1;
-
   final String newsDesc1;
-
   final String newsContent1;
 
   readnew(

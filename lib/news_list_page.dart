@@ -87,9 +87,10 @@ class _NewsListPageState extends State<NewsListPage> {
             future: newsData,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
+                //waiting api, display loading animation
                 return LoadingIndicator();
-              } else if (snapshot.hasData &&
-                  snapshot.data['results'].length != 0) {
+              } else if (snapshot.hasData && snapshot.data['results'].length != 0) {
+                //api has data
                 return CustomScrollView(
                   slivers: [
                     SliverList(

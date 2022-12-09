@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/main.dart';
+import '../main.dart';
 
 class Headerbar extends StatelessWidget with PreferredSizeWidget {
   final String headerTitle;
@@ -7,15 +7,14 @@ class Headerbar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        title: Center(
-            child: Container(
+        title: Container(
           child: Text(headerTitle,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color.fromRGBO(50, 48, 45, 1),
               )),
           width: 378,
-        )),
+        ),
         actions: [
           Transform.scale(
               scale: 1,

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_3/components/news_card.dart';
+import './api_handler.dart';
+import './components/news_card.dart';
 import './components/header_bar.dart';
-import '../api_handler.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
+import './components/loading_indicator.dart';
+import './components/api_error_message.dart';
+import './components/empty_news_list_message.dart';
 
 class NewsListPage extends StatefulWidget {
   final String Header_Title;
@@ -23,7 +25,6 @@ class _NewsListPageState extends State<NewsListPage> {
   void initState() {
     super.initState();
     newsData = apiHandler.getNews(widget.Parameter);
-    // TODO: implement initState
   }
 
   void changePage(int inputPage) {
@@ -43,7 +44,6 @@ class _NewsListPageState extends State<NewsListPage> {
               if (pageNum > 0) {
                 setState(() {
                   pageNum--;
-                  print(pageNum);
                   changePage(pageNum);
                 });
               }
@@ -87,11 +87,7 @@ class _NewsListPageState extends State<NewsListPage> {
             future: newsData,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Expanded(
-                    child: LoadingAnimationWidget.inkDrop(
-                  color: Color.fromRGBO(100, 93, 83, 1),
-                  size: 50,
-                ));
+                return LoadingIndicator();
               } else if (snapshot.hasData &&
                   snapshot.data['results'].length != 0) {
                 return CustomScrollView(
@@ -163,47 +159,11 @@ class _NewsListPageState extends State<NewsListPage> {
                   ],
                 );
               } else if (!snapshot.hasData) {
-                return Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 60),
-                      child: Icon(
-                        Icons.local_shipping_rounded,
-                        color: Color.fromRGBO(100, 93, 83, 1),
-                        size: 50.0,
-                      ),
-                    ),
-                    Text('News cannot pass in this page',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(height: 2, fontSize: 14)),
-                    Text('API Error',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20)),
-                  ],
-                );
+                return ApiErrorMessage();
               } else if (snapshot.data['results'].length == 0) {
-                return Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 60),
-                      child: Icon(
-                        Icons.local_play_outlined,
-                        color: Color.fromRGBO(100, 93, 83, 1),
-                        size: 50.0,
-                      ),
-                    ),
-                    Text('No thai news of this category right now',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(height: 2, fontSize: 16)),
-                  ],
-                );
+                return EmptyNewsListMessage('No news right now');
               }
-              return Expanded(
-                  child: LoadingAnimationWidget.inkDrop(
-                color: Color.fromRGBO(100, 93, 83, 1),
-                size: 50,
-              ));
-              // By default, show a loading spinner.
+              return LoadingIndicator();
             },
           ),
         ));

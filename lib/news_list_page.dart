@@ -21,19 +21,24 @@ class _NewsListPageState extends State<NewsListPage> {
 
   @override
   void initState() {
+    //Method that is called when an object for stateful widget
     super.initState();
     newsData = apiHandler.getNews(widget.Parameter);
     // TODO: implement initState
   }
 
   void changePage(int inputPage) {
+    //Function for change page in list news
     setState(() {
       widget.Parameter.last = "Page=$inputPage";
+      //Variable to receive inputPage from user
       newsData = apiHandler.getNews(widget.Parameter);
+      //Get data from $inputPage sent to api
     });
   }
 
   Widget LeftButton() {
+    //If user return to previous page
     return pageNum == 0
         ? const SizedBox.shrink()
         : TextButton(
@@ -55,6 +60,7 @@ class _NewsListPageState extends State<NewsListPage> {
   }
 
   Widget RightButton(int? nextPage) {
+    //If user going to next page
     return nextPage == null
         ? const SizedBox.shrink()
         : TextButton(

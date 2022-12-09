@@ -28,12 +28,16 @@ class apiHandler {
     String rawUrl =
         "https://newsdata.io/api/1/news?apikey=pub_14276b8a4fbf8db4357d71da5be8e97b4a76b";
     for (var par in parameter) {
-      rawUrl = '$rawUrl&$par';
+      //par = numpage from _NewsListPageState
+      rawUrl = '$rawUrl&$par'; // rawUrl = Url+page
     }
     var url = Uri.parse(rawUrl);
-    var response = await http.get(url);
+    var response =
+        await http.get(url); //Creates a new Uri object by parsing a URI string
     if (response.statusCode == 200) {
-      Map jsonResponse = json.decode(utf8.decode(response.bodyBytes));
+      //response.statusCode has data
+      Map jsonResponse = json.decode(
+          utf8.decode(response.bodyBytes)); //response.bodyBytes json to utf8
       checkNull(jsonResponse['results']);
       return jsonResponse;
     }

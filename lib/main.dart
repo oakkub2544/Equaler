@@ -33,13 +33,16 @@ class Myhomepage extends StatefulWidget {
 }
 
 class _MyhomepageState extends State<Myhomepage> {
-  late Future<Map> newsData, popData;
+  late Future<Map> newsData,
+      popData; //Initial variable to receive data from api
 
   @override
   void initState() {
+    //Method that is called when an object for stateful widget
     super.initState();
-    newsData = apiHandler.getNews(["country=th,gb,us", "language=en,th"]);
-    popData = apiHandler
+    newsData = apiHandler.getNews(
+        ["country=th,gb,us", "language=en,th"]); //Get news to suggestion
+    popData = apiHandler //Get news to popular
         .getNews(["country=th,gb,us", "language=en,th", "category=top"]);
     // TODO: implement initState
   }
@@ -47,8 +50,10 @@ class _MyhomepageState extends State<Myhomepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: Headerbar(),
-        drawer: Sidemenu(),
+        appBar:
+            Headerbar(), //The AppBar displays the toolbar widgets, leading, title, and actions,
+        drawer:
+            Sidemenu(), //A Material Design panel that slides in horizontally from the edge to show navigation links in an application.
         body: Center(
             child: Padding(
           padding: const EdgeInsets.only(top: 10.0),
@@ -59,22 +64,26 @@ class _MyhomepageState extends State<Myhomepage> {
                 height: MediaQuery.of(context).size.height * 0.23,
                 width: MediaQuery.of(context).size.width * 0.9,
                 child: FutureBuilder<dynamic>(
-                  future: newsData,
+                  future: newsData, //List data form getNews Future type
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
+                      //waiting api
                       return Expanded(
                           child: LoadingAnimationWidget.inkDrop(
+                        //loading animation widget
                         color: Color.fromRGBO(100, 93, 83, 1),
                         size: 50,
                       ));
                     } else if (snapshot.hasData && snapshot.data.length != 0) {
                       return ListView.builder(
-                          scrollDirection: Axis.horizontal,
+                          scrollDirection: Axis
+                              .horizontal, //making news card to move left and right
                           itemCount: snapshot.data['results'].length,
                           itemBuilder: (context, index) {
                             return Column(
                               children: [
                                 BigNewsCard(
+                                    //Send constructor to BigNewsCard
                                     imgUrl: snapshot.data['results'][index]
                                         ['image_url'],
                                     newsTitle: snapshot.data['results'][index]
@@ -89,6 +98,7 @@ class _MyhomepageState extends State<Myhomepage> {
                             );
                           });
                     } else if (!snapshot.hasData) {
+                      //If getNews has no data
                       return Column(
                         children: [
                           Padding(
@@ -134,9 +144,10 @@ class _MyhomepageState extends State<Myhomepage> {
                 height: MediaQuery.of(context).size.height * 0.4,
                 width: MediaQuery.of(context).size.width * 0.9,
                 child: FutureBuilder<dynamic>(
-                  future: popData,
+                  future: popData, //List data form getNews Future type
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
+                      //waiting api
                       return Expanded(
                           child: LoadingAnimationWidget.inkDrop(
                         color: Color.fromRGBO(100, 93, 83, 1),
@@ -147,6 +158,7 @@ class _MyhomepageState extends State<Myhomepage> {
                           itemCount: snapshot.data['results'].length,
                           itemBuilder: (context, index) {
                             return NewsCard(
+                                //Send constructor to NewsCard
                                 imgUrl: snapshot.data['results'][index]
                                     ['image_url'],
                                 newsTitle: snapshot.data['results'][index]
@@ -159,6 +171,7 @@ class _MyhomepageState extends State<Myhomepage> {
                                     ['description']);
                           });
                     } else if (!snapshot.hasData) {
+                      //If getNews has no data
                       return Column(
                         children: [
                           Padding(

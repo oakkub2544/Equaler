@@ -6,6 +6,7 @@ class Sidemenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      //Create a CustomSidebar on top left that will trigger a navigation operation when tapped
       child: Container(
         color: Color.fromRGBO(246, 240, 235, 1),
         child: ListView(

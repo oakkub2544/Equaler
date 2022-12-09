@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_3/select_news.dart';
 
 class CategoryItem extends StatelessWidget {
+//================== Initial Constructor =======================================
   final String categoryTitle;
   final IconData iconTitle;
 
   CategoryItem(
       {this.categoryTitle = 'Natural', this.iconTitle = Icons.chevron_left});
+//==============================================================================
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class CategoryItem extends StatelessWidget {
             builder: (context) => selectnew(category: categoryTitle),
           ),
         )
-      },
+      }, //Go to selectnews and send constructor to selectnews page
       borderRadius: BorderRadius.circular(15),
       splashColor: Color.fromRGBO(246, 240, 235, 1),
       child: Container(

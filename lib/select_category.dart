@@ -3,7 +3,7 @@ import './components/header_bar.dart';
 import './components/category_item.dart';
 import './models/category_info.dart';
 
-class SelectCategory extends StatelessWidget 
+class SelectCategory extends StatelessWidget{
   //Seperate news content by category
   @override
   Widget build(BuildContext context) {

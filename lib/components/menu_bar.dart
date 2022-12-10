@@ -40,11 +40,11 @@ class Menubar extends StatelessWidget {
             Menu(menuTitle: 'Category', isCategoryPage: true),
             Menu(
                 menuTitle: 'Thai News',
-                parameter: const ["country=th", "language=th", "Page=0"],
+                parameter: ["country=th", "language=th", "Page=0"],
                 isCategoryPage: false),
             Menu(
                 menuTitle: 'English News',
-                parameter: const ["country=gb,us", "language=en", "Page=0"],
+                parameter: ["country=gb,us", "language=en", "Page=0"],
                 isCategoryPage: false),
           ],
         ),

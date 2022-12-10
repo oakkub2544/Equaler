@@ -49,7 +49,7 @@ class _MyhomepageState extends State<Myhomepage> {
             children: [
               SectionTitle(title: "Suggestion"),
               NewsCardList(
-                newsData: popData,
+                newsData: newsData,
                 listHeight: MediaQuery.of(context).size.height * 0.23,
                 isBigCard: true,
               ),

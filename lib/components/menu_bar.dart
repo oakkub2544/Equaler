@@ -7,20 +7,19 @@ class Sidemenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: Color.fromRGBO(246, 240, 235, 1),
+        color: const Color.fromRGBO(246, 240, 235, 1),
         child: ListView(
-          padding: EdgeInsets.zero,
           children: <Widget>[
             SizedBox(
               height: 130.0,
               child: DrawerHeader(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color.fromRGBO(246, 240, 235, 1),
                 ),
                 child: Text(
                   'Menu Bar'.toUpperCase(),
                   textAlign: TextAlign.left,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Color.fromRGBO(50, 48, 45, 1),
                     fontSize: 24,
                   ),
@@ -29,7 +28,7 @@ class Sidemenu extends StatelessWidget {
             ),
             ListTile(
               title: Text('Category'.toUpperCase(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   )),
@@ -44,7 +43,7 @@ class Sidemenu extends StatelessWidget {
             ),
             ListTile(
               title: Text('Thai News'.toUpperCase(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   )),
@@ -54,7 +53,7 @@ class Sidemenu extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => NewsListPage(
                       Header_Title: "Thai News",
-                      Parameter: ["country=th", "language=th", "Page=0"],
+                      Parameter: const ["country=th", "language=th", "Page=0"],
                     ),
                   ),
                 );
@@ -62,7 +61,7 @@ class Sidemenu extends StatelessWidget {
             ),
             ListTile(
               title: Text('English News'.toUpperCase(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   )),
@@ -72,7 +71,11 @@ class Sidemenu extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => NewsListPage(
                         Header_Title: "English News",
-                        Parameter: ["country=gb,us", "language=en", "Page=0"]),
+                        Parameter: const [
+                          "country=gb,us",
+                          "language=en",
+                          "Page=0"
+                        ]),
                   ),
                 );
               },

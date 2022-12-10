@@ -26,7 +26,6 @@ class _readnewState extends State<readnew> {
 
   speak(String text) async {
     await flutterTts.setLanguage("en-US");
-
     await flutterTts.setPitch(1);
     await flutterTts.speak(text);
   }
@@ -56,26 +55,26 @@ class _readnewState extends State<readnew> {
                 ),
               ),
               Padding(
-                padding:
-                    EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
+                padding: const EdgeInsets.only(
+                    left: 20, right: 20, top: 20, bottom: 10),
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    color: Color.fromRGBO(246, 240, 235, 1),
+                    color: const Color.fromRGBO(246, 240, 235, 1),
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Column(
                         children: [
                           Text(widget.newsDate1,
-                              style: TextStyle(fontSize: 15)),
+                              style: const TextStyle(fontSize: 15)),
                           GestureDetector(
                             child: Text(
                               textAlign: TextAlign.justify,
                               widget.newsContent1,
-                              style: TextStyle(fontSize: 18),
+                              style: const TextStyle(fontSize: 18),
                             ),
                             onDoubleTap: () {
                               speak(widget.newsContent1);

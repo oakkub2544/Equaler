@@ -6,7 +6,11 @@ import './components/menu_bar.dart';
 import './components/news_card_list.dart';
 import './components/section_title.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((value) => runApp(MyApp()));
+}
 
 class MyApp extends StatelessWidget {
   @override

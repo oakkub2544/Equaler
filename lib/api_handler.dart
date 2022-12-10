@@ -4,7 +4,7 @@ import 'dart:convert';
 class apiHandler {
   static List<dynamic> checkNull(List<dynamic> data) {
     for (var dat in data) {
-      if (dat['image_url'] == null) {
+      if (dat['image_url'] == null || dat['image_url'].length <= 4) {
         dat['image_url'] = 'https://comnplayscience.eu/app/images/notfound.png';//Set default image
       }
       if (dat['content'] == null) {

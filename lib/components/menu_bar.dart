@@ -12,17 +12,31 @@ class Sidemenu extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             SizedBox(
-              height: 130.0,
+              height: 190.0,
               child: DrawerHeader(
                 decoration: BoxDecoration(
                   color: Color.fromRGBO(246, 240, 235, 1),
                 ),
-                child: Text(
-                  'Menu Bar'.toUpperCase(),
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    color: Color.fromRGBO(50, 48, 45, 1),
-                    fontSize: 24,
+                child: Container(
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        ('asset/logo/logoapp.png'),
+                        height: 40,
+                        width: 40,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: Text(
+                          'Equaler'.toUpperCase(),
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Color.fromRGBO(50, 48, 45, 1),
+                            fontSize: 24,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

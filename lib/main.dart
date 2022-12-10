@@ -1,11 +1,11 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import './api_handler.dart';
 import './components/header_bar.dart';
 import './components/menu_bar.dart';
 import './components/news_card_list.dart';
 import './components/section_title.dart';
-import 'package:flutter/services.dart';
 
 void main() {
   // This section is for running apps only on vertical pages

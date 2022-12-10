@@ -54,7 +54,7 @@ class NewsCardList extends StatelessWidget {
           } else if (!snapshot.hasData) {
             return ApiErrorMessage();
           } else if (snapshot.data['results'].length == 0) {
-            return EmptyNewsListMessage("No Popular News Right Now");
+            return EmptyNewsListMessage("No News Right Now");
           }
           // By default, show a loading spinner.
           return LoadingIndicator();

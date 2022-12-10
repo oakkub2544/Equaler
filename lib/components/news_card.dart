@@ -59,8 +59,8 @@ class NewsCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     child: Image.network(
                       imgUrl,
-                      width: constraints.maxWidth * 0.35,
-                      height: constraints.maxHeight * 0.9,
+                      width: constraints.maxWidth * 0.35, //responsive design from screen
+                      height: constraints.maxHeight * 0.9, //responsive design from screen
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -75,8 +75,8 @@ class NewsCard extends StatelessWidget {
                           Text(
                             newsTitle,
                             style: const TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                            overflow: TextOverflow.ellipsis,
+                                fontSize: 18, fontWeight: FontWeight.bold), 
+                            overflow: TextOverflow.ellipsis, //Represent clipped text
                             maxLines: 2,
                           ),
                           Row(

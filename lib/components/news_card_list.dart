@@ -59,7 +59,7 @@ class NewsCardList extends StatelessWidget {
                     });
           } else if (!snapshot.hasData) {//api has no data, display error
             return ApiErrorMessage();
-          } else if (snapshot.data['results'].length == 0) {//data from the api has a length 0, display no Popular News
+          } else if (snapshot.data['results'].length == 0) {//data from the api has a length 0, display No News Right Now
             return EmptyNewsListMessage("No News Right Now");
           }
           // By default, show a loading spinner.

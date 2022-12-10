@@ -11,13 +11,13 @@ class SelectCategory extends StatelessWidget {
         headerTitle: 'Select Category',
       ),
       body: GridView.builder(
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 200,
           childAspectRatio: 3 / 3,
           crossAxisSpacing: 20,
           mainAxisSpacing: 20,
         ),
-        padding: EdgeInsets.all(25),
+        padding: const EdgeInsets.all(25),
         itemCount: 11,
         itemBuilder: (context, index) {
           return CategoryItem(

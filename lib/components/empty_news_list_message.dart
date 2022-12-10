@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class EmptyNewsListMessage extends StatelessWidget {
   final String errorText;
 
-  const EmptyNewsListMessage(this.errorText);
+  EmptyNewsListMessage(this.errorText);
 
   @override
   Widget build(BuildContext context) {

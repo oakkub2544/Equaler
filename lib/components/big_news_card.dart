@@ -8,7 +8,7 @@ class BigNewsCard extends StatelessWidget {
   final String newsDesc;
   final String newsContent;
 
-  const BigNewsCard(
+  BigNewsCard(
       {this.imgUrl = "https://comnplayscience.eu/app/images/notfound.png",
       this.newsTitle = "This is news title",
       this.newsDate = "This is news date",
@@ -22,7 +22,7 @@ class BigNewsCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => readnew(
+            builder: (context) => ReadNews(
                 imgUrl1: imgUrl,
                 newsTitle1: newsTitle,
                 newsDate1: newsDate,

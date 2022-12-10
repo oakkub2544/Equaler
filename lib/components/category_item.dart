@@ -5,7 +5,7 @@ class CategoryItem extends StatelessWidget {
   final String categoryTitle;
   final IconData iconTitle;
 
-  const CategoryItem(
+  CategoryItem(
       {this.categoryTitle = 'Top', this.iconTitle = Icons.chevron_left});
 
   @override
@@ -15,7 +15,7 @@ class CategoryItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => selectnew(category: categoryTitle),
+            builder: (context) => SelectNews(category: categoryTitle),
           ),
         )
       },

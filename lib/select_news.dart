@@ -4,16 +4,16 @@ import './api_handler.dart';
 import './components/header_bar.dart';
 import './components/more_news_section_title.dart';
 
-class selectnew extends StatefulWidget {
+class SelectNews extends StatefulWidget {
   final String category;
   @override
-  selectnew({this.category = "top"});
+  SelectNews({this.category = "top"});
 
   @override
-  State<selectnew> createState() => _selectnewState();
+  State<SelectNews> createState() => _SelectNewsState();
 }
 
-class _selectnewState extends State<selectnew> {
+class _SelectNewsState extends State<SelectNews> {
   late Future<Map> thaiNews, engNews;
 
   @override
@@ -29,7 +29,7 @@ class _selectnewState extends State<selectnew> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: Headerbar(
-          headerTitle: '${widget.category}',
+          headerTitle: widget.category,
         ),
         body: Center(
             child: Column(children: [

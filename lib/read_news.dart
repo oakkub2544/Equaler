@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import './components/header_bar.dart';
 
-class readnew extends StatefulWidget {
+class ReadNews extends StatefulWidget {
   final String imgUrl1;
   final String newsTitle1;
   final String newsDate1;
   final String newsDesc1;
   final String newsContent1;
 
-  readnew(
+  ReadNews(
       {this.imgUrl1 = "https://picsum.photos/seed/137/600",
       this.newsTitle1 = "This is news title",
       this.newsDate1 = "This is news date",
@@ -17,10 +17,10 @@ class readnew extends StatefulWidget {
       this.newsDesc1 = "This is news description"});
 
   @override
-  State<readnew> createState() => _readnewState();
+  State<ReadNews> createState() => _ReadNewsState();
 }
 
-class _readnewState extends State<readnew> {
+class _ReadNewsState extends State<ReadNews> {
   final FlutterTts flutterTts = FlutterTts();
   final TextEditingController textEditingController = TextEditingController();
 
@@ -36,14 +36,14 @@ class _readnewState extends State<readnew> {
         appBar: Headerbar(
           headerTitle: 'Read News',
         ),
-        body: Container(child: LayoutBuilder(builder: (ctx, constraints) {
+        body: LayoutBuilder(builder: (ctx, constraints) {
           return SingleChildScrollView(
             child: Column(children: [
               Padding(
                 padding: const EdgeInsets.all(25.0),
                 child: Text(widget.newsTitle1,
-                    style:
-                        TextStyle(fontSize: 23, fontWeight: FontWeight.bold)),
+                    style: const TextStyle(
+                        fontSize: 23, fontWeight: FontWeight.bold)),
               ),
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
@@ -88,7 +88,7 @@ class _readnewState extends State<readnew> {
               ),
             ]),
           );
-        })));
+        }));
   }
 
   @override

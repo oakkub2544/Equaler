@@ -41,7 +41,7 @@ class _MyhomepageState extends State<Myhomepage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: Headerbar(),
-        drawer: Sidemenu(),
+        drawer: Menubar(),
         body: Center(
             child: Padding(
           padding: const EdgeInsets.only(top: 10.0),

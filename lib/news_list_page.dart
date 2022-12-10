@@ -81,10 +81,10 @@ class _NewsListPageState extends State<NewsListPage> {
   }
 
   Widget PageInputField(int totalResults, double boxWidthSize) {
+    //Filter for accepting input from the user is a positive integer
     return SizedBox(
       width: boxWidthSize,
       child: TextField(
-        //Filter for accepting input from the user is a positive integer
         textAlign: TextAlign.center,
         controller: pageInputController,
         decoration: InputDecoration(
@@ -164,11 +164,12 @@ class _NewsListPageState extends State<NewsListPage> {
                     )
                   ],
                 );
-              } else if (!snapshot.hasData) {
+              } else if (!snapshot.hasData) { //api has no data, display error
                 return ApiErrorMessage();
-              } else if (snapshot.data['results'].length == 0) {
+              } else if (snapshot.data['results'].length == 0) { //data from the api has a length 0, display No News Right Now
                 return EmptyNewsListMessage('No news right now');
               }
+               // By default, show a loading spinner.
               return LoadingIndicator();
             },
           ),

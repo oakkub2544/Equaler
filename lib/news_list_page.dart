@@ -8,10 +8,11 @@ import './components/api_error_message.dart';
 import './components/empty_news_list_message.dart';
 
 class NewsListPage extends StatefulWidget {
+//========================= Initial Constructor ===========================
   final String Header_Title;
   final List<String> Parameter;
   NewsListPage({this.Header_Title = "Equaler", required this.Parameter});
-
+//=========================================================================
   @override
   State<NewsListPage> createState() => _NewsListPageState();
 }
@@ -19,7 +20,7 @@ class NewsListPage extends StatefulWidget {
 class _NewsListPageState extends State<NewsListPage> {
   late Future<Map> newsData;
   int pageNum = 0;
-  final pageInputController = TextEditingController();
+  final pageInputController = TextEditingController(); //For getting input of the page number that the user wants to go to
 
   @override
   void initState() {
@@ -28,20 +29,22 @@ class _NewsListPageState extends State<NewsListPage> {
   }
 
   void changePage(int inputPage) {
+    //Function for change page in list news
     setState(() {
-      widget.Parameter.last = "Page=$inputPage";
-      newsData = apiHandler.getNews(widget.Parameter);
+      widget.Parameter.last = "Page=$inputPage"; //Variable to getting inputPage from user
+      newsData = apiHandler.getNews(widget.Parameter); //Get data from $inputPage passed to api
     });
   }
 
   Widget LeftButton(double boxWidthSize) {
+    //Going to previous page
     return pageNum == 0
         ? SizedBox(
             width: boxWidthSize,
           )
         : TextButton(
-            onPressed: () {
-              if (pageNum > 0) {
+            onPressed: () { //Minus page number and going to previous page
+              if (pageNum > 0) { 
                 setState(() {
                   pageNum--;
                   changePage(pageNum);
@@ -57,12 +60,13 @@ class _NewsListPageState extends State<NewsListPage> {
   }
 
   Widget RightButton(int? nextPage, double boxWidthSize) {
+    //Going to next page
     return nextPage == null
         ? SizedBox(
             width: boxWidthSize,
           )
         : TextButton(
-            onPressed: () {
+            onPressed: () { //Plus page number and going to next page
               setState(() {
                 pageNum++;
                 changePage(pageNum);
@@ -80,6 +84,7 @@ class _NewsListPageState extends State<NewsListPage> {
     return SizedBox(
       width: boxWidthSize,
       child: TextField(
+        //Filter for accepting input from the user is a positive integer
         textAlign: TextAlign.center,
         controller: pageInputController,
         decoration: InputDecoration(
@@ -109,20 +114,20 @@ class _NewsListPageState extends State<NewsListPage> {
         ),
         body: Center(
           child: FutureBuilder<dynamic>(
-            future: newsData,
+            future: newsData, //Set newsData to future type
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                //waiting api, display loading animation
+                //waiting api and display loading animation
                 return LoadingIndicator();
               } else if (snapshot.hasData &&
                   snapshot.data['results'].length != 0) {
-                //api has data
+                //If api has data, display News card
                 return CustomScrollView(
                   slivers: [
                     SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
-                          return NewsCard(
+                          return NewsCard( //Send constructor and display Newscard
                             imgUrl: snapshot.data['results'][index]
                                 ['image_url'],
                             newsTitle: snapshot.data['results'][index]['title'],
@@ -136,6 +141,7 @@ class _NewsListPageState extends State<NewsListPage> {
                       ),
                     ),
                     SliverList(
+                      //Display navigator page
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
                           return Padding(
@@ -171,4 +177,5 @@ class _NewsListPageState extends State<NewsListPage> {
 
   @override
   Size get preferredSize => Size.fromHeight(60);
+  //Custom appbar with the same height, width
 }

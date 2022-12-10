@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 
 class Headerbar extends StatelessWidget with PreferredSizeWidget {
+//=================== Initial Constructor ======================
+
   final String headerTitle;
   Headerbar({this.headerTitle = 'Equaler'});
+//==============================================================
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -20,9 +24,9 @@ class Headerbar extends StatelessWidget with PreferredSizeWidget {
               child: IconButton(
                 icon: Image.asset('asset/logo/logoapp.png'),
                 iconSize: 30,
-                onPressed: () {
+                onPressed: () { //When you pressed on the logo, will go to the main page
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MyApp()));
+                      MaterialPageRoute(builder: (context) => MyApp())); //Go to main page
                 }, //Pressed icon to go main page
               )),
         ],
@@ -31,5 +35,6 @@ class Headerbar extends StatelessWidget with PreferredSizeWidget {
   }
 
   @override
+  //Custom appbar with the same height, width
   Size get preferredSize => Size.fromHeight(60);
 }

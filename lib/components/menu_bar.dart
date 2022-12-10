@@ -39,11 +39,11 @@ class Menubar extends StatelessWidget {
               ),
             ),
             Menu(menuTitle: 'Category', isCategoryPage: true),
-            Menu(
+            Menu( //Send constructor to Menu class for get only Thai news data
                 menuTitle: 'Thai News',
                 parameter: ["country=th", "language=th", "Page=0"],
                 isCategoryPage: false),
-            Menu(
+            Menu( //Send constructor to Menu class for get only English news data
                 menuTitle: 'English News',
                 parameter: ["country=gb,us", "language=en", "Page=0"],
                 isCategoryPage: false),

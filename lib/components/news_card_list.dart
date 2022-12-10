@@ -57,9 +57,9 @@ class NewsCardList extends StatelessWidget {
                           newsDesc: snapshot.data['results'][index]
                               ['description']);
                     });
-          } else if (!snapshot.hasData) {//api has no data display error
+          } else if (!snapshot.hasData) {//api has no data, display error
             return ApiErrorMessage();
-          } else if (snapshot.data['results'].length == 0) {//data from the api has a length 0 display no Popular News
+          } else if (snapshot.data['results'].length == 0) {//data from the api has a length 0, display no Popular News
             return EmptyNewsListMessage("No News Right Now");
           }
           // By default, show a loading spinner.

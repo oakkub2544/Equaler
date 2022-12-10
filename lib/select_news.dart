@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/components/news_card_list.dart';
 import './api_handler.dart';
+import './components/news_card_list.dart';
 import './components/header_bar.dart';
 import './components/more_news_section_title.dart';
 

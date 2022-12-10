@@ -48,7 +48,7 @@ class _NewsListPageState extends State<NewsListPage> {
                 });
               }
             },
-            child: Icon(
+            child: const Icon(
               Icons.arrow_back_ios_new_rounded,
               color: Color.fromRGBO(50, 48, 45, 1),
               size: 20,
@@ -68,7 +68,7 @@ class _NewsListPageState extends State<NewsListPage> {
                 changePage(pageNum);
               });
             },
-            child: Icon(
+            child: const Icon(
               Icons.arrow_forward_ios_rounded,
               color: Color.fromRGBO(50, 48, 45, 1),
               size: 20,

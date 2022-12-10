@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/components/menu.dart';
+import '../components/menu.dart';
 
 class Menubar extends StatelessWidget {
   @override
@@ -40,11 +40,11 @@ class Menubar extends StatelessWidget {
             Menu(menuTitle: 'Category', isCategoryPage: true),
             Menu(
                 menuTitle: 'Thai News',
-                parameter: ["country=th", "language=th", "Page=0"],
+                parameter: const ["country=th", "language=th", "Page=0"],
                 isCategoryPage: false),
             Menu(
                 menuTitle: 'English News',
-                parameter: ["country=gb,us", "language=en", "Page=0"],
+                parameter: const ["country=gb,us", "language=en", "Page=0"],
                 isCategoryPage: false),
           ],
         ),

@@ -63,5 +63,6 @@ class _SelectNewsState extends State<SelectNews> {
   }
 
   @override
+  //Custom appbar with the same height, width
   Size get preferredSize => Size.fromHeight(60);
 }

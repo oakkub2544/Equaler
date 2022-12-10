@@ -24,10 +24,10 @@ class Headerbar extends StatelessWidget with PreferredSizeWidget {
               child: IconButton(
                 icon: Image.asset('asset/logo/logoapp.png'),
                 iconSize: 30,
-                onPressed: () { //When you pressed on the logo, will go to the main page
+                onPressed: () { //When you pressed on the logo will go to the main page
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => MyApp())); //Go to main page
-                }, //Pressed icon to go main page
+                }, 
               )),
         ],
         iconTheme: const IconThemeData(color: Color.fromRGBO(50, 48, 45, 1)),

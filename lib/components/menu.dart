@@ -18,14 +18,14 @@ class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return isCategoryPage
-        ? ListTile(
+        ? ListTile( //If this part is navigate to select category page 
             title: Text(menuTitle.toUpperCase(),
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 )),
             onTap: () { //Go to SelectCategory
-              Navigator.push(
+              Navigator.push( 
                 context,
                 MaterialPageRoute(
                   builder: (context) => SelectCategory(),
@@ -33,7 +33,7 @@ class Menu extends StatelessWidget {
               );
             },
           )
-        : ListTile(
+        : ListTile(//If this part not navigate to select category page 
             title: Text(menuTitle.toUpperCase(),
                 style: const TextStyle(
                   fontSize: 16,

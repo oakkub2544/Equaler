@@ -7,14 +7,13 @@ class Headerbar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        title: Container(
-          child: Text(headerTitle,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color.fromRGBO(50, 48, 45, 1),
-              )),
-          width: 378,
-        ),
+        title: SizedBox(
+            width: 378,
+            child: Text(headerTitle,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Color.fromRGBO(50, 48, 45, 1),
+                ))),
         actions: [
           Transform.scale(
               scale: 1,
@@ -24,11 +23,11 @@ class Headerbar extends StatelessWidget with PreferredSizeWidget {
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => MyApp()));
-                },//Pressed icon to go main page
+                }, //Pressed icon to go main page
               )),
         ],
-        iconTheme: IconThemeData(color: Color.fromRGBO(50, 48, 45, 1)),
-        backgroundColor: Color.fromRGBO(246, 240, 235, 1));
+        iconTheme: const IconThemeData(color: Color.fromRGBO(50, 48, 45, 1)),
+        backgroundColor: const Color.fromRGBO(246, 240, 235, 1));
   }
 
   @override

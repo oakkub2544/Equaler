@@ -48,7 +48,7 @@ class _NewsListPageState extends State<NewsListPage> {
                 });
               }
             },
-            child: Icon(
+            child: const Icon(
               Icons.arrow_back_ios_new_rounded,
               color: Color.fromRGBO(50, 48, 45, 1),
               size: 20,
@@ -68,12 +68,37 @@ class _NewsListPageState extends State<NewsListPage> {
                 changePage(pageNum);
               });
             },
-            child: Icon(
+            child: const Icon(
               Icons.arrow_forward_ios_rounded,
               color: Color.fromRGBO(50, 48, 45, 1),
               size: 20,
             ),
           );
+  }
+
+  Widget PageInputField(int totalResults, double boxWidthSize) {
+    return SizedBox(
+      width: boxWidthSize,
+      child: TextField(
+        textAlign: TextAlign.center,
+        controller: pageInputController,
+        decoration: InputDecoration(
+            border: OutlineInputBorder(), hintText: "${pageNum + 1}"),
+        keyboardType: TextInputType.number,
+        inputFormatters: [
+          FilteringTextInputFormatter.allow(RegExp(r'^[1-9][0-9]*'))
+        ],
+        onSubmitted: (_) => setState(() {
+          pageNum = int.parse(pageInputController.text) - 1;
+          int totalPage = (totalResults / 10).floor();
+          if (pageNum > totalPage) {
+            pageNum = totalPage;
+          }
+          pageInputController.clear();
+          changePage(pageNum);
+        }),
+      ),
+    );
   }
 
   @override
@@ -89,7 +114,8 @@ class _NewsListPageState extends State<NewsListPage> {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 //waiting api, display loading animation
                 return LoadingIndicator();
-              } else if (snapshot.hasData && snapshot.data['results'].length != 0) {
+              } else if (snapshot.hasData &&
+                  snapshot.data['results'].length != 0) {
                 //api has data
                 return CustomScrollView(
                   slivers: [
@@ -113,41 +139,14 @@ class _NewsListPageState extends State<NewsListPage> {
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
                           return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 15),
+                            padding: EdgeInsets.symmetric(vertical: 15),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 LeftButton(
                                     MediaQuery.of(context).size.width * 0.165),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.5,
-                                  child: TextField(
-                                    textAlign: TextAlign.center,
-                                    controller: pageInputController,
-                                    decoration: InputDecoration(
-                                        border: const OutlineInputBorder(),
-                                        hintText: "${pageNum + 1}"),
-                                    keyboardType: TextInputType.number,
-                                    inputFormatters: [
-                                      FilteringTextInputFormatter.allow(
-                                          RegExp(r'^[1-9][0-9]*'))
-                                    ],
-                                    onSubmitted: (_) => setState(() {
-                                      pageNum =
-                                          int.parse(pageInputController.text) -
-                                              1;
-                                      int totalPage =
-                                          (snapshot.data['totalResults'] / 10)
-                                              .floor();
-                                      if (pageNum > totalPage) {
-                                        pageNum = totalPage;
-                                      }
-                                      pageInputController.clear();
-                                      changePage(pageNum);
-                                    }),
-                                  ),
-                                ),
+                                PageInputField(snapshot.data['totalResults'],
+                                    MediaQuery.of(context).size.width * 0.5),
                                 RightButton(snapshot.data['nextPage'],
                                     MediaQuery.of(context).size.width * 0.165),
                               ],

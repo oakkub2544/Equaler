@@ -22,7 +22,7 @@ class BigNewsCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => readnew(
+            builder: (context) => ReadNews(
                 imgUrl1: imgUrl,
                 newsTitle1: newsTitle,
                 newsDate1: newsDate,
@@ -34,12 +34,12 @@ class BigNewsCard extends StatelessWidget {
       child: Container(
         width: MediaQuery.of(context).size.width * 0.9,
         height: MediaQuery.of(context).size.height * 0.21,
-        margin: EdgeInsets.symmetric(vertical: 5),
+        margin: const EdgeInsets.symmetric(vertical: 5),
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
-          color: Color.fromRGBO(246, 240, 235, 1),
+          color: const Color.fromRGBO(246, 240, 235, 1),
           child: LayoutBuilder(builder: (ctx, constraints) {
             return Padding(
               padding: const EdgeInsets.all(10.0),
@@ -63,13 +63,13 @@ class BigNewsCard extends StatelessWidget {
                         Text(newsDate),
                         Text(
                           newsTitle,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                         ),
                         Row(
-                          children: [
+                          children: const [
                             Text(
                               "Read More",
                               style: TextStyle(

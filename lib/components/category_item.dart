@@ -15,32 +15,31 @@ class CategoryItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => selectnew(category: categoryTitle),
+            builder: (context) => SelectNews(category: categoryTitle),
           ),
         )
       },
       borderRadius: BorderRadius.circular(15),
-      splashColor: Color.fromRGBO(246, 240, 235, 1),
+      splashColor: const Color.fromRGBO(246, 240, 235, 1),
       child: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Icon(iconTitle,
-                  size: 30, color: Color.fromRGBO(246, 240, 235, 1)),
-            ),
-            Text(
-              categoryTitle,
-              style: TextStyle(color: Color.fromRGBO(246, 240, 235, 1)),
-            ),
-          ],
-        ),
-        padding: EdgeInsets.all(15),
-        decoration: BoxDecoration(
-            color: Color.fromRGBO(100, 93, 83, 1),
-            borderRadius: BorderRadius.circular(15)),
-      ),
+          padding: const EdgeInsets.all(15),
+          decoration: BoxDecoration(
+              color: const Color.fromRGBO(100, 93, 83, 1),
+              borderRadius: BorderRadius.circular(15)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Icon(iconTitle,
+                    size: 30, color: const Color.fromRGBO(246, 240, 235, 1)),
+              ),
+              Text(
+                categoryTitle,
+                style: const TextStyle(color: Color.fromRGBO(246, 240, 235, 1)),
+              ),
+            ],
+          )),
     );
   }
 }

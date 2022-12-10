@@ -6,7 +6,7 @@ class LoadingIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
         child: LoadingAnimationWidget.inkDrop(
-      color: Color.fromRGBO(100, 93, 83, 1),
+      color: const Color.fromRGBO(100, 93, 83, 1),
       size: 50,
     ));
   }

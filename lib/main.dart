@@ -14,8 +14,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "My App",
       home: Myhomepage(),
-      theme:
-          ThemeData(scaffoldBackgroundColor: Color.fromRGBO(246, 240, 235, 1)),
+      theme: ThemeData(
+        scaffoldBackgroundColor: const Color.fromRGBO(246, 240, 235, 1),
+      ),
     );
   }
 }
@@ -40,7 +41,7 @@ class _MyhomepageState extends State<Myhomepage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: Headerbar(),
-        drawer: Sidemenu(),
+        drawer: Menubar(),
         body: Center(
             child: Padding(
           padding: const EdgeInsets.only(top: 10.0),

@@ -4,9 +4,9 @@ class ApiErrorMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children: const [
         Padding(
-          padding: const EdgeInsets.only(top: 60),
+          padding: EdgeInsets.only(top: 60),
           child: Icon(
             Icons.local_shipping_rounded,
             color: Color.fromRGBO(100, 93, 83, 1),

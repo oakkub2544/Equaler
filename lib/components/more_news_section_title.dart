@@ -16,7 +16,7 @@ class MoreNewsSectionTitle extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0),
       child: InkWell(
-          onTap: () { //Go to NewsListPage
+          onTap: () { //Go to NewsListPage in Thai/Eng language
             Navigator.push(
               context,
               MaterialPageRoute(

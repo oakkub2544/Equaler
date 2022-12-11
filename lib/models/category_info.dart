@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CategoryInfo {
+//Categorize all available news in the api
   static const List<String> allCategoryName = [
     'Business',
     'Entertainment',

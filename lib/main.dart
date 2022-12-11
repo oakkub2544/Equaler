@@ -56,7 +56,7 @@ class _MyhomepageState extends State<Myhomepage> {
               SectionTitle(title: "Suggestion"),
               NewsCardList(
                 //Display Suggestion News by send constructor and call function NewsCardList
-                newsData: popData,
+                newsData: newsData,
                 listHeight: MediaQuery.of(context).size.height * 0.23, //responsive design from screen
                 isBigCard: true,
               ),

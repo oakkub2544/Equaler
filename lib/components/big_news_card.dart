@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../read_news.dart';
+import '../screens/read_news.dart';
 
 class BigNewsCard extends StatelessWidget {
 //Card for suggestion news
@@ -29,11 +29,11 @@ class BigNewsCard extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => ReadNews(
                 //Constructor for send to ReadNews page
-                imgUrl1: imgUrl,
-                newsTitle1: newsTitle,
-                newsDate1: newsDate,
-                newsContent1: newsContent,
-                newsDesc1: newsDesc),
+                imgUrl: imgUrl,
+                newsTitle: newsTitle,
+                newsDate: newsDate,
+                newsContent: newsContent,
+                newsDesc: newsDesc),
           ),
         )
       },

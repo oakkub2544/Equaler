@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../select_news.dart';
+import '../screens/select_news.dart';
 
 class CategoryItem extends StatelessWidget {
 //========================= Initial Constructor ================================

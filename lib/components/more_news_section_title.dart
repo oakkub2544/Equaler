@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './section_title.dart';
-import '../news_list_page.dart';
+import '../screens/news_list_page.dart';
 
 class MoreNewsSectionTitle extends StatelessWidget {
 //================== Initial Constructor =======================
@@ -16,13 +16,15 @@ class MoreNewsSectionTitle extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0),
       child: InkWell(
-          onTap: () { //Go to NewsListPage
+          onTap: () {
+            //Go to NewsListPage
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => NewsListPage(//Send constructor to NewsListPage
-                  Header_Title: title,
-                  Parameter: parameter,
+                builder: (context) => NewsListPage(
+                  //Send constructor to NewsListPage
+                  headerTitle: title,
+                  parameter: parameter,
                 ),
               ),
             );

@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 class SectionTitle extends StatelessWidget {
 //Title for Suggest news and Popular news
 //================== Initial Constructor =======================
-
   final String title;
-
   SectionTitle({this.title = "This is title"});
   //==============================================================
 

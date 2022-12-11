@@ -1,18 +1,13 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
-import '../read_news.dart';
+import '../screens/read_news.dart';
 
 class NewsCard extends StatelessWidget {
 //========================= Initial Constructor ================================
-
   final String imgUrl;
-
   final String newsTitle;
-
   final String newsDate;
-
   final String newsDesc;
-
   final String newsContent;
 
   NewsCard(
@@ -33,11 +28,11 @@ class NewsCard extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => ReadNews(
                 //Send constructor to readnews page
-                imgUrl1: imgUrl,
-                newsTitle1: newsTitle,
-                newsDate1: newsDate,
-                newsContent1: newsContent,
-                newsDesc1: newsDesc),
+                imgUrl: imgUrl,
+                newsTitle: newsTitle,
+                newsDate: newsDate,
+                newsContent: newsContent,
+                newsDesc: newsDesc),
           ),
         );
       },

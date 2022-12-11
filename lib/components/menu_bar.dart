@@ -26,7 +26,7 @@ class Menubar extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: Text(
-                        'Equaler'.toUpperCase(),
+                        'Equaler News'.toUpperCase(),
                         textAlign: TextAlign.left,
                         style: const TextStyle(
                           color: Color.fromRGBO(50, 48, 45, 1),

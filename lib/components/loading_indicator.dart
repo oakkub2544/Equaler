@@ -5,10 +5,9 @@ class LoadingIndicator extends StatelessWidget {
   //Class for loading animation widget
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: LoadingAnimationWidget.inkDrop(
+    return LoadingAnimationWidget.inkDrop(
       color: const Color.fromRGBO(100, 93, 83, 1),
       size: 50,
-    ));
+    );
   }
 }

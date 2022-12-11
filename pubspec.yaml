@@ -29,8 +29,6 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  loading_animation_widget:
-  dio: ^4.0.6
   flutter:
     sdk: flutter
 
@@ -38,12 +36,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  flutter_launcher_icons: ^0.10.0
+  loading_animation_widget: ^1.2.0+3
   flutter_tts: ^3.6.2
 
-flutter_icons:
-  andriod: true
-  image_path: "image/velovela_fashion_brand_art_design_logo.png"  
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +51,8 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   http: ^0.13.5
   flutter_tts: ^3.6.2
+  flutter_launcher_icons: "^0.11.0"
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

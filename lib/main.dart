@@ -6,18 +6,21 @@ import './components/header_bar.dart';
 import './components/menu_bar.dart';
 import './components/news_card_list.dart';
 import './components/section_title.dart';
+import 'package:flutter/services.dart';
 
 void main() {
-  // This section is for running apps only on vertical pages
+
+// This section is for running apps only on vertical pages
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((value) => runApp(MyApp())); 
+      .then((value) => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "My App",
       home: Myhomepage(),
       theme: ThemeData(
@@ -33,14 +36,16 @@ class Myhomepage extends StatefulWidget {
 }
 
 class _MyhomepageState extends State<Myhomepage> {
-  late Future<Map> newsData, popData; //Initial variable to receive data from api
+  late Future<Map> newData, popData; //Initial variable to receive data from api
 
   @override
   void initState() { //Method that is called when an object for stateful widget
     super.initState();
+
     //Get news from apiHandler
-    newsData = apiHandler.getNews(["country=th,gb,us", "language=en,th"]); 
-    popData = apiHandler.getNews(["country=th,gb,us", "language=en,th", "category=top"]); 
+    newData = apiHandler.getNews(["country=th,gb,us", "language=en,th"]);
+    popData = apiHandler
+        .getNews(["country=th,gb,us", "language=en,th", "category=top"]);
   }
 
   @override
@@ -56,8 +61,8 @@ class _MyhomepageState extends State<Myhomepage> {
               SectionTitle(title: "Suggestion"),
               NewsCardList(
                 //Display Suggestion News by send constructor and call function NewsCardList
-                newsData: newsData,
-                listHeight: MediaQuery.of(context).size.height * 0.23, //responsive design from screen
+                newsData: newData,
+                listHeight: MediaQuery.of(context).size.height * 0.23,
                 isBigCard: true,
               ),
               SectionTitle(title: "Popular Today"),

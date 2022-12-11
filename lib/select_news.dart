@@ -25,7 +25,6 @@ class _SelectNewsState extends State<SelectNews> {
         .getNews(["country=th", "language=th", "category=${widget.category}"]);
     engNews = apiHandler.getNews(
         ["country=us,gb", "language=en", "category=${widget.category}"]);
-    // TODO: implement initState
   }
 
   Widget build(BuildContext context) {

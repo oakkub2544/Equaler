@@ -42,7 +42,7 @@ class _ReadNewsState extends State<ReadNews> {
         ),
         body: LayoutBuilder(builder: (ctx, constraints) {
           return SingleChildScrollView(
-            //Display news image, date and content
+             //Displays news images, dates and news content vertically
             child: Column(children: [
               Padding(
                 padding: const EdgeInsets.all(25.0),

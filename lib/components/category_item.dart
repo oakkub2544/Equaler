@@ -26,6 +26,7 @@ class CategoryItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(15),
       splashColor: const Color.fromRGBO(246, 240, 235, 1),
       child: Container(
+        //Format the category box
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
               color: const Color.fromRGBO(100, 93, 83, 1),

@@ -5,6 +5,7 @@ import './components/header_bar.dart';
 import './components/more_news_section_title.dart';
 
 class SelectNews extends StatefulWidget {
+//Select a news from the news available in the list
 //================== Initial Constructor =======================
   final String category;
   @override

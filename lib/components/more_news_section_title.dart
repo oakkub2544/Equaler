@@ -27,7 +27,7 @@ class MoreNewsSectionTitle extends StatelessWidget {
               ),
             );
           },
-          child: SectionTitle(title: title)),
+          child: SectionTitle(title: title)), // call SectionTitle class
     );
   }
 }

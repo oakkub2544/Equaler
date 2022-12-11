@@ -19,6 +19,7 @@ class ApiErrorMessage extends StatelessWidget {
             style: TextStyle(height: 2, fontSize: 14)),
         Text('API Error',
             textAlign: TextAlign.center, style: TextStyle(fontSize: 20)),
+        //Display error text to user
       ],
     );
   }

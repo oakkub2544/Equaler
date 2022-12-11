@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../read_news.dart';
 
 class BigNewsCard extends StatelessWidget {
+//Create Big news card for Suggestion in main page
 //========================= Initial Constructor ============================
 
   final String imgUrl;
@@ -36,6 +37,7 @@ class BigNewsCard extends StatelessWidget {
         )
       },
       child: Container(
+        //big news card formatting
         width: MediaQuery.of(context).size.width * 0.9,
         height: MediaQuery.of(context).size.height * 0.21,
         margin: const EdgeInsets.symmetric(vertical: 5),

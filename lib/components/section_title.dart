@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SectionTitle extends StatelessWidget {
-//Thai or English title
+//Display Thai or English title in main
 //================== Initial Constructor =======================
 
   final String title;

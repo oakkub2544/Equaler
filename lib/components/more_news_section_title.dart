@@ -3,6 +3,7 @@ import './section_title.dart';
 import '../news_list_page.dart';
 
 class MoreNewsSectionTitle extends StatelessWidget {
+//Get parameters from select_news and go to NewsListPage
 //================== Initial Constructor =======================
 
   final String title;

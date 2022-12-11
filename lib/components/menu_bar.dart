@@ -13,7 +13,7 @@ class Menubar extends StatelessWidget {
           children: [
             SizedBox(
               height: 190.0,
-              child: DrawerHeader(
+              child: DrawerHeader( //header's menu bar
                 decoration: const BoxDecoration(
                   color: Color.fromRGBO(246, 240, 235, 1),
                 ),

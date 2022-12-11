@@ -6,6 +6,7 @@ class Menubar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      //Display list Items available in the menu
       child: Container(
         color: const Color.fromRGBO(246, 240, 235, 1),
         child: ListView(

@@ -22,6 +22,7 @@ class SelectCategory extends StatelessWidget{
         itemCount: 11,
         itemBuilder: (context, index) {
           return CategoryItem(
+            //Call CategoryItem class then go to select news page by sending the news category
             categoryTitle: CategoryInfo.allCategoryName[index],
             iconTitle: CategoryInfo.allCategoryIcon[index],
           );

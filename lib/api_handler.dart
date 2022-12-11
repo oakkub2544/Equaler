@@ -2,6 +2,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class apiHandler {
+  //Fetch data from api
   static List<dynamic> checkNull(List<dynamic> data) {
     //Check api image content and description
     for (var dat in data) {
@@ -39,6 +40,6 @@ class apiHandler {
       checkNull(jsonResponse['results']);
       return jsonResponse;
     }
-    throw Exception(response.reasonPhrase);
+    throw Exception(response.reasonPhrase); // thrown to convey information to the user about a failure that occurred 
   }
 }

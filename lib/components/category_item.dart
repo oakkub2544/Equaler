@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../select_news.dart';
 
 class CategoryItem extends StatelessWidget {
+//Gets data from CategoryItem and goes to SelectNews page by category
 //========================= Initial Constructor ================================
 
   final String categoryTitle;
@@ -14,7 +15,7 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => { //Go to selectnews  
+      onTap: () => { //Go to selectnews SelectNews by category
         Navigator.push(
           context,
           MaterialPageRoute(

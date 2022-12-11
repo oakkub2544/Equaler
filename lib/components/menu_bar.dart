@@ -25,7 +25,7 @@ class Menubar extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: Text(
-                        'Equaler'.toUpperCase(),
+                        'Equaler News'.toUpperCase(),
                         textAlign: TextAlign.left,
                         style: const TextStyle(
                           color: Color.fromRGBO(50, 48, 45, 1),
@@ -40,11 +40,11 @@ class Menubar extends StatelessWidget {
             Menu(menuTitle: 'Category', isCategoryPage: true),
             Menu(
                 menuTitle: 'Thai News',
-                parameter: const ["country=th", "language=th", "Page=0"],
+                parameter: ["country=th", "language=th", "Page=0"],
                 isCategoryPage: false),
             Menu(
                 menuTitle: 'English News',
-                parameter: const ["country=gb,us", "language=en", "Page=0"],
+                parameter: ["country=gb,us", "language=en", "Page=0"],
                 isCategoryPage: false),
           ],
         ),

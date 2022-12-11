@@ -5,13 +5,19 @@ import './components/header_bar.dart';
 import './components/menu_bar.dart';
 import './components/news_card_list.dart';
 import './components/section_title.dart';
+import 'package:flutter/services.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((value) => runApp(MyApp()));
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "My App",
       home: Myhomepage(),
       theme: ThemeData(
@@ -27,12 +33,12 @@ class Myhomepage extends StatefulWidget {
 }
 
 class _MyhomepageState extends State<Myhomepage> {
-  late Future<Map> newsData, popData;
+  late Future<Map> newData, popData;
 
   @override
   void initState() {
     super.initState();
-    newsData = apiHandler.getNews(["country=th,gb,us", "language=en,th"]);
+    newData = apiHandler.getNews(["country=th,gb,us", "language=en,th"]);
     popData = apiHandler
         .getNews(["country=th,gb,us", "language=en,th", "category=top"]);
   }
@@ -49,7 +55,7 @@ class _MyhomepageState extends State<Myhomepage> {
             children: [
               SectionTitle(title: "Suggestion"),
               NewsCardList(
-                newsData: popData,
+                newsData: newData,
                 listHeight: MediaQuery.of(context).size.height * 0.23,
                 isBigCard: true,
               ),

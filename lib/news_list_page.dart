@@ -8,6 +8,7 @@ import './components/api_error_message.dart';
 import './components/empty_news_list_message.dart';
 
 class NewsListPage extends StatefulWidget {
+//Display news list in this class and go to the next or previous page
 //========================= Initial Constructor ===========================
   final String Header_Title;
   final List<String> Parameter;
@@ -141,7 +142,7 @@ class _NewsListPageState extends State<NewsListPage> {
                       ),
                     ),
                     SliverList(
-                      //Display navigator page
+                      //Display navigator for go to the next or previous page
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
                           return Padding(

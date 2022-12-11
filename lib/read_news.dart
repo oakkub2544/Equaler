@@ -3,7 +3,7 @@ import 'package:flutter_tts/flutter_tts.dart';
 import './components/header_bar.dart';
 
 class ReadNews extends StatefulWidget {
-//Class for display and read news that sent from class news_card
+//Display and read news that sent from class news_card
 //================== Initial Constructor =======================
   final String imgUrl1;
   final String newsTitle1;

@@ -16,7 +16,7 @@ class NewsCardList extends StatelessWidget {
       required this.listHeight,
       required this.isBigCard});
 //==============================================================================
-  
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -31,10 +31,12 @@ class NewsCardList extends StatelessWidget {
             //If api has data display Big news card
             return isBigCard
                 ? ListView.builder(
-                    scrollDirection: Axis.horizontal,// Scroll direction of ListView is vertical
+                    scrollDirection: Axis
+                        .horizontal, // Scroll direction of ListView is vertical
                     itemCount: snapshot.data['results'].length,
                     itemBuilder: (context, index) {
-                      return BigNewsCard(//Display Big news card
+                      return BigNewsCard(
+                          //Display Big news card
                           //Send constructor to BigNewsCard
                           imgUrl: snapshot.data['results'][index]['image_url'],
                           newsTitle: snapshot.data['results'][index]['title'],
@@ -47,7 +49,8 @@ class NewsCardList extends StatelessWidget {
                 : ListView.builder(
                     itemCount: snapshot.data['results'].length,
                     itemBuilder: (context, index) {
-                      return NewsCard(//Display News card
+                      return NewsCard(
+                          //Display News card
                           //Send constructor to NewsCard
                           imgUrl: snapshot.data['results'][index]['image_url'],
                           newsTitle: snapshot.data['results'][index]['title'],
@@ -57,9 +60,11 @@ class NewsCardList extends StatelessWidget {
                           newsDesc: snapshot.data['results'][index]
                               ['description']);
                     });
-          } else if (!snapshot.hasData) {//api has no data, display error
+          } else if (!snapshot.hasData) {
+            //api has no data, display error
             return ApiErrorMessage();
-          } else if (snapshot.data['results'].length == 0) {//data from the api has a length 0, display No News Right Now
+          } else if (snapshot.data['results'].length == 0) {
+            //data from the api has a length 0, display No News Right Now
             return EmptyNewsListMessage("No News Right Now");
           }
           // By default, show a loading spinner.

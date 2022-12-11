@@ -20,7 +20,8 @@ class NewsListPage extends StatefulWidget {
 class _NewsListPageState extends State<NewsListPage> {
   late Future<Map> newsData;
   int pageNum = 0;
-  final pageInputController = TextEditingController(); //For getting input of the page number that the user wants to go to
+  final pageInputController =
+      TextEditingController(); //For getting input of the page number that the user wants to go to
 
   @override
   void initState() {
@@ -31,8 +32,10 @@ class _NewsListPageState extends State<NewsListPage> {
   void changePage(int inputPage) {
     //Function for change page in list news
     setState(() {
-      widget.Parameter.last = "Page=$inputPage"; //Variable to getting inputPage from user
-      newsData = apiHandler.getNews(widget.Parameter); //Get data from $inputPage passed to api
+      widget.Parameter.last =
+          "Page=$inputPage"; //Variable to getting inputPage from user
+      newsData = apiHandler
+          .getNews(widget.Parameter); //Get data from $inputPage passed to api
     });
   }
 
@@ -43,8 +46,9 @@ class _NewsListPageState extends State<NewsListPage> {
             width: boxWidthSize,
           )
         : TextButton(
-            onPressed: () { //Minus page number and going to previous page
-              if (pageNum > 0) { 
+            onPressed: () {
+              //Minus page number and going to previous page
+              if (pageNum > 0) {
                 setState(() {
                   pageNum--;
                   changePage(pageNum);
@@ -66,7 +70,8 @@ class _NewsListPageState extends State<NewsListPage> {
             width: boxWidthSize,
           )
         : TextButton(
-            onPressed: () { //Plus page number and going to next page
+            onPressed: () {
+              //Plus page number and going to next page
               setState(() {
                 pageNum++;
                 changePage(pageNum);
@@ -127,7 +132,8 @@ class _NewsListPageState extends State<NewsListPage> {
                     SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
-                          return NewsCard( //Send constructor and display Newscard
+                          return NewsCard(
+                            //Send constructor and display Newscard
                             imgUrl: snapshot.data['results'][index]
                                 ['image_url'],
                             newsTitle: snapshot.data['results'][index]['title'],
@@ -164,12 +170,14 @@ class _NewsListPageState extends State<NewsListPage> {
                     )
                   ],
                 );
-              } else if (!snapshot.hasData) { //api has no data, display error
+              } else if (!snapshot.hasData) {
+                //api has no data, display error
                 return ApiErrorMessage();
-              } else if (snapshot.data['results'].length == 0) { //data from the api has a length 0, display No News Right Now
+              } else if (snapshot.data['results'].length == 0) {
+                //data from the api has a length 0, display No News Right Now
                 return EmptyNewsListMessage('No news right now');
               }
-               // By default, show a loading spinner.
+              // By default, show a loading spinner.
               return LoadingIndicator();
             },
           ),

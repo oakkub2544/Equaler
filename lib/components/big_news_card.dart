@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../read_news.dart';
 
 class BigNewsCard extends StatelessWidget {
+//Card for suggestion news
 //========================= Initial Constructor ============================
 
   final String imgUrl;
@@ -17,15 +18,17 @@ class BigNewsCard extends StatelessWidget {
       this.newsContent = "This is news content",
       this.newsDesc = "This is news description"});
 //==========================================================================
-  
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => {   //Go to ReadNews and send constructor ReadNews page
+      onTap: () => {
+        //Go to ReadNews page and send information via constructor function
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ReadNews(//Constructor for send to ReadNews page
+            builder: (context) => ReadNews(
+                //Constructor for send to ReadNews page
                 imgUrl1: imgUrl,
                 newsTitle1: newsTitle,
                 newsDate1: newsDate,
@@ -38,7 +41,8 @@ class BigNewsCard extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.9,
         height: MediaQuery.of(context).size.height * 0.21,
         margin: const EdgeInsets.symmetric(vertical: 5),
-        child: Card( //Create Big news card
+        child: Card(
+          //Create Big news card
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),

@@ -14,11 +14,12 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => { //Go to selectnews  
+      onTap: () => {
+        //Go to SelectNews page and send information via constructor function
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => SelectNews(category: categoryTitle), //send constructor to selectnews page
+            builder: (context) => SelectNews(category: categoryTitle),
           ),
         )
       },

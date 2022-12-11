@@ -16,6 +16,7 @@ class CategoryInfo {
     'World'
   ];
   static const List<IconData> allCategoryIcon = [
+   //All icons used in apps will be call from this class.
     Icons.business_center_rounded,
     Icons.auto_awesome_rounded,
     Icons.brightness_7_rounded,

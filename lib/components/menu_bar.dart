@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import '../components/menu.dart';
 
 class Menubar extends StatelessWidget {
+  //Create a CustomSidebar on top left that will trigger a navigation operation when tapped
   @override
   Widget build(BuildContext context) {
     return Drawer(
-     //Create a CustomSidebar on top left that will trigger a navigation operation when tapped
       child: Container(
         color: const Color.fromRGBO(246, 240, 235, 1),
         child: ListView(
@@ -19,7 +19,7 @@ class Menubar extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      ('asset/logo/logoapp.png'),
+                      ('asset/logo/logoapp.png'), //Logo app
                       height: 40,
                       width: 40,
                     ),

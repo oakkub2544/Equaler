@@ -13,6 +13,7 @@ class SelectCategory extends StatelessWidget{
       ),
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          //Creates grid layouts with tiles that each have a maximum cross-axis extent
           maxCrossAxisExtent: 200,
           childAspectRatio: 3 / 3,
           crossAxisSpacing: 20,

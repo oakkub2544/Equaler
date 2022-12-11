@@ -3,7 +3,7 @@ import 'package:flutter_tts/flutter_tts.dart';
 import './components/header_bar.dart';
 
 class ReadNews extends StatefulWidget {
-//Class for display news that passed sent from class news_card
+//Class for display and read news that sent from class news_card
 //================== Initial Constructor =======================
   final String imgUrl1;
   final String newsTitle1;
@@ -52,7 +52,7 @@ class _ReadNewsState extends State<ReadNews> {
               ),
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: Image.network(
+                child: Image.network( //Display news iamge
                   widget.imgUrl1,
                   width: constraints.maxWidth * 0.9,
                   height: constraints.maxHeight * 0.30,
@@ -60,6 +60,7 @@ class _ReadNewsState extends State<ReadNews> {
                 ),
               ),
               Padding(
+                //Format the text of the news 
                 padding: const EdgeInsets.only(
                     left: 20, right: 20, top: 20, bottom: 10),
                 child: Align(
@@ -73,12 +74,12 @@ class _ReadNewsState extends State<ReadNews> {
                       padding: const EdgeInsets.all(15.0),
                       child: Column(
                         children: [
-                          Text(widget.newsDate1,
+                          Text(widget.newsDate1, //Display news date
                               style: const TextStyle(fontSize: 15)),
                           GestureDetector(
                             child: Text(
                               textAlign: TextAlign.justify,
-                              widget.newsContent1,
+                              widget.newsContent1, //Display news content
                               style: const TextStyle(fontSize: 18),
                             ),
                             onDoubleTap: () {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class EmptyNewsListMessage extends StatelessWidget {
+//Return errorText if api has a news content length 0
 //=================== Initial Constructor ======================
 
   final String errorText;
@@ -20,7 +21,7 @@ class EmptyNewsListMessage extends StatelessWidget {
             size: 50.0,
           ),
         ),
-        Text(errorText,
+        Text(errorText, //Display error text
             textAlign: TextAlign.center,
             style: const TextStyle(height: 2, fontSize: 16)),
       ],

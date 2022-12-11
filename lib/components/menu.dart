@@ -3,6 +3,7 @@ import '../news_list_page.dart';
 import '../select_category.dart';
 
 class Menu extends StatelessWidget {
+//Get parameter from menu_bar and go to Category/Thai/English page
 //================== Initial Constructor =======================
 
   final String menuTitle;

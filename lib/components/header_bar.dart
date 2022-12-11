@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import '../main.dart';
 
+//displays the toolbar widgets, leading, title, and actions above
 class Headerbar extends StatelessWidget with PreferredSizeWidget {
-//Displays the toolbar widgets, leading, title, and actions above 
 //=================== Initial Constructor ======================
 
   final String headerTitle;
   Headerbar({this.headerTitle = 'Equaler'});
+
 //==============================================================
 
   @override
@@ -22,13 +23,15 @@ class Headerbar extends StatelessWidget with PreferredSizeWidget {
         actions: [
           Transform.scale(
               scale: 1,
+              //application logo
               child: IconButton(
-                icon: Image.asset('asset/logo/logoapp.png'), //Logo app
+                icon: Image.asset('asset/logo/logoapp.png'),
                 iconSize: 30,
-                onPressed: () { //When you pressed on the logo will go to the main page
+                onPressed: () {
+                  //Navigate to HomePage when you pressed the logo
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MyApp())); //Go to main page
-                }, 
+                      MaterialPageRoute(builder: (context) => Equaler()));
+                },
               )),
         ],
         iconTheme: const IconThemeData(color: Color.fromRGBO(50, 48, 45, 1)),
@@ -36,6 +39,6 @@ class Headerbar extends StatelessWidget with PreferredSizeWidget {
   }
 
   @override
-  //Custom appbar with the same height, width
+  //custom appbar with the same height
   Size get preferredSize => Size.fromHeight(60);
 }

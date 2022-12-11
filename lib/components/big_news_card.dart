@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../read_news.dart';
+import '../screens/read_news.dart';
 
+//card for suggestion news
 class BigNewsCard extends StatelessWidget {
-//Create Big news card for Suggestion in main page
 //========================= Initial Constructor ============================
 
   final String imgUrl;
@@ -17,31 +17,33 @@ class BigNewsCard extends StatelessWidget {
       this.newsDate = "This is news date",
       this.newsContent = "This is news content",
       this.newsDesc = "This is news description"});
-  
+
 //==========================================================================
-  
+
   @override
   Widget build(BuildContext context) {
+    //go to ReadNews page and send information via constructor function
     return GestureDetector(
-      onTap: () => {   //Go to ReadNews and send constructor ReadNews page
+      onTap: () => {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ReadNews(//Constructor for send to ReadNews page
-                imgUrl1: imgUrl,
-                newsTitle1: newsTitle,
-                newsDate1: newsDate,
-                newsContent1: newsContent,
-                newsDesc1: newsDesc),
+            builder: (context) => ReadNews(
+                imgUrl: imgUrl,
+                newsTitle: newsTitle,
+                newsDate: newsDate,
+                newsContent: newsContent,
+                newsDesc: newsDesc),
           ),
         )
       },
-      child: Container(
-        //Create and formate Big news card
+      child:
+          //create and formate Big news card
+          Container(
+        //responsive design from screen size
         width: MediaQuery.of(context).size.width * 0.9,
         height: MediaQuery.of(context).size.height * 0.21,
         margin: const EdgeInsets.symmetric(vertical: 5),
-        //responsive design from screen
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
@@ -52,24 +54,28 @@ class BigNewsCard extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: Column(
                 children: [
+                  //news image
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.network(
-                      imgUrl, //Display news image
+                      imgUrl,
                       width: constraints.maxWidth,
                       height: constraints.maxHeight * 0.436,
                       fit: BoxFit.fitWidth,
                     ),
                   ),
+                  //info
                   Padding(
                     padding: const EdgeInsets.only(left: 7, top: 7),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text(newsDate), //Display news date
+                        //display news date
+                        Text(newsDate),
+                        //display news title
                         Text(
-                          newsTitle, //Display news title
+                          newsTitle,
                           style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                           overflow: TextOverflow.ellipsis,

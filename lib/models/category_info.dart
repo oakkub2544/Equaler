@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
+//class that store info about category
 class CategoryInfo {
-//Categorize all available news in the api
+  //all category available in the api
   static const List<String> allCategoryName = [
     'Business',
     'Entertainment',
@@ -15,8 +16,8 @@ class CategoryInfo {
     'Top',
     'World'
   ];
+  //all icons we will used with category
   static const List<IconData> allCategoryIcon = [
-   //All icons used in apps will be call from this class.
     Icons.business_center_rounded,
     Icons.auto_awesome_rounded,
     Icons.brightness_7_rounded,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 
 class Headerbar extends StatelessWidget with PreferredSizeWidget {
+//Displays the toolbar widgets, leading, title, and actions above 
 //=================== Initial Constructor ======================
 
   final String headerTitle;
@@ -22,7 +23,7 @@ class Headerbar extends StatelessWidget with PreferredSizeWidget {
           Transform.scale(
               scale: 1,
               child: IconButton(
-                icon: Image.asset('asset/logo/logoapp.png'),
+                icon: Image.asset('asset/logo/logoapp.png'), //Logo app
                 iconSize: 30,
                 onPressed: () { //When you pressed on the logo will go to the main page
                   Navigator.push(context,

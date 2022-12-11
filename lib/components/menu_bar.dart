@@ -1,29 +1,32 @@
 import 'package:flutter/material.dart';
 import '../components/menu.dart';
 
+//a material design panel that slides in horizontally from the edge to show navigation links in an application
 class Menubar extends StatelessWidget {
-  //Create a CustomSidebar on top left that will trigger a navigation operation when tapped
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      //Display list Items available in the menu
       child: Container(
         color: const Color.fromRGBO(246, 240, 235, 1),
         child: ListView(
           children: [
             SizedBox(
               height: 190.0,
-              child: DrawerHeader( //header's menu bar
+              child:
+                  //Menubar's header
+                  DrawerHeader(
                 decoration: const BoxDecoration(
                   color: Color.fromRGBO(246, 240, 235, 1),
                 ),
                 child: Row(
                   children: [
+                    //header's logo app
                     Image.asset(
-                      ('asset/logo/logoapp.png'), //Logo app
+                      ('asset/logo/logoapp.png'),
                       height: 40,
                       width: 40,
                     ),
+                    //header's title
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: Text(
@@ -39,12 +42,17 @@ class Menubar extends StatelessWidget {
                 ),
               ),
             ),
+            //menu in Menubar that navigate to SelectCategory page
             Menu(menuTitle: 'Category', isCategoryPage: true),
-            Menu( //Send constructor to Menu class for get only Thai news data
+            //menu in Menubar that navigate to NewsListPage page with only thai news
+            Menu(
+                //send constructor to Menu class to get only Thai news data
                 menuTitle: 'Thai News',
                 parameter: ["country=th", "language=th", "Page=0"],
                 isCategoryPage: false),
-            Menu( //Send constructor to Menu class for get only English news data
+            //menu in Menubar that navigate to NewsListPage page with only english news
+            Menu(
+                //send constructor to Menu class to get only English news data
                 menuTitle: 'English News',
                 parameter: ["country=gb,us", "language=en", "Page=0"],
                 isCategoryPage: false),

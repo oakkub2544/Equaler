@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
 
+//component that display errorText if api send back empty news content
 class EmptyNewsListMessage extends StatelessWidget {
-//Return errorText if api has a news content length 0
 //=================== Initial Constructor ======================
 
   final String errorText;
-
   EmptyNewsListMessage(this.errorText);
+
 //==============================================================
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        //icon for empty content
         const Padding(
           padding: EdgeInsets.only(top: 60),
           child: Icon(
-            Icons.local_play_outlined, //Icons for empty content
+            Icons.local_play_outlined,
             color: Color.fromRGBO(100, 93, 83, 1),
             size: 50.0,
           ),
         ),
-        Text(errorText, //Display error text
+        //error text
+        Text(errorText,
             textAlign: TextAlign.center,
             style: const TextStyle(height: 2, fontSize: 16)),
       ],

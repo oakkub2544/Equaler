@@ -3,6 +3,8 @@ import 'package:flutter_tts/flutter_tts.dart';
 import './components/header_bar.dart';
 
 class ReadNews extends StatefulWidget {
+//Class for display news that passed sent from class news_card
+//================== Initial Constructor =======================
   final String imgUrl1;
   final String newsTitle1;
   final String newsDate1;
@@ -15,16 +17,18 @@ class ReadNews extends StatefulWidget {
       this.newsDate1 = "This is news date",
       this.newsContent1 = "This is news content",
       this.newsDesc1 = "This is news description"});
-
+//==============================================================
+  
   @override
   State<ReadNews> createState() => _ReadNewsState();
 }
 
 class _ReadNewsState extends State<ReadNews> {
-  final FlutterTts flutterTts = FlutterTts();
+  final FlutterTts flutterTts = FlutterTts(); //Instantiate FlutterTts
   final TextEditingController textEditingController = TextEditingController();
 
   speak(String text) async {
+    //Setting Text to Speech
     await flutterTts.setLanguage("en-US");
     await flutterTts.setPitch(1);
     await flutterTts.speak(text);
@@ -38,6 +42,7 @@ class _ReadNewsState extends State<ReadNews> {
         ),
         body: LayoutBuilder(builder: (ctx, constraints) {
           return SingleChildScrollView(
+            //Display news image, date and content
             child: Column(children: [
               Padding(
                 padding: const EdgeInsets.all(25.0),
@@ -77,6 +82,7 @@ class _ReadNewsState extends State<ReadNews> {
                               style: const TextStyle(fontSize: 18),
                             ),
                             onDoubleTap: () {
+                              //When user double tap on Text, speak news content
                               speak(widget.newsContent1);
                             },
                           )
@@ -95,9 +101,10 @@ class _ReadNewsState extends State<ReadNews> {
   void dispose() {
     //dispose will active when the last widget disappears from screen
     super.dispose();
-    flutterTts.stop();
+    flutterTts.stop(); //Stop text to speech when user leave from read news page
   }
 
   @override
+  //Custom appbar with the same height, width
   Size get preferredSize => Size.fromHeight(60);
 }

@@ -16,6 +16,7 @@ class BigNewsCard extends StatelessWidget {
       this.newsDate = "This is news date",
       this.newsContent = "This is news content",
       this.newsDesc = "This is news description"});
+  
 //==========================================================================
   
   @override
@@ -38,7 +39,9 @@ class BigNewsCard extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.9,
         height: MediaQuery.of(context).size.height * 0.21,
         margin: const EdgeInsets.symmetric(vertical: 5),
-        child: Card( //Create Big news card
+        //responsive design from screen
+        child: Card(
+          //Create Big news card
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
@@ -51,7 +54,7 @@ class BigNewsCard extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.network(
-                      imgUrl,
+                      imgUrl, //Display news image
                       width: constraints.maxWidth,
                       height: constraints.maxHeight * 0.436,
                       fit: BoxFit.fitWidth,
@@ -63,9 +66,9 @@ class BigNewsCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text(newsDate),
+                        Text(newsDate), //Display news date
                         Text(
-                          newsTitle,
+                          newsTitle, //Display news title
                           style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                           overflow: TextOverflow.ellipsis,

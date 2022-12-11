@@ -20,7 +20,7 @@ class Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     return isCategoryPage
         ? ListTile( //If this part is navigate to select category page 
-            title: Text(menuTitle.toUpperCase(),
+            title: Text(menuTitle.toUpperCase(), //Converts all characters in this string to upper case
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
@@ -35,7 +35,7 @@ class Menu extends StatelessWidget {
             },
           )
         : ListTile(//If this part not navigate to select category page 
-            title: Text(menuTitle.toUpperCase(),
+            title: Text(menuTitle.toUpperCase(), //Converts all characters in this string to upper case
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
@@ -44,7 +44,7 @@ class Menu extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => NewsListPage(
+                  builder: (context) => NewsListPage( //Send constructor and parameter to NewsListPage
                       Header_Title: menuTitle, Parameter: parameter),
                 ),
               );

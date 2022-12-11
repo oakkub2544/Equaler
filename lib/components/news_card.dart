@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../read_news.dart';
 
 class NewsCard extends StatelessWidget {
+//Create cards for all news items except the select category page
 //========================= Initial Constructor ================================
 
   final String imgUrl;

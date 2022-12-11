@@ -6,10 +6,8 @@ import './components/header_bar.dart';
 import './components/menu_bar.dart';
 import './components/news_card_list.dart';
 import './components/section_title.dart';
-import 'package:flutter/services.dart';
 
 void main() {
-
 // This section is for running apps only on vertical pages
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
@@ -39,7 +37,8 @@ class _MyhomepageState extends State<Myhomepage> {
   late Future<Map> newData, popData; //Initial variable to receive data from api
 
   @override
-  void initState() { //Method that is called when an object for stateful widget
+  void initState() {
+    //Method that is called when an object for stateful widget
     super.initState();
 
     //Get news from apiHandler
@@ -51,8 +50,10 @@ class _MyhomepageState extends State<Myhomepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: Headerbar(), //The AppBar displays the toolbar widgets, leading, title, and actions
-        drawer: Menubar(), //A Material Design panel that slides in horizontally from the edge to show navigation links in an application
+        appBar:
+            Headerbar(), //The AppBar displays the toolbar widgets, leading, title, and actions
+        drawer:
+            Menubar(), //A Material Design panel that slides in horizontally from the edge to show navigation links in an application
         body: Center(
             child: Padding(
           padding: const EdgeInsets.only(top: 10.0),
@@ -69,7 +70,8 @@ class _MyhomepageState extends State<Myhomepage> {
               NewsCardList(
                 //Display Popular News by send constructor and call function NewsCardList
                 newsData: popData,
-                listHeight: MediaQuery.of(context).size.height * 0.4, //responsive design from screen
+                listHeight: MediaQuery.of(context).size.height *
+                    0.4, //responsive design from screen
                 isBigCard: false,
               ),
             ],

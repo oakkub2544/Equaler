@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 class EmptyNewsListMessage extends StatelessWidget {
+//=================== Initial Constructor ======================
+
   final String errorText;
 
   EmptyNewsListMessage(this.errorText);
+//==============================================================
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +15,7 @@ class EmptyNewsListMessage extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.only(top: 60),
           child: Icon(
-            Icons.local_play_outlined,
+            Icons.local_play_outlined, //Icons for empty content
             color: Color.fromRGBO(100, 93, 83, 1),
             size: 50.0,
           ),

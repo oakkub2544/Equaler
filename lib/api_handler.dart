@@ -3,6 +3,7 @@ import 'dart:convert';
 
 class apiHandler {
   static List<dynamic> checkNull(List<dynamic> data) {
+    //Check api image content and description
     for (var dat in data) {
       if (dat['image_url'] == null || dat['image_url'].length <= 4) {
         dat['image_url'] =
@@ -27,14 +28,18 @@ class apiHandler {
     // Reserve: pub_13699438c8b63ce784777146929c925c17dbd
     // Reserve2: pub_14276b8a4fbf8db4357d71da5be8e97b4a76b
     String rawUrl =
-        "https://newsdata.io/api/1/news?apikey=pub_13699438c8b63ce784777146929c925c17dbd";
+        "https://newsdata.io/api/1/news?apikey=pub_124249313445c3671fd4d175e97415511a437";
     for (var par in parameter) {
-      rawUrl = '$rawUrl&$par';
+      //par = numpage from _NewsListPageState
+      rawUrl = '$rawUrl&$par'; // rawUrl = Url + page number
     }
     var url = Uri.parse(rawUrl);
-    var response = await http.get(url);
+    var response =
+        await http.get(url); //Creates a new Uri object by parsing a URI string
     if (response.statusCode == 200) {
-      Map jsonResponse = json.decode(utf8.decode(response.bodyBytes));
+      //response.statusCode has data
+      Map jsonResponse = json.decode(utf8
+          .decode(response.bodyBytes)); //decode response.bodyBytes json to utf8
       checkNull(jsonResponse['results']);
       return jsonResponse;
     }

@@ -2,20 +2,23 @@ import 'package:flutter/material.dart';
 import '../select_news.dart';
 
 class CategoryItem extends StatelessWidget {
+//========================= Initial Constructor ================================
+
   final String categoryTitle;
   final IconData iconTitle;
 
   CategoryItem(
       {this.categoryTitle = 'Top', this.iconTitle = Icons.chevron_left});
+//==============================================================================
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => {
+      onTap: () => { //Go to selectnews  
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => SelectNews(category: categoryTitle),
+            builder: (context) => SelectNews(category: categoryTitle), //send constructor to selectnews page
           ),
         )
       },

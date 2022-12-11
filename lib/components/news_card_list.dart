@@ -6,6 +6,7 @@ import './api_error_message.dart';
 import './empty_news_list_message.dart';
 
 class NewsCardList extends StatelessWidget {
+//List of News card to display in main or select news
 //========================= Initial Constructor ================================
 
   final Future<Map> newsData;

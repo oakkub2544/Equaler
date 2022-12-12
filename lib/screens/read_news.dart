@@ -25,11 +25,14 @@ class ReadNews extends StatefulWidget {
   State<ReadNews> createState() => _ReadNewsState();
 }
 
+enum TtsState { playing, stopped, paused }
+
 class _ReadNewsState extends State<ReadNews> {
   //instantiate FlutterTts (text to speech)
   final FlutterTts flutterTts = FlutterTts();
   final TextEditingController textEditingController = TextEditingController();
-
+  get isPaused => ttsState == TtsState.paused;
+  TtsState ttsState = TtsState.stopped;
   bool _isListening = false; //set state text to speech
 
   speakMethod(String text) async {
@@ -41,7 +44,8 @@ class _ReadNewsState extends State<ReadNews> {
 
   pauseMethod(String text) async {
     //pause text
-    await flutterTts.pause();
+    var result = await flutterTts.pause();
+    if (result == 1) setState(() => ttsState = TtsState.paused);
   }
 
   @override

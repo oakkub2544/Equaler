@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import '../components/header_bar.dart';
+import '../components/news_info.dart';
 
 //page that display news content
 class ReadNews extends StatefulWidget {
@@ -26,7 +27,8 @@ class ReadNews extends StatefulWidget {
 }
 
 class _ReadNewsState extends State<ReadNews> {
-  final FlutterTts flutterTts = FlutterTts(); //instantiate FlutterTts (text to speech)
+  final FlutterTts flutterTts =
+      FlutterTts(); //instantiate FlutterTts (text to speech)
   bool _isListening = false; //set state text to speech
 
   speakMethod(String text) async {
@@ -67,38 +69,14 @@ class _ReadNewsState extends State<ReadNews> {
                 fit: BoxFit.cover,
               ),
             ),
-            Padding(
-              //format the text of the news
-              padding: const EdgeInsets.only(
-                  left: 20, right: 20, top: 20, bottom: 10),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  color: const Color.fromRGBO(246, 240, 235, 1),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      children: [
-                        //display news date
-                        Text(widget.newsDate,
-                            style: const TextStyle(fontSize: 15)),
-                        //display news content
-                        GestureDetector(
-                          child: Text(
-                            textAlign: TextAlign.justify,
-                            widget.newsContent,
-                            style: const TextStyle(fontSize: 18),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+            NewsInfo(
+              info: widget.newsDate,
+              isNewsDate: true,
             ),
+            NewsInfo(
+              info: widget.newsContent,
+              isNewsDate: false,
+            )
           ]),
         );
       }),
@@ -117,15 +95,15 @@ class _ReadNewsState extends State<ReadNews> {
             }
           });
         },
-        
+        //set text to speech icon
+        backgroundColor: const Color.fromRGBO(50, 48, 45, 1),
         //set icon text to speech
-        child: Icon((_isListening == false)
-            ? Icons.play_arrow_rounded
-            : Icons.stop_rounded),
-
-        backgroundColor: Color.fromRGBO(50, 48, 45, 1), //set text to speech icon
-
-
+        child: Semantics(
+          label: "Text To Speech Button",
+          child: Icon((_isListening == false)
+              ? Icons.play_arrow_rounded
+              : Icons.stop_rounded),
+        ),
       ),
     );
   }

@@ -44,73 +44,82 @@ class _NewsListPageState extends State<NewsListPage> {
 
   //widget to go to previous page
   Widget LeftButton(double boxWidthSize) {
-    return pageNum == 0
-        ? SizedBox(
-            width: boxWidthSize,
-          )
-        : TextButton(
-            onPressed: () {
-              //minus page number and going to previous page
-              if (pageNum > 0) {
-                setState(() {
-                  pageNum--;
-                  changePageMethod(pageNum);
-                });
-              }
-            },
-            child: const Icon(
-              Icons.arrow_back_ios_new_rounded,
-              color: Color.fromRGBO(50, 48, 45, 1),
-              size: 20,
+    return Semantics(
+      label: "Previous page button",
+      child: pageNum == 0
+          ? SizedBox(
+              width: boxWidthSize,
+            )
+          : TextButton(
+              onPressed: () {
+                //minus page number and going to previous page
+                if (pageNum > 0) {
+                  setState(() {
+                    pageNum--;
+                    changePageMethod(pageNum);
+                  });
+                }
+              },
+              child: const Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: Color.fromRGBO(50, 48, 45, 1),
+                size: 20,
+              ),
             ),
-          );
+    );
   }
 
   //widget to go to next page
   Widget RightButton(int? nextPage, double boxWidthSize) {
-    return nextPage == null
-        ? SizedBox(
-            width: boxWidthSize,
-          )
-        : TextButton(
-            onPressed: () {
-              //plus page number and going to next page
-              setState(() {
-                pageNum++;
-                changePageMethod(pageNum);
-              });
-            },
-            child: const Icon(
-              Icons.arrow_forward_ios_rounded,
-              color: Color.fromRGBO(50, 48, 45, 1),
-              size: 20,
+    return Semantics(
+      label: "Next page button",
+      child: nextPage == null
+          ? SizedBox(
+              width: boxWidthSize,
+            )
+          : TextButton(
+              onPressed: () {
+                //plus page number and going to next page
+                setState(() {
+                  pageNum++;
+                  changePageMethod(pageNum);
+                });
+              },
+              child: const Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: Color.fromRGBO(50, 48, 45, 1),
+                size: 20,
+              ),
             ),
-          );
+    );
   }
 
   //input field to get page number from user
   Widget PageInputField(int totalResults, double boxWidthSize) {
-    return SizedBox(
-      width: boxWidthSize,
-      child: TextField(
-        textAlign: TextAlign.center,
-        controller: pageInputController,
-        decoration: InputDecoration(
-            border: OutlineInputBorder(), hintText: "${pageNum + 1}"),
-        keyboardType: TextInputType.number,
-        //filter only a positive integer from user
-        inputFormatters: [
-          FilteringTextInputFormatter.allow(RegExp(r'^[1-9][0-9]*'))
-        ],
-        onSubmitted: (_) => setState(() {
-          pageNum = int.parse(pageInputController.text) - 1;
-          int totalPage = (totalResults / 10).floor();
-          if (pageNum > totalPage) {
-            pageNum = totalPage;
-          }
-          pageInputController.clear();
-          changePageMethod(pageNum);
-        }),
+    return Semantics(
+      label: "Select Page",
+      child: SizedBox(
+        width: boxWidthSize,
+        child: TextField(
+          textAlign: TextAlign.center,
+          controller: pageInputController,
+          decoration: InputDecoration(
+              border: OutlineInputBorder(), hintText: "${pageNum + 1}"),
+          keyboardType: TextInputType.number,
+          //filter only a positive integer from user
+          inputFormatters: [
+            FilteringTextInputFormatter.allow(RegExp(r'^[1-9][0-9]*'))
+          ],
+          onSubmitted: (_) => setState(() {
+            pageNum = int.parse(pageInputController.text) - 1;
+            int totalPage = (totalResults / 10).floor();
+            if (pageNum > totalPage) {
+              pageNum = totalPage;
+            }
+            pageInputController.clear();
+            changePageMethod(pageNum);
+          }),
+        ),
       ),
     );
   }

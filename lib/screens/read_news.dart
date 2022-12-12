@@ -30,7 +30,7 @@ class _ReadNewsState extends State<ReadNews> {
   final FlutterTts flutterTts = FlutterTts();
   final TextEditingController textEditingController = TextEditingController();
 
-  bool _isListening = false;
+  bool _isListening = false;//Set state text to speech 
 
   speakMethod(String text) async {
     //setting text to speech
@@ -40,6 +40,7 @@ class _ReadNewsState extends State<ReadNews> {
   }
 
   pauseMethod(String text) async {
+    //pause text
     await flutterTts.pause();
   }
 
@@ -109,9 +110,11 @@ class _ReadNewsState extends State<ReadNews> {
         onPressed: () {
           setState(() {
             if (_isListening == false) {
+              //When pressed speak text and set _isListening to true
               speakMethod(widget.newsContent);
               _isListening = true;
             } else if (_isListening == true) {
+              //pause text to speech
               pauseMethod(widget.newsContent);
               _isListening = false;
             }
@@ -119,7 +122,7 @@ class _ReadNewsState extends State<ReadNews> {
         },
         child: Icon((_isListening == false)
             ? Icons.play_circle_fill_rounded
-            : Icons.stop_rounded),
+            : Icons.stop_rounded), //Set icon text to speech
         backgroundColor: Color.fromRGBO(50, 48, 45, 1),
       ),
     );

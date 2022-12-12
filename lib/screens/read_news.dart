@@ -123,7 +123,7 @@ class _ReadNewsState extends State<ReadNews> {
         backgroundColor: const Color.fromRGBO(50, 48, 45, 1),
         //set icon text to speech
         child: Icon((_isListening == false)
-            ? Icons.play_circle_fill_rounded
+            ? Icons.play_arrow_rounded
             : Icons.stop_rounded),
       ),
     );

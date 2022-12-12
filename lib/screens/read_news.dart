@@ -25,10 +25,17 @@ class ReadNews extends StatefulWidget {
   State<ReadNews> createState() => _ReadNewsState();
 }
 
+enum TtsState { playing, stopped, paused }
+
 class _ReadNewsState extends State<ReadNews> {
   //instantiate FlutterTts (text to speech)
   final FlutterTts flutterTts = FlutterTts();
   final TextEditingController textEditingController = TextEditingController();
+
+  get isPaused => ttsState == TtsState.paused;
+  TtsState ttsState = TtsState.stopped;
+
+
 
   bool _isListening = false; //set state text to speech
 
@@ -41,7 +48,12 @@ class _ReadNewsState extends State<ReadNews> {
 
   pauseMethod(String text) async {
     //pause text
+
+    var result = await flutterTts.pause();
+    if (result == 1) setState(() => ttsState = TtsState.paused);
+
     await flutterTts.pause();
+
   }
 
   @override
@@ -125,6 +137,11 @@ class _ReadNewsState extends State<ReadNews> {
         child: Icon((_isListening == false)
             ? Icons.play_arrow_rounded
             : Icons.stop_rounded),
+
+        backgroundColor:
+            Color.fromRGBO(50, 48, 45, 1), //set text to speech icon
+
+
       ),
     );
   }

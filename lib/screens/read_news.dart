@@ -85,27 +85,29 @@ class _ReadNewsState extends State<ReadNews> {
                   left: 20, right: 20, top: 20, bottom: 10),
               child: Align(
                 alignment: Alignment.topLeft,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  color: const Color.fromRGBO(246, 240, 235, 1),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      children: [
-                        //display news date
-                        Text(widget.newsDate,
-                            style: const TextStyle(fontSize: 15)),
-                        //display news content
-                        GestureDetector(
-                          child: Text(
-                            textAlign: TextAlign.justify,
-                            widget.newsContent,
-                            style: const TextStyle(fontSize: 18),
-                          ),
-                        )
-                      ],
+                child: Center(
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    color: const Color.fromRGBO(246, 240, 235, 1),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
+                        children: [
+                          //display news date
+                          Text(widget.newsDate,
+                              style: const TextStyle(fontSize: 15)),
+                          //display news content
+                          GestureDetector(
+                            child: Text(
+                              textAlign: TextAlign.justify,
+                              widget.newsContent,
+                              style: const TextStyle(fontSize: 18),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),

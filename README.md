@@ -10,8 +10,7 @@
 
 ### HOW TO EXECUTE OUR CODE ###
 1. First, You have to get all of our packages by using command:
-    - flutter pub get
-or  - dart pub get
+    - flutter pub get or dart pub get
 
 2. If you already have Android Studio on your device you can follow this step
     - Press F1 button and select "Flutter: Launch Emulator"

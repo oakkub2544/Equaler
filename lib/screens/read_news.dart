@@ -27,9 +27,10 @@ class ReadNews extends StatefulWidget {
 }
 
 class _ReadNewsState extends State<ReadNews> {
-  final FlutterTts flutterTts =
-      FlutterTts(); //instantiate FlutterTts (text to speech)
-  bool _isListening = false; //set state text to speech
+  //instantiate FlutterTts (text to speech)
+  final FlutterTts flutterTts = FlutterTts();
+  //set state text to speech
+  bool _isListening = false;
 
   speakMethod(String text) async {
     //setting text to speech

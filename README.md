@@ -17,6 +17,7 @@ or  - dart pub get
     - Press F1 button and select "Flutter: Launch Emulator"
     - If you don't have Virtual Device on your device please follow this step
         https://developer.android.com/studio/run/managing-avds
+        
         **Note that you have to allocate the memory enough for our application**
     - After you succeed Launch your Emulator, you can Press F5 or Execute our code to see the result
 

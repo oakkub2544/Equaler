@@ -71,8 +71,6 @@ class BigNewsCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        //display news date
-                        Text(newsDate),
                         //display news title
                         Text(
                           newsTitle,
@@ -81,6 +79,8 @@ class BigNewsCard extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                         ),
+                        //display news date
+                        Text(newsDate),
                         Row(
                           children: const [
                             Text(

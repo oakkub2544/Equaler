@@ -78,8 +78,6 @@ class NewsCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          //display news date
-                          Text(newsDate),
                           //display news title
                           Text(
                             newsTitle,
@@ -89,6 +87,8 @@ class NewsCard extends StatelessWidget {
                                 TextOverflow.ellipsis, //Represent clipped text
                             maxLines: 2,
                           ),
+                          //display news date
+                          Text(newsDate),
                           Row(
                             children: const [
                               Text(

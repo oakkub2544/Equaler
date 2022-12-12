@@ -120,7 +120,7 @@ class _ReadNewsState extends State<ReadNews> {
         child: Icon((_isListening == false)
             ? Icons.play_circle_fill_rounded
             : Icons.stop_rounded),
-        backgroundColor: Colors.pink,
+        backgroundColor: Color.fromRGBO(50, 48, 45, 1),
       ),
     );
   }

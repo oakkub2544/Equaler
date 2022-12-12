@@ -33,7 +33,7 @@ class _ReadNewsState extends State<ReadNews> {
   final TextEditingController textEditingController = TextEditingController();
 
   get isPaused => ttsState == TtsState.paused;
-  TtsState ttsState = TtsState.stopped;
+  TtsState ttsState = TtsState.paused;
 
 
 

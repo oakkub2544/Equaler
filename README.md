@@ -1,16 +1,25 @@
-# flutter_application_3
+## Get Start with Equaler ##
 
-A new Flutter project.
+### PREPARE YOUR ENVIRONMENT ###
+1. Please install Flutter on your device by doing this step
+    - How to install Flutter: https://docs.flutter.dev/get-started/install
+2. Our Extension in VS Code
+    - Dart-Code.dart-code
+    - Dart-Code.flutter
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+### HOW TO EXECUTE OUR CODE ###
+1. First, You have to get all of our packages by using command:
+    - flutter pub get
+or  - dart pub get
 
-A few resources to get you started if this is your first Flutter project:
+2. If you already have Android Studio on your device you can follow this step
+    - Press F1 button and select "Flutter: Launch Emulator"
+    - If you don't have Virtual Device on your device please follow this step
+        https://developer.android.com/studio/run/managing-avds
+        **Note that you have to allocate the memory enough for our application**
+    - After you succeed Launch your Emulator, you can Press F5 or Execute our code to see the result
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+3. If you don't have Android Studio you can use other simulator or just install Android Studio with link below
+    Android Studio: https://developer.android.com/studio
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

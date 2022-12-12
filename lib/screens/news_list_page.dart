@@ -44,13 +44,13 @@ class _NewsListPageState extends State<NewsListPage> {
 
   //widget to go to previous page
   Widget LeftButton(double boxWidthSize) {
-    return Semantics(
-      label: "Previous page button",
-      child: pageNum == 0
-          ? SizedBox(
-              width: boxWidthSize,
-            )
-          : TextButton(
+    return pageNum == 0
+        ? SizedBox(
+            width: boxWidthSize,
+          )
+        : Semantics(
+            label: "Previous page button",
+            child: TextButton(
               onPressed: () {
                 //minus page number and going to previous page
                 if (pageNum > 0) {
@@ -66,18 +66,18 @@ class _NewsListPageState extends State<NewsListPage> {
                 size: 20,
               ),
             ),
-    );
+          );
   }
 
   //widget to go to next page
   Widget RightButton(int? nextPage, double boxWidthSize) {
-    return Semantics(
-      label: "Next page button",
-      child: nextPage == null
-          ? SizedBox(
-              width: boxWidthSize,
-            )
-          : TextButton(
+    return nextPage == null
+        ? SizedBox(
+            width: boxWidthSize,
+          )
+        : Semantics(
+            label: "Next page button",
+            child: TextButton(
               onPressed: () {
                 //plus page number and going to next page
                 setState(() {
@@ -91,7 +91,7 @@ class _NewsListPageState extends State<NewsListPage> {
                 size: 20,
               ),
             ),
-    );
+          );
   }
 
   //input field to get page number from user

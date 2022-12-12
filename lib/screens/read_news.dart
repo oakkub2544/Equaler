@@ -117,10 +117,10 @@ class _ReadNewsState extends State<ReadNews> {
             }
           });
         },
+        backgroundColor: Colors.pink,
         child: Icon((_isListening == false)
             ? Icons.play_circle_fill_rounded
             : Icons.stop_rounded),
-        backgroundColor: Colors.pink,
       ),
     );
   }

@@ -25,16 +25,8 @@ class ReadNews extends StatefulWidget {
   State<ReadNews> createState() => _ReadNewsState();
 }
 
-enum TtsState { playing, stopped, paused }
-
 class _ReadNewsState extends State<ReadNews> {
-  //instantiate FlutterTts (text to speech)
-  final FlutterTts flutterTts = FlutterTts();
-  final TextEditingController textEditingController = TextEditingController();
-
-  get isPaused => ttsState == TtsState.paused;
-  TtsState ttsState = TtsState.paused;
-
+  final FlutterTts flutterTts = FlutterTts(); //instantiate FlutterTts (text to speech)
   bool _isListening = false; //set state text to speech
 
   speakMethod(String text) async {
@@ -45,11 +37,7 @@ class _ReadNewsState extends State<ReadNews> {
   }
 
   pauseMethod(String text) async {
-    //pause text
-
-    var result = await flutterTts.pause();
-    if (result == 1) setState(() => ttsState = TtsState.paused);
-
+    //stop text to speech
     await flutterTts.pause();
   }
 
@@ -85,29 +73,27 @@ class _ReadNewsState extends State<ReadNews> {
                   left: 20, right: 20, top: 20, bottom: 10),
               child: Align(
                 alignment: Alignment.topLeft,
-                child: Center(
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    color: const Color.fromRGBO(246, 240, 235, 1),
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Column(
-                        children: [
-                          //display news date
-                          Text(widget.newsDate,
-                              style: const TextStyle(fontSize: 15)),
-                          //display news content
-                          GestureDetector(
-                            child: Text(
-                              textAlign: TextAlign.justify,
-                              widget.newsContent,
-                              style: const TextStyle(fontSize: 18),
-                            ),
-                          )
-                        ],
-                      ),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  color: const Color.fromRGBO(246, 240, 235, 1),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                      children: [
+                        //display news date
+                        Text(widget.newsDate,
+                            style: const TextStyle(fontSize: 15)),
+                        //display news content
+                        GestureDetector(
+                          child: Text(
+                            textAlign: TextAlign.justify,
+                            widget.newsContent,
+                            style: const TextStyle(fontSize: 18),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
@@ -125,17 +111,21 @@ class _ReadNewsState extends State<ReadNews> {
               speakMethod(widget.newsContent);
               _isListening = true;
             } else if (_isListening == true) {
-              //pause text to speech
+              //stop text to speech
               pauseMethod(widget.newsContent);
               _isListening = false;
             }
           });
         },
-        backgroundColor: const Color.fromRGBO(50, 48, 45, 1),
+        
         //set icon text to speech
         child: Icon((_isListening == false)
             ? Icons.play_arrow_rounded
             : Icons.stop_rounded),
+
+        backgroundColor: Color.fromRGBO(50, 48, 45, 1), //set text to speech icon
+
+
       ),
     );
   }

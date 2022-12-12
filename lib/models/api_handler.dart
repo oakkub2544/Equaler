@@ -3,20 +3,28 @@ import 'dart:convert';
 
 //class that manage data from api
 class ApiHandler {
-  //check news for error
-  static List<dynamic> checkResultsMethod(List<dynamic> data) {
+  //change news results
+  static List<dynamic> changeResultsMethod(List<dynamic> data) {
     for (var dat in data) {
+      //remove time from pubDate
+      dat['pubDate'] = dat['pubDate'].substring(0, dat['pubDate'].indexOf(" "));
+      //if image_url not exist or url is incorrrect set it to default image
       if (dat['image_url'] == null || dat['image_url'].length <= 4) {
         dat['image_url'] =
             'https://comnplayscience.eu/app/images/notfound.png'; //set default image
       }
+      //if news content not exist change its value
       if (dat['content'] == null) {
+        //if news description exist change news content to news description
         if (dat['description'] != null) {
           dat['content'] = dat['description'];
-        } else {
+        }
+        //if not then no content
+        else {
           dat['content'] = 'No content';
         }
       }
+      //if news description not exist then no description
       if (dat['description'] == null) {
         dat['description'] = 'No description';
       }
@@ -41,7 +49,7 @@ class ApiHandler {
     if (response.statusCode == 200) {
       //decode response json to utf8
       Map jsonResponse = json.decode(utf8.decode(response.bodyBytes));
-      checkResultsMethod(jsonResponse['results']);
+      changeResultsMethod(jsonResponse['results']);
       return jsonResponse;
     }
     //if unsuccessfully call api provider and don't get data back

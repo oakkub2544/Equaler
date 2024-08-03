@@ -38,7 +38,7 @@ class ApiHandler {
     // Reserve: pub_13699438c8b63ce784777146929c925c17dbd
     // Reserve2: pub_14276b8a4fbf8db4357d71da5be8e97b4a76b
     String rawUrl =
-        "https://newsdata.io/api/1/news?apikey=pub_14276b8a4fbf8db4357d71da5be8e97b4a76b";
+        "https://newsdata.io/api/1/news?apikey=";
     // adding parameter to url for more specific query
     for (var par in parameter) {
       rawUrl = '$rawUrl&$par';
